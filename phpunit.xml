@@ -27,6 +27,8 @@
         <env name="DB_DATABASE" value="sitehub_test"/>
         <env name="SITEHUB_TENANT_DB_PREFIX" value="test_site_"/>
         <env name="SITEHUB_MEDIA_DISK" value="public"/>
+        <env name="TURNSTILE_SITEKEY" value=""/>
+        <env name="TURNSTILE_SECRET" value=""/>
         <env name="RESPONSE_CACHE_ENABLED" value="false"/>
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>

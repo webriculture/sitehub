@@ -38,6 +38,8 @@ return [
     'features' => [
         'galleries',
         'forms',
+        'partners',
+        'events',
     ],
 
 ];

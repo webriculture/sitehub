@@ -19,6 +19,11 @@ final class Site extends Model
         'slug',
         'features',
         'settings',
+        'secrets',
+    ];
+
+    protected $hidden = [
+        'secrets',
     ];
 
     protected function casts(): array
@@ -26,7 +31,19 @@ final class Site extends Model
         return [
             'features' => 'array',
             'settings' => 'array',
+            'secrets' => 'encrypted:array',
         ];
+    }
+
+    public function secret(string $key): ?string
+    {
+        return $this->secrets[$key] ?? null;
+    }
+
+    /** Locales beyond the default 'en', e.g. ['es'] for a bilingual site. */
+    public function extraLocales(): array
+    {
+        return $this->settings['locales'] ?? [];
     }
 
     public function domains(): HasMany

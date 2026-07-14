@@ -1,0 +1,19 @@
+{
+    "Name": "Nombre",
+    "Email": "Correo electrónico",
+    "Phone (optional)": "Teléfono (opcional)",
+    "Message": "Mensaje",
+    "Send message": "Enviar mensaje",
+    "Thank you! Your message has been sent.": "¡Gracias! Su mensaje ha sido enviado.",
+    "We could not verify that you are human. Please try again.": "No pudimos verificar que usted es una persona. Por favor, inténtelo de nuevo.",
+    "Please fill in your name, email, and message.": "Por favor complete su nombre, correo electrónico y mensaje.",
+    "Register": "Registrarse",
+    "Visit website": "Visitar sitio web",
+    "Accessibility options": "Opciones de accesibilidad",
+    "High contrast": "Alto contraste",
+    "Larger text": "Texto más grande",
+    "Highlight links": "Resaltar enlaces",
+    "Legible font": "Fuente legible",
+    "Large cursor": "Cursor grande",
+    "Reset": "Restablecer"
+}

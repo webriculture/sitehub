@@ -30,6 +30,12 @@ return Application::configure(basePath: dirname(__DIR__))
             SecurityHeaders::class,
         ]);
 
+        // Public form posts come from response-cached pages whose CSRF tokens
+        // go stale; Turnstile + honeypot protect this unauthenticated route.
+        $middleware->validateCsrfTokens(except: [
+            'forms/*',
+        ]);
+
         // Route middleware is sorted by the priority list; without this,
         // ResolveSite lands AFTER Filament's Authenticate and no site is
         // bound when canAccessPanel() checks membership.

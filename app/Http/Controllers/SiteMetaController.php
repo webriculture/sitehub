@@ -55,9 +55,21 @@ final class SiteMetaController
 
         $urls = [];
 
+        $extraLocales = $site->extraLocales();
+
         foreach (Finder::create()->files()->in($pagesPath)->name('*.blade.php') as $file) {
             $relative = str_replace('.blade.php', '', $file->getRelativePathname());
-            $url = $relative === 'home' ? '/' : '/'.str_replace(DIRECTORY_SEPARATOR, '/', $relative);
+            $relative = str_replace(DIRECTORY_SEPARATOR, '/', $relative);
+
+            // Locale home pages live at the locale root: es/home -> /es
+            foreach ($extraLocales as $locale) {
+                if ($relative === $locale.'/home') {
+                    $relative = $locale;
+                    break;
+                }
+            }
+
+            $url = $relative === 'home' ? '/' : '/'.$relative;
 
             $urls[$url] = [$url, date('Y-m-d', $file->getMTime())];
         }

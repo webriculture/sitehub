@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Partners\Schemas;
 
+use App\Tenancy\Tenancy;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
@@ -34,8 +35,8 @@ final class PartnerForm
                         FileUpload::make('logo_path')
                             ->label('Logo')
                             ->image()
-                            ->directory('partners')
-                            ->visibility('public'),
+                            ->disk(config('sitehub.media_disk'))
+                            ->directory(fn (): string => Tenancy::current()?->slug.'/partners'),
                         Toggle::make('published')
                             ->default(true)
                             ->helperText('Unpublish to retire a listing without deleting it.'),

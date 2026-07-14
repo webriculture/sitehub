@@ -27,6 +27,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Media disk
+    |--------------------------------------------------------------------------
+    |
+    | Where client media (partner logos, gallery photos) is stored. Production
+    | uses the shared platform bucket with per-site key prefixes; tests use
+    | the local public disk so they never touch S3.
+    |
+    */
+
+    'media_disk' => env('SITEHUB_MEDIA_DISK', 's3'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Known feature keys
     |--------------------------------------------------------------------------
     |
@@ -40,6 +53,23 @@ return [
         'forms',
         'partners',
         'events',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Need Navigator
+    |--------------------------------------------------------------------------
+    |
+    | Events/classes are authored in Need Navigator and pulled by events:sync.
+    | driver: 'stub' (sample data) until the real API details are wired;
+    | per-site bearer tokens live in the site's encrypted secrets under
+    | the `need_navigator_token` key.
+    |
+    */
+
+    'need_navigator' => [
+        'driver' => env('NEED_NAVIGATOR_DRIVER', 'stub'),
+        'base_url' => env('NEED_NAVIGATOR_URL'),
     ],
 
 ];

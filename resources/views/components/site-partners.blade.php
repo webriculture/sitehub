@@ -10,7 +10,7 @@
         @foreach ($partners as $partner)
             <article class="sh-partner">
                 @if ($partner->logo_path)
-                    <img class="sh-partner__logo" src="{{ Storage::disk('public')->url($partner->logo_path) }}" alt="{{ $partner->name }}">
+                    <img class="sh-partner__logo" src="{{ Storage::disk(config('sitehub.media_disk'))->url($partner->logo_path) }}" alt="{{ $partner->name }}">
                 @endif
                 <div class="sh-partner__body">
                     <h3 class="sh-partner__name">{{ $partner->name }}</h3>

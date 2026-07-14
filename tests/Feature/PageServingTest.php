@@ -41,11 +41,19 @@ it('permanently redirects the legacy home URL to root', function (): void {
 });
 
 it('serves robots.txt and sitemap.xml per site', function (): void {
-    registerSite('site-a');
+    $site = registerSite('site-a');
 
     $this->get('http://site-a.test/robots.txt')
         ->assertOk()
         ->assertSee('Sitemap: https://site-a.test/sitemap.xml', escape: false);
+
+    // Non-primary hostnames must refuse indexing.
+    $site->domains()->create(['hostname' => 'staging.site-a.test', 'redirect_to_primary' => false]);
+
+    $this->get('http://staging.site-a.test/robots.txt')
+        ->assertOk()
+        ->assertSee('Disallow: /', escape: false)
+        ->assertDontSee('Sitemap:');
 
     $this->get('http://site-a.test/sitemap.xml')
         ->assertOk()

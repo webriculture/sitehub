@@ -19,6 +19,12 @@ final class SiteMetaController
     {
         $primary = $site->primaryDomain()?->hostname;
 
+        // Only the primary domain invites indexing — test/staging/alias
+        // hostnames must never end up in search results.
+        if ($primary !== null && request()->getHost() !== $primary) {
+            return response("User-agent: *\nDisallow: /\n", 200, ['Content-Type' => 'text/plain']);
+        }
+
         $lines = ['User-agent: *', 'Allow: /'];
 
         if ($primary !== null) {

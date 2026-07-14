@@ -161,3 +161,104 @@ signed payloads (TLS + bearer covers the threat model at these stakes).
   `external_id`, prune absent, flush that site's response cache on change
 - Until the real endpoint exists, SiteHub runs `NEED_NAVIGATOR_DRIVER=stub`
   (sample data) — the swap to live is config-only, no code changes.
+
+---
+
+# Appendix B: Need Navigator side — implementation & reply
+
+*Written by the Need Navigator implementers. This is the authoritative description of
+what NN actually serves; where it clarifies or tightens the wishlist above, this section
+wins. The wire contract in §3 is honored exactly — nothing here changes the JSON shape.*
+
+## B.1 Status
+
+- **Phase 1 (event feed + auth): implemented and verified.** `GET /api/v1/events`
+  returns the §3 shape. Ships emitting `title/description/location` as `{"en": …}`.
+- **Spanish (`es`): implemented additively.** NN authors optional Spanish per event;
+  the feed adds `"es"` to any locale map when present, omits it otherwise. No contract
+  change — SiteHub's English fallback already covers events that lack `es`.
+- **Phase 2 (`kind:"class"`, `registration_url`): not built.** `kind` is always
+  `"event"` and `registration_url` is always `null` for now, exactly as §8 anticipates.
+
+## B.2 How NN decides "which events" (answering §2/§4)
+
+We agree with the wishlist's instinct: **the token decides scope; the client sends no
+query parameters.** Concretely, an event is in a token's feed when **all** hold:
+
+1. `is_public = true` **and** `status = 'published'` — the same gate that powers NN's
+   own public event pages (`/e/{slug}`). "Public" is the single authoritative flag.
+2. It is still relevant: `COALESCE(end_date, start_date) >= today`, where *today* is
+   computed in the tenant's timezone (`APP_TIMEZONE`; FRAN = `America/Los_Angeles`).
+   Past events fall out of the feed on their own → SiteHub prunes them.
+3. It matches the **token's server-side scope** (see B.4): an optional allow-list of
+   Event **classifications** and/or **types** baked into the token. A future event
+   created under an in-scope classification appears automatically — no re-issuance.
+
+This is the reconciliation of "pull by classification/type" with "no query params":
+the filtering is real, but it lives on the token, not in the request. The client
+cannot widen its own scope or probe NN's taxonomy.
+
+## B.3 Field mapping notes (NN data → §3 wire shape)
+
+| Wire field | Source in NN | Notes |
+|---|---|---|
+| `id` | `evt_{events.id}` | Integer PK, prefixed. Stable forever; never reused (soft-deletes). |
+| `kind` | constant `"event"` | Phase 2 will introduce `"class"` from a separate source. |
+| `title` / `location` | `events.title` / `events.location` (+ `es` from `translations`) | Plain text. |
+| `description` | `events.description_html`, **stripped to plain text** | Block tags → newlines, entities decoded, markup removed. Newlines preserved. |
+| `starts_at` / `ends_at` | `start_date`+`start_time` / `end_date`+`end_time` | **Naive local** columns (no per-event zone) interpreted in `APP_TIMEZONE`, emitted ISO-8601 **with offset**. `ends_at` is `null` when `end_date` is null. DST is handled by the zone (Aug `-07:00`, Jan `-08:00`). |
+| `all_day` | constant `false` | NN has no all-day concept yet; add a column later if needed (additive). |
+| `registration_url` | `null` | Phase 2 will link into `/e/{slug}`. |
+
+**Timezone caveat (worth a shared eye):** NN events store *naive* local date/times, so
+we interpret them in the tenant's single configured zone. This is correct as long as an
+event's local time really is in that zone — true for a single-org, single-region tenant
+like FRAN. If NN ever runs events in another zone, we add a per-event zone column and
+the offset math updates here (still no wire change).
+
+## B.4 Security — as implemented (answering §5)
+
+We went **beyond** the "env token is fine" floor, because this token sits in front of a
+system that may hold HIPAA data. The feed itself carries **zero PII** by construction
+(marketing metadata only — never attendees, submissions, or registrants), and the token
+is scoped so a leak can't become a foothold:
+
+- **Storage:** dedicated `events_api_tokens` table. Only a **SHA-256 hash** of the token
+  is stored (never the plaintext). Format `nn_evt_` + 43 base62 chars (~256 bits). Shown
+  once, at mint.
+- **One narrow guard:** a purpose-built middleware authenticates **only** `GET
+  /api/v1/events`. It creates no session, resolves no user, and reaches nothing else in
+  the NN API. Token ↔ scope mapping is entirely server-side.
+- **Per-site, individually revocable:** each consuming site gets its own token with its
+  own classification/type scope, IP allow-list, and `last_used_at`. Revoking or rotating
+  one never touches another. Rotation = mint new → update SiteHub secret → revoke old.
+- **Transport:** HTTPS enforced in production (`$request->secure()` behind the ALB via
+  TrustProxies); plain HTTP is refused.
+- **Rate limit:** `60 requests/hour` per token (`429` on excess) — generous for a
+  30-minute poll.
+- **Caching:** `ETag` + `If-None-Match` → `304` so a no-change poll is nearly free.
+- **Errors:** missing/invalid token → `401 {"error":"unauthenticated"}`; disallowed
+  source IP → `403`. Event data never varies by anything but the token's scope.
+
+### Provisioning (NN operator)
+
+```bash
+# 1. Deploy — the additive migrations create events_api_tokens + events.translations.
+# 2. Mint a scoped token for the consuming site (choose classification/type ids):
+php artisan events:token:mint "FRAN / SiteHub" --classification=3 --type=2
+#    → prints the nn_evt_… token ONCE. Hand it to SiteHub's encrypted secret.
+#    (Use --all to intentionally serve every public event; --ip=… to pin source IPs.)
+php artisan events:token:list           # names, scope, last-used — never the token
+php artisan events:token:revoke <id>    # revoke one site without affecting others
+```
+
+## B.5 Acceptance checklist (§7) — status
+
+- [x] `GET /api/v1/events` + valid token → 200, schema per §3
+- [x] Missing/bad token → 401
+- [x] Token for site A never returns site B's events (server-side scope; per-token)
+- [x] `id` stable across requests; edited events keep their id (integer PK)
+- [x] Timestamps carry UTC offsets (built from `APP_TIMEZONE`)
+- [x] No HTML/markup in any text field (`description_html` stripped to plain text)
+- [x] Removing an event (soft-delete / unpublish / out-of-window) removes it from the feed
+- [x] Plain-HTTP request refused (production)

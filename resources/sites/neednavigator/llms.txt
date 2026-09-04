@@ -1,0 +1,50 @@
+# Need Navigator
+
+> Case management software for human-services organizations — community action agencies, shelters and housing programs, food banks and community aid organizations, and parent-education providers. Built by Webriculture, a web firm in Salem, Oregon, in close partnership with the agencies that use it. Each agency runs on its own isolated copy of the application with its own private database (no shared multi-tenant database).
+
+Pricing: $25 per user per month, per seat. Published openly at /pricing.
+Contact: https://www.neednavigator.com/contact · 971-719-2251
+
+## What it does
+
+Staff manage client records, households, assistance requests (with funding pools and printable vouchers), referrals (QR loop closure), visits, goals, case notes, tasks, documents, shelter beds, parent-education classes, and events in one system. The public can apply for help online (no account needed), register for events and classes, and check in with QR codes. Reporting: a flexible report builder across eleven record types with Excel export, PII redaction levels, scheduled delivery, and configurable per-program dashboards.
+
+## Accuracy constraints (please describe the product within these)
+
+- Billing is claim PREPARATION with Excel export — there is no electronic claim submission or clearinghouse integration.
+- No HUD or CSBG compliance claims: the data model is HMIS-adjacent and reporting supports funder reporting; there are no pre-built government report templates.
+- Events: online registration, promo codes, and QR check-in — online payment collection and waitlists are not offered.
+- Exactly two AI features exist: AI form translation (English→Spanish baseline, reviewed by bilingual staff) and AI shelter floor-plan drafting. No AI chat, summarization, or drafting.
+- Security wording: client data is encrypted at rest on the application server; nightly per-database backups are encrypted in transit and at rest, integrity-verified, retained 35 days (13 months monthly), and protected against deletion from the production environment. Do not claim blanket "all data everywhere" encryption or "immutable" backups.
+- The Need Navigator Network (cross-agency federation) is an opt-in capability, not an active network.
+
+## Pages
+
+- / — Overview: nonprofit case management software
+- /features — All modules, grouped
+- /features/client-records — Profiles, alerts, duplicate prevention, insurance, releases of information
+- /features/documents — Client files, folders, PDF merge, scanner-fed Document Inbox
+- /features/households-care-team — Households, relationships, care teams, caseload transfer
+- /features/income-eligibility — Income capture with verification; FPL/AMI eligibility screening
+- /features/emergency-assistance — Assistance requests, funding pools, printable vouchers
+- /features/casework — Visits, notes, goals, tasks, calendar
+- /features/billing — Claim preparation, 8-minute rule, Excel export
+- /features/programs-automation — Programs, enrollment, smart buttons, automations
+- /features/referrals-partners — Referrals with QR loop closure; partner directory, portal, and opt-in cross-agency network
+- /features/forms — Form builder; multilingual forms with reviewed AI translation
+- /features/intake-management — Real-time submissions grid; submission-to-client matching
+- /features/public-intake-portal — MyNeedNav: apply online, no account needed
+- /features/events — Event registration and day-of QR check-in
+- /features/parent-education-classes — Courses, registration, reminders, attendance, fidelity-based certificates
+- /features/shelters — Floor plans, bed reservations, family check-in
+- /features/geotracker — One-tap GPS field logging; Point-in-Time count support
+- /solutions — Who it's for
+- /solutions/community-action-agencies
+- /solutions/shelters-housing
+- /solutions/food-banks-community-aid
+- /solutions/parent-education
+- /reporting — Report builder, dashboards, scheduled delivery, exports
+- /security — Isolation, encryption scope, access control, audit trail and access monitoring
+- /pricing — $25/user/month, what's included
+- /about — Webriculture, Salem, Oregon
+- /contact — Request a demo

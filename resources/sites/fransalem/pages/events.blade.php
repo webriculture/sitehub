@@ -1,10 +1,19 @@
 @extends('site::partials.layout')
 
-@section('title', 'Events & Classes — FRAN')
+@section('title', 'Events & Classes | FRAN')
 
 @section('content')
-    <h1>Events &amp; classes</h1>
-    <p>See what's happening at the FRAN center. Online registration is coming soon — for now, contact us to save your spot.</p>
+    <section class="page-head">
+        <div class="container text-center narrow">
+            <p class="eyebrow">Events at FRAN</p>
+            <h1 class="section-title">Happening Soon</h1>
+            <p class="lead">Explore and register for workshops, classes and community events for the whole family. If you would like more information about events at FRAN, please email <a href="mailto:Info@FranSalem.com">Info@FranSalem.com</a>.</p>
+        </div>
+    </section>
 
-    <x-site-events />
+    <section class="section">
+        <div class="container narrow">
+            <x-site-events />
+        </div>
+    </section>
 @endsection

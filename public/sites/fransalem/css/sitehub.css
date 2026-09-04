@@ -1,0 +1,347 @@
+/*
+ * FRAN — SiteHub integration layer. Loaded after the designer's styles.css.
+ * Holds everything the static mockup couldn't know about: self-hosted fonts,
+ * the multi-page nav, the interior page opener, and platform component skins
+ * (.sh-events, .sh-form).
+ * Keep styles.css pristine (designer's file) — site adjustments belong here.
+ */
+
+/*
+ * Fonts. The mockup loads Shantell Sans + Nunito from the Google Fonts CDN;
+ * SiteHub self-hosts instead (no third-party request, no CDN availability
+ * risk). Same families, same subsets/unicode-ranges Google serves — Shantell
+ * Sans is a variable face, so one file covers the 600/700 the design uses.
+ */
+@font-face {
+  font-family: 'Shantell Sans';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('/sites/fransalem/fonts/shantell-sans-var-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Shantell Sans';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('/sites/fransalem/fonts/shantell-sans-var-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/sites/fransalem/fonts/nunito-var-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('/sites/fransalem/fonts/nunito-var-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+ * Multi-page nav. The mockup is a single page with anchor links; the live site
+ * adds real routes for the events feed and the contact form, so links need a
+ * current-page state, and the CTA slot carries the EN/ES toggle.
+ */
+.site-header .nav-links a.active {
+  position: relative;
+  background: var(--color-light-grey);
+  color: var(--color-blue-dark);
+}
+.site-header .nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: .85rem;
+  right: .85rem;
+  bottom: .3rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-blue-dark);
+}
+.site-header .nav-links .lang-toggle { margin-left: .35rem; }
+@media (max-width: 900px) {
+  .site-header .nav-links a.active::after { left: .85rem; right: auto; width: 1.75rem; }
+}
+
+/* Interior page opener (events, contact). */
+.page-head {
+  padding: clamp(2.25rem, 5vw, 3.25rem) 0 clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--color-light-grey);
+  border-bottom: 1px solid var(--color-border);
+}
+.page-head .section-title { font-size: clamp(1.9rem, 3.6vw, 3.2rem); }
+.page-head .lead { margin-inline: auto; }
+
+/* Contact page: form beside the visit/email details. */
+.contact-page-layout { align-items: start; gap: clamp(1.5rem, 3vw, 2.6rem); }
+
+/*
+ * Events band on the home one-pager. The mockup has no events section — the
+ * feed is live (Need Navigator), so home carries a bounded teaser and the full
+ * listing lives at /events, where it can grow without stretching the homepage.
+ */
+.events-band { background: var(--color-light-grey); }
+.events-teaser { width: min(820px, 100%); margin: 2rem auto 0; }
+.events-more { margin: 1.5rem 0 0; }
+
+/*
+ * Events feed (Need Navigator) — platform component DOM, design-language skin.
+ * Card geometry matches .provider-card / .service-card so the feed reads as
+ * part of the same system.
+ */
+.sh-events { display: grid; gap: 1rem; }
+.sh-event {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-white);
+}
+.sh-event__date {
+  flex: none;
+  width: 68px;
+  height: fit-content;
+  padding: .6rem 0;
+  text-align: center;
+  border: 1px solid rgba(125,152,178,.45);
+  border-radius: 10px;
+  background: var(--color-light-grey);
+  color: var(--color-blue-dark);
+}
+.sh-event__month {
+  display: block;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.sh-event__day {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.05;
+}
+.sh-event__body { min-width: 0; }
+.sh-event__title {
+  margin: 0 0 .3rem;
+  color: var(--color-black);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+.sh-event__when,
+.sh-event__location { margin: 0; color: var(--color-muted); font-size: .92rem; font-weight: 700; }
+.sh-event__description { margin: .55rem 0 0; font-size: .95rem; line-height: 1.5; }
+.sh-event__register {
+  display: inline-flex;
+  align-items: center;
+  margin-top: .8rem;
+  padding: .65rem .95rem;
+  border: 1px solid var(--color-blue-dark);
+  border-radius: 10px;
+  background: var(--color-blue);
+  color: var(--color-white);
+  font-size: .88rem;
+  font-weight: 800;
+  line-height: 1.1;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.sh-event__register:hover,
+.sh-event__register:focus-visible { background: var(--color-blue-dark); }
+.sh-event__register:focus-visible { outline: 3px solid rgba(125,152,178,.35); outline-offset: 3px; }
+@media (max-width: 560px) {
+  .sh-event { flex-direction: column; gap: .85rem; }
+}
+
+/* Contact form — platform component DOM, mockup panel look. */
+.sh-form {
+  max-width: 560px;
+  padding: clamp(1.2rem, 2.4vw, 1.6rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+}
+.sh-form__field { display: grid; gap: .35rem; margin: 0 0 .9rem; }
+.sh-form__field label { color: var(--color-black); font-weight: 800; }
+.sh-form__field input,
+.sh-form__field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: .85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-white);
+  color: var(--color-black);
+  font: inherit;
+}
+.sh-form__field input:focus-visible,
+.sh-form__field textarea:focus-visible {
+  border-color: var(--color-blue-dark);
+  outline: 3px solid rgba(125,152,178,.35);
+  outline-offset: 2px;
+}
+.sh-form__field textarea { min-height: 120px; resize: vertical; }
+.sh-form__hp { position: absolute; left: -9999px; }
+.sh-form .cf-turnstile { margin: 0 0 .9rem; }
+.sh-form__actions { margin: .4rem 0 0; }
+.sh-form__actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .9rem 1.25rem;
+  border: 1px solid var(--color-blue-dark);
+  border-radius: 10px;
+  background: var(--color-blue);
+  color: var(--color-white);
+  font: inherit;
+  font-weight: 800;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.sh-form__actions button:hover,
+.sh-form__actions button:focus-visible { background: var(--color-blue-dark); }
+.sh-form__actions button:focus-visible { outline: 3px solid rgba(125,152,178,.35); outline-offset: 3px; }
+.sh-form__success,
+.sh-form__error {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  font-weight: 700;
+}
+.sh-form__success { border-left: 6px solid var(--color-green); }
+.sh-form__error { margin-bottom: 1rem; border-left: 6px solid var(--color-brown); }
+
+/* Footer link column reads better with room between the stacked links. */
+.footer-links p { line-height: 2.1; }
+
+/*
+ * Aug 2026 content update (client PDF 8.26.26): footer moves from black to the
+ * FRAN blue. The darker brand blue keeps white text readable (the lighter
+ * #7d98b2 fails contrast for body copy); tagline centers between the logos.
+ */
+.footer { background: var(--color-blue-dark); }
+.footer-tagline { text-align: center; }
+.footer-bottom { color: rgba(255, 255, 255, .85); }
+
+/*
+ * Linked info blocks (About "What You Can Do Here", Contact sidebar). Same
+ * .notice look, but the whole block is the link.
+ */
+a.notice-link {
+  display: block;
+  color: var(--color-text);
+  font-weight: 400;
+  text-decoration: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+a.notice-link:hover,
+a.notice-link:focus-visible {
+  border-color: var(--color-blue-dark);
+  border-left-color: var(--color-blue-dark);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+a.notice-link:focus-visible { outline: 3px solid rgba(125, 152, 178, .35); outline-offset: 2px; }
+
+/* About page: founder quote and the building photo under the link boxes. */
+.about-quote {
+  margin: 1.4rem 0 0;
+  padding: .2rem 0 .2rem 1.1rem;
+  border-left: 4px solid var(--color-blue);
+}
+.about-quote p { margin: 0; }
+.about-quote footer { margin-top: .8rem; font-weight: 700; color: var(--color-blue-dark); }
+.about-page-photo { height: 280px; margin: var(--space-2) 0 0; }
+
+/* Contact page: embedded map (FRAN is too new to surface in map searches). */
+.contact-map iframe {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+}
+.contact-page-photo { height: 240px; margin: var(--space-2) 0 0; }
+
+/*
+ * Find Support page: the grey name-mark is the link to the partner's site and
+ * every card reads centered (client PDF 8.26.26).
+ */
+.find-support-grid .provider-card { text-align: center; }
+a.partner-name-mark {
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+a.partner-name-mark:hover,
+a.partner-name-mark:focus-visible {
+  border-color: var(--color-blue-dark);
+  background: var(--color-white);
+}
+a.partner-name-mark:focus-visible { outline: 3px solid rgba(125, 152, 178, .35); outline-offset: 2px; }
+.partner-categories {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--color-muted);
+}
+
+/*
+ * Home "Explore Partners" disclosure on the four service-area cards: a
+ * <details> keeps it dependency-free; the summary wears the button skin.
+ */
+.partner-dropdown { width: 100%; margin-top: 1rem; }
+.partner-dropdown summary { cursor: pointer; list-style: none; }
+.partner-dropdown summary::-webkit-details-marker { display: none; }
+.partner-dropdown summary::marker { content: ""; }
+.partner-dropdown .service-learn-more { margin-top: 0; }
+.partner-dropdown-list {
+  display: grid;
+  gap: .45rem;
+  margin: .8rem 0 0;
+  padding: .9rem 1rem;
+  list-style: none;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-light-grey);
+  text-align: left;
+}
+.partner-dropdown-list a { font-weight: 700; color: var(--color-blue-dark); }
+
+/* Events "Happening Soon" leads center under their titles (home + /events). */
+.events-band .lead,
+.page-head .lead { margin-inline: auto; text-align: center; }
+
+/*
+ * The mockup's hero eyebrow was the "[Family Resources in One Place]" badge;
+ * the new hero keeps the eyebrow as plain text (client: reads as a button
+ * otherwise — Chris's hand-fix 8/31, migrated here from styles.css).
+ */
+.hero-copy .eyebrow {
+  padding: .45rem 0;
+  border-radius: 0;
+  background: none;
+  font-size: 1.25rem;
+}
+
+/*
+ * Full-bleed card photos: the base img{max-width:100%} caps the photo at the
+ * card's padded content width, defeating width:calc(100% + 2.3rem) — flush
+ * left via the negative margin, ~2.3rem white gap on the right (the "weird
+ * white gap" from the client PDF).
+ */
+.image-service-card .card-photo { max-width: none; }

@@ -1,0 +1,10 @@
+/* Harris Thermal — reset + base typography
+   EXTRACTED VERBATIM from V1: the identical opening 6 lines of the inline <style> on all 31 V1 pages
+   Wave 1 migration. Rules are byte-identical to V1 apart from the changes
+   noted below; no design decision was taken here. */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--ht-font);color:var(--ht-ink);line-height:1.65;background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ht-blue);text-decoration:none}
+a:hover{color:var(--ht-blue-bright)}

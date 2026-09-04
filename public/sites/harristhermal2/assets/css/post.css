@@ -1,0 +1,270 @@
+/* Harris Thermal — articles and taxonomy archives (Wave 4).
+   Loaded through the existing `familyCss` key, exactly like every other
+   page-family sheet. Nothing here redefines a shared component: the topbar,
+   header, navigation, hero, CTA band and footer all come from chrome.css
+   unchanged, and the hero needed no new rules at all.
+
+   TWO SCOPES, on purpose:
+     .ht-postwrap  — an ARTICLE. V1 fidelity target. Every value below was
+                     MEASURED on the frozen oracle at 1440/1024/390 and is
+                     reproduced exactly. V1 sets article body copy in Oxygen and
+                     headings in Roboto Condensed 700 (GeneratePress's
+                     typography, which IS the article's V1 design).
+     .ht-archive   — the Industry Insights archive. An APPROVED V2 PRESENTATION
+                     CORRECTION, so it uses the approved Harris design system
+                     (--ht-* tokens, the system font stack) and NOT
+                     GeneratePress's. It is meant to look like the 31 approved
+                     pages, not like V1's archive.
+*/
+
+/* ---------------------------------------------------------------- shared */
+.ht-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* Keyboard focus must be visible on every link these two templates emit. */
+.ht-postwrap a:focus-visible,
+.ht-archive a:focus-visible{outline:2px solid var(--ht-blue-bright);outline-offset:2px;border-radius:2px}
+
+/* ================================================================ ARTICLE */
+/* V1 geometry: the body sat in a 1200px container with 20px side padding
+   (1160px of text at 1440). Wave 4 uses the APPROVED shared .ht-wrap grid
+   (1200px / 24px padding = 1152px) so the article body aligns with its own
+   hero and with every other page on the site. The 8px delta is recorded in
+   the Wave 4 report as a required migration difference.
+   Vertical padding is V1's: 0 above (the body butts the hero), 20px below. */
+.ht-postwrap{padding:0 0 20px}
+
+/* MEASURED ON THE ORACLE — do not "tidy" these numbers.
+   p / li / a  Oxygen  16px / 28.8px (1.8)  #242424
+   links       #0e51a1 (= --ht-blue), no underline                            */
+.ht-postwrap{font-family:"Oxygen",sans-serif;font-size:16px;line-height:1.8;color:#242424}
+/* MEASURED ON THE ORACLE: V1 computes overflow-wrap:break-word on every element
+   in the article body (p, h2, h3, ul, li, a, strong). Wave 4 missed it at first
+   and four posts overflowed at 390px - several articles carry raw markdown link
+   syntax with 79-130 character URLs, which V1 breaks and we did not. This is
+   V1's own value, reproduced; word-break and hyphens stay at V1's normal/manual.
+   CP-12's fingerprint now measures these three properties so the class of
+   defect cannot recur. */
+.ht-postwrap,.ht-post-body *{overflow-wrap:break-word}
+.ht-post-body{margin:0}
+
+/* h2  Roboto Condensed 700  42px / 63px (1.5)  UPPERCASE  #043082
+   h3  Roboto Condensed 700  28px / 50.4px (1.8) UPPERCASE #242424           */
+.ht-post-body h2{font-family:"Roboto Condensed",sans-serif;font-weight:700;font-size:42px;line-height:1.5;text-transform:uppercase;color:#043082;margin:0 0 12px}
+.ht-post-body h3{font-family:"Roboto Condensed",sans-serif;font-weight:700;font-size:28px;line-height:1.8;text-transform:uppercase;color:#242424;margin:0 0 12px}
+
+/* Block rhythm: V1 gives every non-heading block 1.5em (24px) below, except
+   the last child, which gets none. Lists indent 3em (48px). */
+.ht-post-body p{margin:0 0 24px}
+.ht-post-body ul,.ht-post-body ol{margin:0 0 24px 48px;padding:0}
+.ht-post-body li{margin:0}
+.ht-post-body strong{font-weight:700}
+
+/* TABLES. Added Wave 5.5 Phase 0.5, 2026-08-29.
+   post.css previously had NO table rule at all, because not one of the 23 posts
+   migrated from the frozen oracle contains a <table>. The five reconciled
+   post-freeze articles are the first posts to use them - 11 tables across three
+   articles - and those tables carry much of the value: the alloy/service
+   selection matrix, the facility-water vs technology-cooling chemistry limits,
+   the RG 1.26 quality-group mapping, and the plate vs shell-and-tube selection
+   basis.
+
+   MEASURED before this rule, at a 390px viewport: scrollWidth 451, 394 and 500
+   against clientWidth 390. The tables ran off-screen and CP-12 section B failed
+   all three articles.
+
+   The table scrolls inside its OWN container rather than the page scrolling, so
+   no column is dropped, no type is shrunk and no cell content is hidden - which
+   matters for reference tables an engineer is reading on a phone.
+
+   Zero effect on any existing page: no oracle-backed post has a table, so
+   CP-12 section A typography fingerprints are untouched, and posts are already
+   outside CP-2 oracle pixel parity. */
+.ht-post-body table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 24px;border-collapse:collapse;font-size:.94rem;line-height:1.5}
+.ht-post-body table th,.ht-post-body table td{border:1px solid var(--ht-line);padding:10px 14px;text-align:left;vertical-align:top}
+.ht-post-body table th{background:#f4f7fb;font-weight:700;color:var(--ht-navy)}
+.ht-post-body table tbody tr:nth-child(even) td{background:#fafbfd}
+.ht-post-body > *:last-child{margin-bottom:0}
+
+/* V1 mobile block overrides h1 and h2 only — h3 keeps its desktop 28px, so
+   below 768px an h3 renders LARGER than the h2 above it. That inversion is
+   V1's and is PRESERVED here rather than silently corrected; it is logged as
+   defect V in the Wave 4 report for a post-migration typography pass. */
+@media(max-width:768px){
+  .ht-post-body h2{font-size:26px}
+}
+
+/* Article footer: categories, tags, previous/next. V1 measured 13.6px Oxygen,
+   19px above the block. */
+.ht-post-meta{margin-top:19px;font-size:13.6px;line-height:1.5;color:#242424}
+.ht-post-tax{margin:0 0 4px}
+.ht-post-nav{display:flex;justify-content:space-between;gap:24px;margin-top:16px;flex-wrap:wrap}
+.ht-post-next{margin-left:auto;text-align:right}
+
+/* ========================================================== ARCHIVE HERO */
+/* APPROVED V2 VISUAL PROTOTYPE, 2026-08-25. Scoped entirely to
+   .ht-hero-archive, which ONLY the archive layout emits, and living in this
+   page-family sheet - so chrome.css and the 31 approved pages are untouched and
+   cannot render any of this. Reusable by every generated archive: the artwork
+   arrives as a custom property from data, not from a page-specific rule.
+
+   No animation, no parallax, no JS, no external request. */
+
+/* V1's shared hero carries two large decorative circles on its right side.
+   They sit exactly where the artwork now goes and competed with it, so they are
+   suppressed HERE ONLY - the shared rule is unchanged for every other page. */
+.ht-hero-archive::before,
+.ht-hero-archive::after{content:none;display:none}
+
+/* The artwork band: right 46% of the hero, dissolving toward the centre.
+   Two background layers on one element - a navy veil over the photograph - plus
+   a mask that fades the left edge out entirely, so the image reads as part of
+   the hero gradient rather than as a rectangular photo card. Where mask-image
+   is unsupported the leftmost veil stop is opaque navy, so the seam stays
+   invisible; the treatment degrades, it does not break.
+
+   IMAGE FORMAT. The photograph ships twice: an 80 KB WebP derivative built by
+   tools/make-hero-webp.mjs (same 736x756 native size, same crop, same
+   composition) and the ORIGINAL 938 KB PNG, which is untouched and still serves
+   the two approved V1 pages that reference it. Browsers that understand
+   image-set(..type()) - the same generation that understands WebP - get the
+   derivative; older ones fall through to the PNG. Exactly ONE of the two is
+   ever fetched, because a background image is only requested for the
+   declaration that wins the cascade. */
+/* WAVE 6.6 OWNER REVIEW, 2026-09-01 - V2 HERO FAMILY ALIGNMENT.
+   The band treatment above was correct in isolation but read as an outlier
+   next to the commercial pages: confining the artwork to the right 46% and
+   capping the copy at 52% left roughly three-fifths of the hero as flat blue,
+   so the archive looked like a generic coloured rectangle beside
+   /oil-and-gas-industry-solutions/ and the rest of the .px-hero family.
+
+   The artwork is now FULL-BLEED behind the same 100deg navy overlay the
+   commercial hero uses, so the two families read as one system: dark and fully
+   legible on the left where the copy sits, photograph emerging on the right.
+   The veil stops are the .px-hero::after stops, lifted slightly at the dark end
+   because this hero is roughly half the height and the copy sits nearer the
+   image. The left-edge mask is gone - it existed only to dissolve the seam of a
+   partial band, and a full-bleed layer has no seam.
+
+   CHANGED IN CSS ONLY. The partial's markup is untouched, so CP-11's archive
+   hero contract - breadcrumb, h1, approved standfirst, decorative aria-hidden
+   artwork layer, the image-set/PNG pair, no <img>, no pagination count - still
+   asserts exactly what it did before. The art layer stays below .ht-wrap
+   (z-index:1), so CP-12 section D's "artwork never covers hero text" check is
+   unaffected. */
+/* WAVE 6.6 OWNER REVIEW, 2026-09-01 - HERO HEIGHT STANDARDISATION.
+   The archive hero previously ran 64/68px padding and no min-height, giving a
+   ~288px band against the commercial family's ~563px. Same grid, same eyebrow,
+   same H1 scale, but the height difference alone made it read as a different
+   design system. It now adopts the .px-hero box model verbatim: 520px
+   min-height, flex-centred content, 96px inner padding, 680px measure, 560px
+   standfirst - so /category/industry-insights/ stands the same height as
+   /oil-and-gas-industry-solutions/ and /capabilities/.
+
+   width:100% on the wrap is required for the same reason .px-hero needs it: a
+   flex container makes .ht-wrap a shrink-to-fit flex item, which would collapse
+   it to its content width and break the shared 1200px grid alignment. */
+.ht-hero-archive{
+  --ht-archive-w:100%;
+  /* The veil is the .px-hero::after gradient at slightly higher opacity. It is
+     NOT lowered to match the commercial stops exactly: the archive hero is the
+     one component under CP-12 section D's measured 3:1 contrast floor, and the
+     commercial stops measure 2.0-3.0 for the standfirst at 390px. Matching them
+     exactly would fail that gate, and this task must not weaken an existing
+     accessibility check. The two read as the same treatment; unifying the exact
+     stops belongs with the sitewide Wave 7 hero-contrast item. */
+  --ht-archive-veil:linear-gradient(100deg,rgba(2,26,71,.95) 0%,rgba(2,26,71,.88) 34%,rgba(2,26,71,.62) 68%,rgba(2,26,71,.36) 100%);
+  min-height:520px;display:flex;align-items:center;padding:96px 0;
+}
+.ht-hero-archive .ht-wrap{width:100%}
+.ht-hero-art{
+  position:absolute;top:0;right:0;bottom:0;width:var(--ht-archive-w);
+  background-image:var(--ht-archive-veil),var(--ht-archive-art-fallback);
+  background-size:cover,cover;
+  background-position:center,var(--ht-archive-focus,center);
+  background-repeat:no-repeat;
+  pointer-events:none;
+}
+/* The established V2 eyebrow, reused verbatim from .px-eyebrow in the interior
+   family sheet, applied to the breadcrumb line the archive hero already emits.
+   This is the single strongest signal that a page belongs to the V2 family, and
+   taking it as a STYLE means CP-11 still gets the exact breadcrumb markup and
+   the "Home / <archive>" navigation affordance survives. */
+.ht-hero-archive .ht-crumb{
+  display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#9dc1f5;background:rgba(29,111,209,.18);
+  border:1px solid rgba(157,193,245,.35);padding:7px 16px;border-radius:999px;
+  margin-bottom:20px;
+}
+.ht-hero-archive .ht-crumb a{color:#9dc1f5}
+.ht-hero-archive .ht-crumb a:hover{color:#fff}
+/* V2 headline scale, matching .px-hero h1 rather than the smaller shared one. */
+.ht-hero-archive h1{font-size:clamp(2.1rem,4.2vw,3.2rem);line-height:1.12;letter-spacing:-.02em}
+/* The feature test names the REAL derivative rather than a placeholder file:
+   a support condition is never fetched, and CP-5 resolves every url() it sees,
+   so a made-up filename here would look like a missing asset. */
+@supports (background-image:image-set(url("/sites/harristhermal2/assets/img/archive-hero-vessel-tube-bundle.webp") type("image/webp"))){
+  .ht-hero-art{background-image:var(--ht-archive-veil),var(--ht-archive-art)}
+}
+
+/* Text stays completely clear of the artwork: the copy column stops short of
+   the band. Same shared .ht-wrap grid and left alignment as every other page -
+   only the measure changes. */
+/* Measure now follows the commercial hero's content group (.px-hero-inner is
+   680px) instead of a percentage chosen to dodge the old side band. */
+.ht-hero-archive .ht-wrap>*{max-width:680px}
+.ht-hero-archive .ht-hero-lede{margin:14px 0 0;max-width:560px;color:#d5e0f2;font-size:clamp(1rem,1.25vw,1.12rem);line-height:1.55}
+
+/* The artwork is KEPT at every viewport now, which is the other half of the
+   consistency fix: previously it was dropped below 900px and the archive fell
+   back to a plain gradient on exactly the screens where every commercial page
+   still shows its photograph. A full-bleed layer behind the 100deg veil is the
+   same construction .px-hero uses at 390px, where the veil's dark end sits
+   under the copy, so legibility is unchanged - CP-12 section D re-checks it at
+   1440/1024/390 on every run. */
+@media(max-width:900px){
+  .ht-hero-archive .ht-wrap>*,
+  .ht-hero-archive .ht-hero-lede{max-width:none}
+}
+
+/* ================================================================ ARCHIVE */
+/* Restrained technical-library layout: a ruled list, no cards, no shadows,
+   no decorative furniture. Approved design system only. */
+.ht-archive{padding:40px 0 8px;font-family:var(--ht-font);color:var(--ht-ink)}
+.ht-entries{list-style:none;margin:0;padding:0}
+.ht-entries>li+li{margin-top:36px;padding-top:36px;border-top:1px solid var(--ht-line)}
+
+.ht-entry-date{margin:0 0 8px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ht-muted)}
+
+/* The title is the primary — and only — article link. */
+.ht-entry-title{margin:0 0 10px;font-size:clamp(1.25rem,1.9vw,1.6rem);line-height:1.25;font-weight:800;letter-spacing:-.01em}
+.ht-entry-title a{color:var(--ht-navy);text-decoration:none}
+.ht-entry-title a:hover{color:var(--ht-blue);text-decoration:underline;text-underline-offset:3px}
+
+.ht-entry-excerpt{margin:0 0 14px;max-width:78ch;color:var(--ht-ink)}
+
+.ht-entry-tax{margin:0 0 4px;font-size:.85rem;line-height:1.6;color:var(--ht-muted)}
+/* min-width aligns the two label columns; margin-right guarantees a gap even
+   when the label ("CATEGORIES") is wider than the min-width. */
+.ht-entry-label{display:inline-block;min-width:5.6em;margin-right:14px;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ht-muted)}
+.ht-entry-tax a{color:var(--ht-blue);text-decoration:none}
+.ht-entry-tax a:hover{text-decoration:underline;text-underline-offset:2px}
+.ht-sep{color:var(--ht-muted)}
+
+/* Pagination — plain crawlable anchors, no client-side paging. */
+.ht-pager{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:44px;padding-top:24px;border-top:1px solid var(--ht-line)}
+.ht-pager-nums{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+.ht-pager-num{display:inline-block;min-width:38px;padding:7px 10px;border:1px solid var(--ht-line);border-radius:6px;text-align:center;font-size:.9rem;font-weight:700;color:var(--ht-blue);text-decoration:none}
+a.ht-pager-num:hover{border-color:var(--ht-blue);color:var(--ht-blue)}
+.ht-pager-num.is-current{background:var(--ht-navy);border-color:var(--ht-navy);color:#fff}
+.ht-pager-step{font-size:.9rem;font-weight:700;color:var(--ht-blue);text-decoration:none}
+a.ht-pager-step:hover{text-decoration:underline;text-underline-offset:3px}
+.ht-pager-step.is-off{color:var(--ht-muted);opacity:.45}
+.ht-pager-nums{margin-left:auto;margin-right:auto}
+
+@media(max-width:560px){
+  .ht-archive{padding-top:28px}
+  .ht-entries>li+li{margin-top:28px;padding-top:28px}
+  .ht-entry-label{display:block;min-width:0;margin-right:0;margin-bottom:2px}
+  .ht-pager{gap:12px;justify-content:space-between}
+  .ht-pager-nums{width:100%;order:3;justify-content:center;margin:0;flex-wrap:wrap}
+}

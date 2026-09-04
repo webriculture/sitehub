@@ -1,0 +1,62 @@
+/* Harris Thermal — cookie/tracking consent banner
+   EXTRACTED VERBATIM from V1: wp-content/themes/generatepress-child/assets/css/site-widgets.css
+   Wave 1 migration. Rules are byte-identical to V1 apart from the changes
+   noted below; no design decision was taken here. */
+/* Harris-authored code recovered out of the defunct GeneratePress child theme
+   (Phase 1: 'Harris-owned code is buried inside vendor directories').
+   Colours are V1's SECOND palette (#0B2E4F/#1F4E79) and are left untouched —
+   see tokens.css. The accessibility-widget half of the original file is NOT
+   carried forward: no V1 page ships the a11y markup or a11y-widget.js, so
+   those ~2.5 KB of rules match nothing. Reinstate-or-drop is still an open
+   decision; the original file is preserved in legacy/v1-export/. */
+/* ── Cookie consent ─────────────────────────────────────────────────── */
+#cookie-consent {
+    position: fixed;
+    right: 5%;
+    bottom: 12px;
+    z-index: 9998;
+    width: calc(100% - 32px);
+    max-width: 520px;
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #D8DDE5;
+    border-top: 4px solid #0B2E4F; /* navy */
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    padding: 16px 18px;
+    font-size: 0.875rem;
+    line-height: 1.45;
+}
+/* On phones, pin to a fixed 16px gutter (matches the left gap from the
+   width calc, so the card is centered); revert to 5% on larger screens. */
+@media (max-width: 600px) {
+    #cookie-consent { right: 16px; }
+}
+#cookie-consent[hidden] { display: none; }
+#cookie-consent .cc-text { margin: 0 0 12px; }
+#cookie-consent .cc-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+#cookie-consent .cc-btn {
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1.2;
+}
+#cookie-consent .cc-decline {
+    background: #f1f1f1;
+    color: #0B2E4F;
+}
+#cookie-consent .cc-decline:hover { background: #e4e4e4; }
+#cookie-consent .cc-accept {
+    background: #0B2E4F; /* navy */
+    color: #ffffff;
+}
+#cookie-consent .cc-accept:hover { background: #1F4E79; } /* blue-mid */
+#cookie-consent .cc-btn:focus-visible { outline: 3px solid #fab033; outline-offset: 2px; }

@@ -1,0 +1,6 @@
+imported:        2026-09-03T21:23:58Z
+source:          /var/www/sitehub/examples/harris/harris-thermal-website
+source commit:   d098e22 (0 uncommitted files)
+site url:        https://ht2.demo.webriculture.com
+pages:           201
+asset files:     296

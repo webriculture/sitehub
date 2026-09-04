@@ -39,6 +39,12 @@ For local dev, also add a `.test` host to `/etc/hosts`:
 php artisan sites:domain fransalem fransalem.test
 ```
 
+Legacy URLs from the site being replaced get a 301 map in settings — exact paths, plus `/*` prefix keys for CMS detail pages (exact wins, then longest prefix; existing templates always win over the map):
+
+```bash
+php artisan sites:setting fransalem redirects '{"/pages/about":"/about","/courses/view/*":"/classes"}' --json
+```
+
 ## 3. Enable the features this client needs
 
 ```bash

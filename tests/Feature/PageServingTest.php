@@ -80,3 +80,20 @@ it('smoke: every committed page of every site renders', function (): void {
         }
     }
 });
+
+it('301s legacy URLs via the site redirect map, exact keys first then longest prefix', function (): void {
+    $site = registerSite('site-a');
+    $site->update(['settings' => ['redirects' => [
+        '/resources/display/classes' => '/classes',
+        '/resources/display/*' => '/resources',
+        '/courses/view/*' => '/classes',
+        '/courses/*' => '/about',
+    ]]]);
+
+    $this->get('http://site-a.test/resources/display/classes')->assertStatus(301)->assertRedirect('/classes');
+    $this->get('http://site-a.test/resources/display/anything_else')->assertStatus(301)->assertRedirect('/resources');
+    $this->get('http://site-a.test/courses/view/some-long-legacy-slug')->assertStatus(301)->assertRedirect('/classes');
+    $this->get('http://site-a.test/courses/index')->assertStatus(301)->assertRedirect('/about');
+    $this->get('http://site-a.test/courses')->assertNotFound(); // "/courses/*" needs something below it
+    $this->get('http://site-a.test/about')->assertOk(); // existing templates always win over the map
+});

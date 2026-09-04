@@ -52,7 +52,30 @@ final class Site extends Model
      */
     public function redirectTarget(string $path): ?string
     {
-        return $this->settings['redirects'][$path] ?? null;
+        $map = $this->settings['redirects'] ?? [];
+
+        if (isset($map[$path])) {
+            return $map[$path];
+        }
+
+        // Prefix rules: a key ending in "/*" matches every path below it
+        // (e.g. "/courses/view/*" for a legacy CMS with hundreds of detail
+        // URLs). Exact keys always win; among prefixes, the longest wins.
+        $best = null;
+
+        foreach ($map as $pattern => $target) {
+            if (! str_ends_with($pattern, '/*')) {
+                continue;
+            }
+
+            $prefix = substr($pattern, 0, -1); // keep the trailing slash
+
+            if (str_starts_with($path, $prefix) && ($best === null || strlen($prefix) > strlen($best[0]))) {
+                $best = [$prefix, $target];
+            }
+        }
+
+        return $best[1] ?? null;
     }
 
     /**

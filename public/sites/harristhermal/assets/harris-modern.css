@@ -1,0 +1,109 @@
+/* Harris Thermal — modern chrome (header/hero/footer) shared across all pages.
+   All classes prefixed ht- to avoid collisions with theme/plugin CSS. */
+:root{
+  --ht-navy:#021a47;
+  --ht-navy-2:#04255f;
+  --ht-blue:#0e51a1;
+  --ht-blue-bright:#1d6fd1;
+  --ht-ink:#1a2333;
+  --ht-muted:#5a6577;
+  --ht-line:#e3e8f0;
+  --ht-bg-soft:#f4f6fa;
+  --ht-radius:14px;
+  --ht-shadow-lg:0 24px 60px rgba(2,26,71,.18);
+  --ht-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.ht-topbar,.ht-header,.ht-hero,.ht-cta-band,.ht-footer{font-family:var(--ht-font);line-height:1.65;box-sizing:border-box}
+.ht-topbar *,.ht-header *,.ht-hero *,.ht-cta-band *,.ht-footer *{box-sizing:border-box}
+.ht-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ===== Top utility bar ===== */
+.ht-topbar{background:var(--ht-navy);color:#c8d4ea;font-size:.82rem;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.ht-topbar .ht-wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.ht-topbar a{color:#fff;font-weight:600;text-decoration:none}
+.ht-topbar .ht-certs{letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:700px){.ht-topbar .ht-certs{display:none}.ht-topbar .ht-wrap{justify-content:center}}
+
+/* ===== Header / Nav ===== */
+.ht-header{position:sticky;top:0;z-index:1000;background:rgba(2,26,71,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.25)}
+.ht-nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.ht-brand img{width:220px;height:auto;display:block}
+.ht-mainnav{display:flex;align-items:center;gap:2px}
+.ht-mainnav>ul{display:flex;list-style:none;gap:2px;margin:0;padding:0}
+.ht-mainnav>ul>li{position:relative;margin:0}
+.ht-mainnav>ul>li>a{display:block;padding:26px 14px;color:#eaf0fa;font-weight:600;font-size:.92rem;letter-spacing:.01em;transition:color .15s;position:relative;text-decoration:none}
+.ht-mainnav>ul>li>a:hover{color:#fff}
+.ht-mainnav>ul>li>a::after{content:"";position:absolute;left:14px;right:14px;bottom:16px;height:2px;background:var(--ht-blue-bright);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+.ht-mainnav>ul>li:hover>a::after{transform:scaleX(1)}
+.ht-mainnav .ht-sub{position:absolute;top:100%;left:0;min-width:250px;background:#fff;border-radius:0 0 12px 12px;box-shadow:var(--ht-shadow-lg);list-style:none;margin:0;padding:8px 0;opacity:0;visibility:hidden;transform:translateY(8px);transition:all .18s}
+.ht-mainnav li:hover>.ht-sub{opacity:1;visibility:visible;transform:translateY(0)}
+.ht-mainnav .ht-sub li{margin:0}
+.ht-mainnav .ht-sub a{display:block;padding:9px 20px;color:var(--ht-ink);font-size:.9rem;font-weight:500;text-decoration:none}
+.ht-mainnav .ht-sub a:hover{background:var(--ht-bg-soft);color:var(--ht-blue)}
+.ht-cta-btn{display:inline-block;background:var(--ht-blue-bright);color:#fff!important;font-weight:700;padding:11px 22px;border-radius:8px;font-size:.9rem;margin-left:14px;transition:background .15s,transform .15s;box-shadow:0 4px 14px rgba(29,111,209,.35);text-decoration:none}
+.ht-cta-btn:hover{background:#2b7fe3;transform:translateY(-1px)}
+.ht-hamburger{display:none;background:none;border:0;cursor:pointer;padding:10px}
+.ht-hamburger span{display:block;width:26px;height:3px;background:#fff;margin:5px 0;border-radius:2px}
+@media(max-width:1020px){
+  .ht-mainnav{display:none}
+  .ht-hamburger{display:block}
+}
+
+/* ===== Mobile menu ===== */
+.ht-mobile-menu{display:none;background:var(--ht-navy-2);border-top:1px solid rgba(255,255,255,.08);max-height:calc(100vh - 74px);overflow-y:auto;font-family:var(--ht-font)}
+.ht-mobile-menu.ht-open{display:block}
+.ht-mobile-menu a{display:block;padding:13px 24px;color:#eaf0fa;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+.ht-mobile-menu details{border-bottom:1px solid rgba(255,255,255,.06)}
+.ht-mobile-menu summary{padding:13px 24px;color:#eaf0fa;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.ht-mobile-menu summary::-webkit-details-marker{display:none}
+.ht-mobile-menu summary::after{content:"+";font-size:1.2rem;color:#8fb4e8}
+.ht-mobile-menu details[open] summary::after{content:"–"}
+.ht-mobile-menu details a{padding-left:40px;font-weight:500;font-size:.92rem;border-bottom:0}
+
+/* ===== Page hero (interior pages) ===== */
+.ht-hero{position:relative;background:linear-gradient(115deg,var(--ht-navy) 0%,var(--ht-blue) 100%);color:#fff;padding:74px 0 66px;overflow:hidden}
+.ht-hero::before{content:"";position:absolute;right:-140px;top:-140px;width:440px;height:440px;border-radius:50%;background:rgba(255,255,255,.06)}
+.ht-hero::after{content:"";position:absolute;right:80px;bottom:-180px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.05)}
+.ht-hero .ht-wrap{position:relative;z-index:1}
+.ht-hero .ht-crumb{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9dc1f5;margin-bottom:12px}
+.ht-hero .ht-crumb a{color:#9dc1f5;text-decoration:none}
+.ht-hero .ht-crumb a:hover{color:#fff}
+.ht-hero h1{font-size:clamp(1.9rem,3.8vw,2.9rem);line-height:1.15;font-weight:800;letter-spacing:-.02em;margin:0;color:#fff;font-family:var(--ht-font)}
+.ht-hero .ht-date{margin-top:12px;color:#c8d8f2;font-size:.95rem}
+
+/* ===== CTA band ===== */
+.ht-cta-band{background:linear-gradient(115deg,var(--ht-navy) 0%,var(--ht-blue) 100%);color:#fff;padding:64px 0;position:relative;overflow:hidden;margin-top:48px}
+.ht-cta-band::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06)}
+.ht-cta-band .ht-wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;position:relative;z-index:1}
+.ht-cta-band h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;letter-spacing:-.02em;margin:0 0 8px;color:#fff;font-family:var(--ht-font)}
+.ht-cta-band p{color:#c8d8f2;max-width:520px;margin:0}
+.ht-btn{display:inline-block;font-weight:700;padding:14px 28px;border-radius:9px;font-size:1rem;transition:transform .15s,background .15s;text-decoration:none}
+.ht-btn-primary{background:#fff;color:var(--ht-navy)!important}
+.ht-btn-primary:hover{transform:translateY(-2px)}
+.ht-btn-ghost{background:rgba(255,255,255,.1);color:#fff!important;border:1px solid rgba(255,255,255,.35)}
+.ht-btn-ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+.ht-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ===== Footer ===== */
+.ht-footer{background:var(--ht-navy);color:#b9c6dd;padding:70px 0 0;font-size:.93rem}
+.ht-fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px;padding-bottom:52px}
+.ht-fgrid img.ht-flogo{width:230px;margin-bottom:18px;display:block}
+.ht-fgrid h4{color:#fff;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px;font-family:var(--ht-font)}
+.ht-fgrid ul{list-style:none;margin:0;padding:0}
+.ht-fgrid ul li{margin:0 0 9px}
+.ht-fgrid a{color:#b9c6dd;text-decoration:none}
+.ht-fgrid a:hover{color:#fff}
+.ht-fgrid .ht-tagline{font-style:italic;color:#8fa3c4;margin-top:6px}
+.ht-fbottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.85rem;color:#8fa3c4}
+.ht-fsocial{display:flex;gap:14px}
+.ht-fsocial a{color:#b9c6dd;font-weight:600;text-decoration:none}
+.ht-fsocial a:hover{color:#fff}
+@media(max-width:920px){.ht-fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.ht-fgrid{grid-template-columns:1fr}}
+
+/* ===== Gentle content refresh ===== */
+.site-content{padding-top:40px;padding-bottom:20px}
+body .site-content a:not(.gb-button):not(.wp-block-button__link){color:var(--ht-blue)}
+body .site-content a:not(.gb-button):not(.wp-block-button__link):hover,
+body .site-content a:not(.gb-button):not(.wp-block-button__link):focus,
+body .site-content a:not(.gb-button):not(.wp-block-button__link):active{color:var(--ht-blue-bright)}

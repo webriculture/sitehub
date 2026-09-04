@@ -1,0 +1,12 @@
+/*
+Theme Name:   GeneratePress Child
+Theme URI:    
+Description:  Child theme for GeneratePress. Holds the Harris Thermal NQA-1 nuclear landing page template and any future site-specific overrides.
+Author:       Harris Thermal
+Template:     generatepress
+Version:      1.0.0
+Text Domain:  generatepress-child
+*/
+
+/* Site-wide child overrides go here. The nuclear landing template loads its own
+   scoped stylesheet (assets/css/nuclear-landing.css) only on that page. */

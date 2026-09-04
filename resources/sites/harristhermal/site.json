@@ -1,0 +1,4 @@
+{
+    "name": "Harris Thermal Transfer Products",
+    "notes": "Static port of harristhermal.com (WordPress scrape + modernized homepage/section pages, zip of 2026-07-21). Staging domain: ht.demo.webriculture.com. Live WP site still served from /var/www/harristhermal.com on this box; DNS/vhost cutover pending. Contact/quote forms are inert legacy markup — convert to <x-site-form> before cutover. Source zip archived at /home/dlux/harristhermal-archive/."
+}

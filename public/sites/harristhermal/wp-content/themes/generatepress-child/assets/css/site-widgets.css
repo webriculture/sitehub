@@ -1,0 +1,155 @@
+/* =====================================================================
+   Harris Thermal — site-wide widgets
+   Cookie/tracking consent banner + accessibility menu.
+   Dependency-free. Brand palette matches the GeneratePress theme:
+     navy #0B2E4F · blue-mid #1F4E79 · accent #3B82C4
+   ===================================================================== */
+
+/* ── Cookie consent ─────────────────────────────────────────────────── */
+#cookie-consent {
+    position: fixed;
+    right: 5%;
+    bottom: 12px;
+    z-index: 9998;
+    width: calc(100% - 32px);
+    max-width: 520px;
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #D8DDE5;
+    border-top: 4px solid #0B2E4F; /* navy */
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    padding: 16px 18px;
+    font-size: 0.875rem;
+    line-height: 1.45;
+}
+/* On phones, pin to a fixed 16px gutter (matches the left gap from the
+   width calc, so the card is centered); revert to 5% on larger screens. */
+@media (max-width: 600px) {
+    #cookie-consent { right: 16px; }
+}
+#cookie-consent[hidden] { display: none; }
+#cookie-consent .cc-text { margin: 0 0 12px; }
+#cookie-consent .cc-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+#cookie-consent .cc-btn {
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1.2;
+}
+#cookie-consent .cc-decline {
+    background: #f1f1f1;
+    color: #0B2E4F;
+}
+#cookie-consent .cc-decline:hover { background: #e4e4e4; }
+#cookie-consent .cc-accept {
+    background: #0B2E4F; /* navy */
+    color: #ffffff;
+}
+#cookie-consent .cc-accept:hover { background: #1F4E79; } /* blue-mid */
+#cookie-consent .cc-btn:focus-visible { outline: 3px solid #fab033; outline-offset: 2px; }
+
+/* ── Accessibility widget ───────────────────────────────────────────── */
+#a11y-widget #a11y-toggle {
+    position: fixed;
+    left: 12px;
+    bottom: 12px;
+    z-index: 9997;
+    width: 52px;
+    height: 52px;
+    border: 0;
+    border-radius: 50%;
+    background: #0B2E4F; /* navy */
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+#a11y-widget #a11y-toggle svg { width: 28px; height: 28px; display: block; }
+#a11y-widget #a11y-toggle:hover { background: #1F4E79; } /* blue-mid */
+#a11y-widget #a11y-toggle:focus-visible { outline: 3px solid #fab033; outline-offset: 2px; }
+
+#a11y-panel {
+    position: fixed;
+    left: 12px;
+    bottom: 84px;
+    z-index: 9997;
+    width: 240px;
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #D8DDE5;
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    padding: 12px;
+    font-size: 0.9rem;
+}
+#a11y-panel[hidden] { display: none; }
+#a11y-panel .a11y-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: #0B2E4F;
+    margin-bottom: 8px;
+}
+#a11y-panel .a11y-head button {
+    border: 0; background: none; font-size: 22px; line-height: 1;
+    cursor: pointer; color: #5A6472;
+}
+#a11y-panel .a11y-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 0; margin-bottom: 4px;
+}
+#a11y-panel .a11y-stepper button {
+    border: 1px solid #0B2E4F; background: #fff; color: #0B2E4F;
+    width: 34px; height: 30px; border-radius: 4px; cursor: pointer;
+    font-weight: 700; margin-left: 4px;
+}
+#a11y-panel .a11y-opt, #a11y-panel .a11y-reset {
+    display: block; width: 100%; text-align: left;
+    border: 1px solid #e1e1e1; background: #fff; color: #333;
+    padding: 9px 12px; border-radius: 4px; cursor: pointer;
+    margin-top: 6px; font-size: 0.875rem;
+}
+#a11y-panel .a11y-opt[aria-pressed="true"] {
+    background: #0B2E4F; color: #fff; border-color: #0B2E4F;
+}
+#a11y-panel .a11y-reset {
+    text-align: center; margin-top: 12px; color: #d0442f; font-weight: 600;
+}
+#a11y-panel button:focus-visible { outline: 3px solid #fab033; outline-offset: 2px; }
+
+/* --- Applied accessibility states (scoped to <html>) --- */
+html.a11y-contrast body, html.a11y-contrast body * {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+html.a11y-contrast a, html.a11y-contrast a * { color: #00316b !important; }
+html.a11y-links a {
+    text-decoration: underline !important;
+    outline: 1px dotted #0B2E4F;
+    outline-offset: 1px;
+}
+html.a11y-legible body, html.a11y-legible body * {
+    font-family: Arial, Helvetica, "Segoe UI", sans-serif !important;
+    letter-spacing: 0.02em !important;
+    word-spacing: 0.05em !important;
+}
+html.a11y-bigcursor, html.a11y-bigcursor * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M6 2l30 18-13 3 7 14-6 3-7-14-11 9z' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 4 2, auto !important;
+}
+/* Keep the widget itself readable even when contrast mode is on */
+html.a11y-contrast #a11y-toggle, html.a11y-contrast #a11y-toggle * {
+    background-color: #0B2E4F !important; color: #ffffff !important;
+}

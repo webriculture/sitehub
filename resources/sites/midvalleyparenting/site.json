@@ -1,0 +1,4 @@
+{
+    "name": "Mid-Valley Parenting",
+    "notes": "Rebuild of midvalleyparenting.org (legacy laravelcms). Staging domain: mid-valleyparenting.org. DNS cutover is gated on the classes/events features landing — the legacy site runs live class enrollment. Legacy /resources/display/{slug} URLs need a 301 map before cutover."
+}

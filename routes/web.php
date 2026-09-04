@@ -14,6 +14,7 @@ Route::post('/forms/{key}', FormSubmissionController::class)
 
 Route::get('/robots.txt', fn () => app(SiteMetaController::class)->robots(app(Site::class)));
 Route::get('/sitemap.xml', fn () => app(SiteMetaController::class)->sitemap(app(Site::class)));
+Route::get('/llms.txt', fn () => app(SiteMetaController::class)->llms(app(Site::class)));
 
 // Lowest priority: every other GET resolves to a page template of the current site.
 Route::get('/{path?}', PageController::class)->where('path', '.*');

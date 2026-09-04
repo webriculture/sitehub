@@ -17,12 +17,15 @@ Multi-tenant hub serving Webriculture client sites as code. One Laravel app, one
 - **Features** (`sites.features` jsonb, keys registered in `config/sitehub.php`) are first-party modules enabled per site. Platform concerns (security headers, robots/sitemap, caching, accessibility) are always-on and never per-site.
 - Flattened legacy sites keep their `/pages/{slug}` URLs verbatim; `/pages/home` 301s to `/` platform-wide. Never "improve" flattened markup or URLs outside a deliberate redesign.
 - `<x-site-gallery>` / `<x-site-form>` components must emit DOM structurally identical to the legacy blades (captured CSS/JS targets it).
+- **Static HTML imported as Blade pages** (flattened legacy sites, client-built static sites): escape every directive-shaped `@word` as `@@word` — JSON-LD `@context` collides with the Blade `@context` directive and 500s the page; Blade renders `@@` back to `@`. Leave static CSS/JS untouched. Reference importer: `resources/sites/harristhermal2/docs/import.sh`.
 
 ## Commands
 
 - `sites:create {slug} --name=` — provision site (landlord row + tenant DB + skeleton); idempotent
 - `sites:domain {slug} {hostname} --primary|--no-redirect`
 - `sites:feature {slug} {features...} [--disable]`
+- `sites:secret {slug} {key} [--unset]` — set (hidden prompt, never argv) or remove an encrypted site secret
+- `sites:setting {slug} {key} [value] [--json] [--unset]` — set or remove a non-secret setting (`locales`, `form_recipients`, `need_navigator_url` per-org NN host…)
 - `tenants:migrate [--site=] [--fresh]`
 
 ## Testing rules

@@ -1,9 +1,13 @@
-@props(['kind' => null])
+@props(['kind' => null, 'limit' => null])
 
 @php
     $site = \App\Tenancy\Tenancy::current();
     $events = $site?->hasFeature('events')
-        ? \App\Models\Tenant\Event::query()->upcoming()->when($kind ?? null, fn ($q, $k) => $q->where('kind', $k))->get()
+        ? \App\Models\Tenant\Event::query()
+            ->upcoming()
+            ->when($kind ?? null, fn ($q, $k) => $q->where('kind', $k))
+            ->when($limit ?? null, fn ($q, $l) => $q->limit((int) $l))
+            ->get()
         : collect();
 @endphp
 

@@ -18,11 +18,11 @@ final class HttpClient implements NeedNavigatorClient
 {
     public function events(Site $site): array
     {
-        $baseUrl = config('sitehub.need_navigator.base_url');
+        $baseUrl = $site->needNavigatorUrl();
         $token = $site->secret('need_navigator_token');
 
         if (! is_string($baseUrl) || $baseUrl === '') {
-            throw new RuntimeException('Need Navigator base URL is not configured (NEED_NAVIGATOR_URL).');
+            throw new RuntimeException("Need Navigator base URL is not configured for [{$site->slug}] (settings.need_navigator_url or NEED_NAVIGATOR_URL).");
         }
 
         if ($token === null) {

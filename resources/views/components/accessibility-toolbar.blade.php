@@ -20,10 +20,11 @@
 </div>
 
 <style>
-    .sh-a11y { position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; font-family: system-ui, sans-serif; }
+    .sh-a11y { position: fixed; bottom: 1rem; left: 1rem; z-index: 9999; font-family: system-ui, sans-serif; }
     .sh-a11y__toggle { width: 3rem; height: 3rem; border-radius: 50%; border: 2px solid #1f2937; background: #fff; color: #1f2937; font-size: 1.5rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
     .sh-a11y__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-    .sh-a11y__panel { position: absolute; bottom: 3.75rem; right: 0; display: flex; flex-direction: column; gap: .25rem; background: #fff; border: 1px solid #d1d5db; border-radius: .5rem; padding: .5rem; box-shadow: 0 4px 16px rgba(0,0,0,.2); min-width: 12rem; }
+    .sh-a11y__panel { position: absolute; bottom: 3.75rem; left: 0; display: flex; flex-direction: column; gap: .25rem; background: #fff; border: 1px solid #d1d5db; border-radius: .5rem; padding: .5rem; box-shadow: 0 4px 16px rgba(0,0,0,.2); min-width: 12rem; }
+    .sh-a11y__panel[hidden] { display: none; }
     .sh-a11y__panel button { padding: .5rem .75rem; border: 1px solid #d1d5db; border-radius: .375rem; background: #f9fafb; cursor: pointer; text-align: left; font-size: .9rem; }
     .sh-a11y__panel button[aria-pressed="true"] { background: #1f2937; color: #fff; }
 

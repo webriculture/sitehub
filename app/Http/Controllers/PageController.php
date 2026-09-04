@@ -41,15 +41,21 @@ final class PageController
 
         $template = $this->templateFor($path);
 
-        abort_if($template === null, 404);
-
-        foreach ($this->candidates($template, $locale) as $view) {
-            if (View::exists($view)) {
-                return view($view);
+        if ($template !== null) {
+            foreach ($this->candidates($template, $locale) as $view) {
+                if (View::exists($view)) {
+                    return view($view);
+                }
             }
         }
 
-        abort(404);
+        // No template — honor the site's 301 map before 404ing, so legacy
+        // URLs survive a redesign. Existing templates always win over the map.
+        $target = $site?->redirectTarget('/'.$path);
+
+        abort_if($target === null, 404);
+
+        return redirect($target, 301);
     }
 
     /** @return array{?string, string} */

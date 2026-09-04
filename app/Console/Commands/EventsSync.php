@@ -60,8 +60,17 @@ final class EventsSync extends Command
         $seen = [];
 
         foreach ($items as $item) {
-            if (! isset($item['id'], $item['title'], $item['starts_at'])) {
-                continue; // malformed item: skip rather than poison the sync
+            // Contract: id, starts_at, and a non-empty title.en are required.
+            // Skip and log malformed items rather than poison the sync (spec §3).
+            if (! isset($item['id'], $item['starts_at'])
+                || ! is_array($item['title'] ?? null)
+                || trim((string) ($item['title']['en'] ?? '')) === '') {
+                logger()->warning('events:sync skipped malformed feed item', [
+                    'site' => $site->slug,
+                    'id' => $item['id'] ?? '(missing)',
+                ]);
+
+                continue;
             }
 
             $seen[] = (string) $item['id'];

@@ -29,6 +29,8 @@
         <env name="SITEHUB_MEDIA_DISK" value="public"/>
         <env name="TURNSTILE_SITEKEY" value=""/>
         <env name="TURNSTILE_SECRET" value=""/>
+        <env name="NEED_NAVIGATOR_DRIVER" value="stub"/>
+        <env name="NEED_NAVIGATOR_URL" value=""/>
         <env name="RESPONSE_CACHE_ENABLED" value="false"/>
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>

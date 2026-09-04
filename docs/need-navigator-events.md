@@ -155,12 +155,22 @@ signed payloads (TLS + bearer covers the threat model at these stakes).
 
 ## Appendix: SiteHub-side reference (for context)
 
-- Config: `NEED_NAVIGATOR_DRIVER=http`, `NEED_NAVIGATOR_URL=https://…`
-- Token lives in the site's encrypted secrets (`need_navigator_token`)
+- Config: `NEED_NAVIGATOR_DRIVER=http`, `NEED_NAVIGATOR_URL=https://…` (platform default,
+  currently FRAN's host). NN hosts are per-organization, so a site on another instance
+  overrides it: `php artisan sites:setting {slug} need_navigator_url https://{org}.neednavigator.com`.
+- Token lives in the site's encrypted secrets (`need_navigator_token`),
+  set/rotated via `php artisan sites:secret {slug} need_navigator_token` —
+  a hidden prompt, so the token never touches argv, shell history, or logs.
+  Rotation: mint new on NN → `sites:secret` on SiteHub → revoke old on NN.
 - Sync: `php artisan events:sync` — scheduled every 30 min, upsert by
   `external_id`, prune absent, flush that site's response cache on change
-- Until the real endpoint exists, SiteHub runs `NEED_NAVIGATOR_DRIVER=stub`
-  (sample data) — the swap to live is config-only, no code changes.
+- The feed is live (`http` driver in production). The `stub` driver
+  (sample data) remains for local dev, and `phpunit.xml` pins it so the
+  test suite never touches the real API.
+- One token per site, always: the feed is a full snapshot and sync prunes
+  anything absent, so a site's single token must be scoped to *everything*
+  that site should show (events + classes) — two narrower tokens would
+  delete each other's items on alternating polls.
 
 ---
 

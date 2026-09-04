@@ -47,12 +47,14 @@ it('serves robots.txt and sitemap.xml per site', function (): void {
         ->assertOk()
         ->assertSee('Sitemap: https://site-a.test/sitemap.xml', escape: false);
 
-    // Non-primary hostnames must refuse indexing.
+    // Non-primary hostnames must refuse indexing — via the X-Robots-Tag
+    // header, with robots.txt left crawlable so crawlers can see it.
     $site->domains()->create(['hostname' => 'staging.site-a.test', 'redirect_to_primary' => false]);
 
     $this->get('http://staging.site-a.test/robots.txt')
         ->assertOk()
-        ->assertSee('Disallow: /', escape: false)
+        ->assertHeader('X-Robots-Tag', 'noindex, nofollow')
+        ->assertSee('Allow: /', escape: false)
         ->assertDontSee('Sitemap:');
 
     $this->get('http://site-a.test/sitemap.xml')

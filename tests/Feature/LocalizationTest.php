@@ -20,7 +20,7 @@ it('serves the spanish home at /es', function (): void {
 
     $this->get('http://fransalem.test/es')
         ->assertOk()
-        ->assertSee('Un lugar acogedor')
+        ->assertSee('Un punto de partida amable')
         ->assertSee('lang="es"', escape: false);
 });
 
@@ -29,15 +29,15 @@ it('serves english at the root', function (): void {
 
     $this->get('http://fransalem.test/')
         ->assertOk()
-        ->assertSee('A welcoming place')
+        ->assertSee('A Friendly Starting Point')
         ->assertSee('lang="en"', escape: false);
 });
 
 it('serves localized subpages under the locale prefix', function (): void {
     bilingualSite();
 
-    $this->get('http://fransalem.test/es/about')->assertOk()->assertSee('Quiénes somos');
-    $this->get('http://fransalem.test/about')->assertOk()->assertSee('About FRAN');
+    $this->get('http://fransalem.test/es/contact')->assertOk()->assertSee('¿Preguntas sobre FRAN?');
+    $this->get('http://fransalem.test/contact')->assertOk()->assertSee('Questions about FRAN?');
 });
 
 it('does not treat locale prefixes as locales on sites without them', function (): void {
@@ -54,5 +54,5 @@ it('lists locale home pages at the locale root in the sitemap', function (): voi
     $this->get('http://fransalem.test/sitemap.xml')
         ->assertOk()
         ->assertSee('<loc>https://fransalem.test/es</loc>', escape: false)
-        ->assertSee('<loc>https://fransalem.test/es/about</loc>', escape: false);
+        ->assertSee('<loc>https://fransalem.test/es/contact</loc>', escape: false);
 });

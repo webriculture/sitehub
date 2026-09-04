@@ -46,6 +46,26 @@ final class Site extends Model
         return $this->settings['locales'] ?? [];
     }
 
+    /**
+     * Site-defined 301 target for a URL that moved in a redesign
+     * (e.g. legacy CMS paths). Keys and targets are absolute paths.
+     */
+    public function redirectTarget(string $path): ?string
+    {
+        return $this->settings['redirects'][$path] ?? null;
+    }
+
+    /**
+     * Need Navigator hosts are per-organization (fran.neednavigator.com,
+     * dev.neednavigator.com, …), so a site may override the platform-wide
+     * base URL via settings; the env default covers single-feed installs.
+     */
+    public function needNavigatorUrl(): ?string
+    {
+        return $this->settings['need_navigator_url']
+            ?? config('sitehub.need_navigator.base_url');
+    }
+
     public function domains(): HasMany
     {
         return $this->hasMany(Domain::class);

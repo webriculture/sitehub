@@ -47,6 +47,17 @@ php artisan sites:feature fransalem galleries forms
 
 Features are first-party modules (our "plugins") — enabling one turns on its routes, components, and admin surface for this site only. Platform concerns (security headers, cookie consent, accessibility baseline, caching, sitemap/robots) are always on and are not configurable per site.
 
+### Integration secrets (only if a feature needs one)
+
+Some features consume an external API — e.g. `events` polls the Need Navigator feed and needs that site's bearer token. Secrets live encrypted in the landlord database (never in `.env`, git, or logs) and are set via a hidden prompt:
+
+```bash
+php artisan sites:secret fransalem need_navigator_token   # prompts for the value; input hidden
+php artisan sites:secret fransalem need_navigator_token --unset   # remove
+```
+
+Never pass the value as an argument or paste it into `tinker` — the hidden prompt exists to keep secrets out of shell history, process listings, and the psysh history file. Rotation is: mint the new credential upstream → `sites:secret` here → revoke the old one upstream ([need-navigator-events.md §5](need-navigator-events.md)).
+
 ## 4. Build the pages (the actual work)
 
 Author Blade templates in `resources/sites/fransalem/pages/` — `home.blade.php` serves `/`, `about.blade.php` serves `/about`, subdirectories map to URL paths. AI-assisted dev happens here; every content change is a git commit, so **git history is the page history**. Site assets (Tailwind entry, images) live with the site and build through Vite.
@@ -57,10 +68,20 @@ Dynamic islands drop in as components:
 <x-site-form key="contact" />
 ```
 
+### Site-specific docs live with the site
+
+The repo root and `docs/` stay **tenant-agnostic** — platform docs only. Anything that belongs to one client site (a product feature inventory, content/claims constraints, a site plan, build notes, an image manifest, open questions) goes in that site's own docs folder:
+
+```
+resources/sites/{slug}/docs/    # e.g. resources/sites/neednavigator/docs/FEATURES.md
+```
+
+Nothing routes or ships from there — pages are served only from `pages/`, and the sitemap scans only `pages/` — so the folder is purely for humans. The payoff: the site's whole story (what may be claimed, why decisions were made, what's left to launch) travels with the site, and deleting or handing off a site takes its paperwork with it.
+
 ## 5. Seed content & settings
 
 - Create galleries and upload photos via the admin panel **(P2)** — or `tinker` until then.
-- Set form recipients/subject and contact info in the site's settings **(P2)**.
+- Set form recipients/subject, locales, and the per-org Need Navigator host with `php artisan sites:setting {slug} {key} {value} [--json]` (e.g. `sites:setting fransalem need_navigator_url https://fran.neednavigator.com`; `--json` for arrays like `form_recipients`, `--unset` to remove). Admin UI **(P2)**.
 
 ## 6. Client access (only if they need it)
 

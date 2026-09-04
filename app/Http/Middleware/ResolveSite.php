@@ -41,6 +41,16 @@ final class ResolveSite
 
         Tenancy::makeCurrent($site);
 
-        return $next($request);
+        $response = $next($request);
+
+        // Staging/alias hostnames must never end up in search results.
+        // robots.txt alone cannot guarantee that (Disallow blocks crawling,
+        // not indexing), so every non-primary response carries an explicit
+        // robots header. Uses the same primary resolution as robots.txt.
+        if ($site->primaryDomain()?->hostname !== $domain->hostname) {
+            $response->headers->set('X-Robots-Tag', 'noindex, nofollow');
+        }
+
+        return $response;
     }
 }

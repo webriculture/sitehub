@@ -19,10 +19,12 @@ final class SiteMetaController
     {
         $primary = $site->primaryDomain()?->hostname;
 
-        // Only the primary domain invites indexing — test/staging/alias
-        // hostnames must never end up in search results.
+        // Only the primary domain invites indexing. Non-primary hosts stay
+        // crawlable on purpose: ResolveSite stamps X-Robots-Tag: noindex on
+        // their responses, and a Disallow here would hide that header from
+        // crawlers (robots.txt blocks crawling, not indexing).
         if ($primary !== null && request()->getHost() !== $primary) {
-            return response("User-agent: *\nDisallow: /\n", 200, ['Content-Type' => 'text/plain']);
+            return response("User-agent: *\nAllow: /\n", 200, ['Content-Type' => 'text/plain']);
         }
 
         $lines = ['User-agent: *', 'Allow: /'];
@@ -32,6 +34,20 @@ final class SiteMetaController
         }
 
         return response(implode("\n", $lines)."\n", 200, ['Content-Type' => 'text/plain']);
+    }
+
+    /**
+     * Per-site /llms.txt — a plain-text product/site summary for AI
+     * assistants, authored alongside the site's pages. 404 when a site
+     * hasn't written one.
+     */
+    public function llms(Site $site): Response
+    {
+        $file = $site->viewPath().'/llms.txt';
+
+        abort_unless(is_file($file), 404);
+
+        return response((string) file_get_contents($file), 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
     }
 
     public function sitemap(Site $site): Response

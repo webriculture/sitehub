@@ -1,6 +1,8 @@
 # Need Navigator — Product Feature Inventory
 
-*Generated 2026-07-22 from a full audit of the application code (routes, navigation, controllers, services, views, and scheduled jobs); updated 2026-07-24 with product decisions on all 20 audit questions. Written for nonprofit Executive Directors and Program Directors. Maturity flags are honest assessments intended to keep marketing accurate — items marked **Partial / WIP** should not be marketed as available today.*
+*Generated 2026-07-22 from a full audit of the application code (routes, navigation, controllers, services, views, and scheduled jobs); updated 2026-07-24 with product decisions on all 20 audit questions; audited 2026-09-04 against the July and August 2026 release notes (`release-notes/2026-07.md`, `2026-08.md`) and moved here from the repo root. Written for nonprofit Executive Directors and Program Directors. Maturity flags are honest assessments intended to keep marketing accurate — items marked **Partial / WIP** should not be marketed as available today.*
+
+*SiteHub copy: synced 2026-09-04 from the Need Navigator repo's export. The export arrived truncated partway through GeoTracker, so everything from **Part 6 — Insight & Oversight** onward is carried over unchanged from the 2026-07-24 version — refresh those sections when the remainder arrives.*
 
 **Maturity legend: Stable** = in production use, mature · **Recently shipped** = released within roughly the last two release cycles (spring–summer 2026) · **Partial / WIP** = built in part or not yet live; do not market without confirming.
 
@@ -28,7 +30,7 @@ Need Navigator is case-management software for human-services organizations — 
 - Merge two records when a duplicate slips through — case history, submissions, program history, and documents are consolidated onto the surviving record.
 - Test client records: flag any record as a test individual — excluded from lists, searches, and reports by default (each user can opt in to see them), so staff can train and demo safely without polluting real data.
 - **Data freshness**: set a review interval on any profile field; the system tracks when each field was last confirmed, surfaces a count of clients whose data needs review right in the menu, and lets staff re-verify a value without editing it. Each user chooses the scope of their own review alerts.
-- One-page dossier: alerts, insurance, income, care team, relationships, program enrollments, and tabs for history, needs, visits, referrals, goals, billing, notes, and files.
+- One-page dossier: alerts, insurance, income, care team, relationships, program enrollments (with each enrollment period selectable), and tabs for history, needs, visits, referrals, goals, billing, notes, and files. The household icon carries a member-count badge and the header shows the record id (August 2026).
 - A radial quick-action menu on every profile creates a visit, referral, need, goal, task, billing record, note, or field location log in one tap.
 
 **Compliance / reporting hooks:** HMIS number is a first-class field and duplicate key. Every profile view by agency staff is logged (who, when, from where) and screened by configurable suspicious-access rules — see *Audit Trail & Access Monitoring*.
@@ -65,6 +67,7 @@ Need Navigator is case-management software for human-services organizations — 
 - Directory view with filters (program, role, provider type, status) and summary counts.
 - **Caseload transfer:** reassign one worker's entire active caseload — or just one program's worth — to another worker in one operation, preserving history.
 - Care-team roles are agency-defined and tied to Teams, so role dropdowns only offer people who actually hold that role.
+- **Caseload summary (August 2026):** a case worker with the "Generate Caseload Summaries" permission gets a one-click branded PDF of the clients on their care team — visits, needs, referrals and goals in the last 7/30/90 days, for one client or the whole caseload. Service activity only (no form answers, notes, or identifiers beyond the name); records outside their programs/teams are left out; every generation is logged.
 
 **Maturity:** Recently shipped (rebuilt January 2026 to replace single case-manager assignment, released with the March 2026 update; role-to-Team gating added June 2026).
 
@@ -80,7 +83,7 @@ Need Navigator is case-management software for human-services organizations — 
 
 - Income sources (type, employer, current/past) with per-pay-period records and attached proof (paystub photo or PDF, snapped directly on a phone).
 - **Guided income capture** on intake forms: a step-by-step, mobile-friendly wizard ("Does this person have income?") that walks applicants through each source, in English or Spanish. Choosing "no income" records an explicit declaration — clearly different from "not asked."
-- Income captured from a public form lands on the client record marked **unverified** until a staff member confirms it; the client's own income must be staff-verified before it counts toward eligibility. The provenance is visible on the profile.
+- Income captured from a public form lands on the client record marked **unverified** until a staff member confirms it; only staff-verified income — the client's and every household member's — counts toward eligibility (the household-member rule was tightened in the August 2026 update). The provenance is visible on the profile.
 - Annualized income projection per source and per household.
 - **Eligibility engine:** income thresholds by year, type (FPL or AMI), geographic area, and household size, with a percentage multiplier; programs combine income rules with other rules (required fields, field values, age ranges) and show clients as eligible / partially eligible. A bulk tool generates next year's thresholds from the current year's.
 - Financial-assistance requests automatically pull the household's recent income (within a configurable tracking window) and compare it to the program's maximum allowed income right on the printable request.
@@ -147,6 +150,7 @@ Need Navigator is case-management software for human-services organizations — 
 - Organizations with type, parent/child hierarchy, logo, funder flag, and search across names, phone numbers, types, and contact names/phones.
 - Contacts under each organization; contacts can serve as external care-team members and (optionally) receive a portal login.
 - Per-organization service listings: areas served, hours, services offered, eligibility notes, and languages spoken.
+- **Vetting badge:** once staff have confirmed an organization is legitimate (business registry, W-9, not a shell set up to draw down program funds) it can be marked vetted. The system records who vetted it and when, keeps an optional note of what was checked, shows a badge beside the name with the details on hover, filters the directory by vetting status, and records every change in the audit log.
 - Organizations are the anchors for referrals, document sharing, funding pools, and the Need Navigator Network.
 
 **Maturity:** Stable. (Contact portal logins are behind a per-agency switch.)
@@ -163,6 +167,8 @@ Need Navigator is case-management software for human-services organizations — 
 
 - Log a need for a client against your agency's catalog of resources (financial or non-financial), with need types, quantity, amount, and recipient organization.
 - **Status ladder:** Pending → Ready for Review → Approved → Finalized → Voucher Printed, with Denied and Closed as off-ramps — giving supervisors a clear review/approval queue. Status can be updated inline from the Quick Forms submissions grid.
+- **Your own status vocabulary (August 2026):** statuses live in the agency's database — an admin screen ("Manage Need Statuses" permission) sets each one's label, color and order, switches unused ones off, and limits a status to particular resources. Automations, saved reports and Quick Forms views keep working because the meaning behind each status is fixed.
+- **Status timeline:** every change is recorded (to what, when, by whom) and shown on the need as a timeline rail with an off-ramp marker for denied/closed.
 - **Funding pools:** budgets tied to funder organizations or programs, with balances, date ranges, and per-need allocations; a request can be split across multiple pools, and the system warns when allocations don't add up to the request amount.
 - **Disbursements:** each financial need carries a payment record; staff attach the invoice PDF and can email it to the payee directly from the system, with sent/finalized status tracked.
 - The printable request/voucher shows household size, recent household income, the program's maximum allowed income, and an under/over-limit verdict — the eligibility math is printed right on the voucher.
@@ -170,7 +176,7 @@ Need Navigator is case-management software for human-services organizations — 
 
 **Compliance / reporting hooks:** funder-level spending and remaining-balance reporting; eligibility documentation on the printed voucher; full audit trail of status changes.
 
-**Maturity:** Stable; the "Voucher Printed" status stage Recently shipped (July 2026). (Payments are tracked and invoiced by email — there is no check-printing or ACH integration.)
+**Maturity:** Stable; "Voucher Printed" (July 2026), renameable statuses and the status timeline (August 2026) Recently shipped. (Payments are tracked and invoiced by email — there is no check-printing or ACH integration.)
 
 **Differentiators:** funding-pool split allocation with reconciliation warnings; eligibility math printed on the voucher.
 
@@ -183,6 +189,7 @@ Need Navigator is case-management software for human-services organizations — 
 **Key capabilities**
 
 - Refer to an internal program/user or an external organization and contact; referrals can be spawned from a visit or task.
+- **Incoming referrals:** a program that opts in ("Accepts incoming referrals") can record the outside organization and contact a referral came *from*, so referrals received are tracked alongside referrals sent.
 - **QR loop closure:** the printed referral carries a QR code; the receiving provider scans it (no login needed) and records who received the client and their feedback — completing the referral with a timestamp.
 - Cross-agency referrals transmit to the receiving agency's own Need Navigator system over the Need Navigator Network.
 - Message threads attach to each referral for follow-up conversation.
@@ -205,6 +212,7 @@ Need Navigator is case-management software for human-services organizations — 
 - Agency-defined goal templates with ordered steps and default durations; new goals pre-populate their steps from the template.
 - Steps schedule sequentially (each starts when the prior ends) or in parallel; each step has start/due dates and records who completed it and when.
 - Goal completion rolls up automatically when all steps are done; progress ("3 of 5 steps") shows on lists and profiles, with a Gantt-style timeline view.
+- A **Journey** row on each goal (August 2026): Created → each step in order, completed ones dated and the next one highlighted → Completed or the target date, with who did what on hover.
 
 **Maturity:** Stable.
 
@@ -222,10 +230,12 @@ Need Navigator is case-management software for human-services organizations — 
 - **Manager review:** flag any visit reason as requiring review — the caseworker's manager gets a review panel (Unreviewed / Reviewed / Completed / Staff Action Needed) with notes only the manager can edit.
 - List view with quick inline edits and copy-visit; visits also appear on the shared Calendar.
 - With an Automation on the visit reason, recording a visit can auto-enroll an un-enrolled client or route you to the program's enrollment form; logging a visit from a task marks that task complete.
+- **Visit summary PDF (August 2026):** every visit can produce a branded record of service — date, program, type, reasons, who conducted it, the person's forms from that visit, and the narrative. One document per person by default; a program can opt into combined household documents (only when every attendee is in the same household). Each generation is recorded on the person's history.
+- Internal-location lists are searchable rather than one long dropdown; multi-date entries bill and keep their narrative on every visit, not just the first.
 
 **Compliance / reporting hooks:** duration-based billing generation; manager sign-off; program-enrollment prompts and auto-enrollment via Automations.
 
-**Maturity:** Stable (manager review released with the June 2026 update).
+**Maturity:** Stable (manager review June 2026; visit summary PDFs August 2026).
 
 ---
 
@@ -253,8 +263,10 @@ Need Navigator is case-management software for human-services organizations — 
 
 - Per-program configuration: intake and exit forms, default document folders, visit reason/topic requirements, minor-income tracking, cross-program access, and a program wiki for staff reference.
 - **Eligibility rule builder:** combine income thresholds with age-range rules and required-field / field-value rules on core client fields (veteran status, insurance provider, disabling condition, housing status, SSN) — no custom development.
-- Enrollment episodes with entry/exit dates and who enrolled/exited the client (partner-portal attribution Recently shipped, July 2026). Agency-defined exit reasons, grouped into categories, are captured at shelter check-out and can trigger automations — including closing the enrollment.
-- **Program homepage:** enrollment counts, average enrollment duration, retention rate, six-month enrollment trend, resources distributed, dollars disbursed, and activity totals (visits, needs, goals, tasks, referrals) — plus embedded task lists and a program-wide message thread.
+- **Enrollment periods:** each stay in a program is its own episode with entry/exit dates, who enrolled/exited the client (including partner-portal attribution), and which intake was used; the profile tells periods apart ("2 of 3") and shows each one's dates and intake. Agency-defined exit reasons, grouped into categories, are captured at shelter check-out and can trigger automations — including closing the enrollment.
+- **New intake on re-enrollment** (per program, August 2026): off by default (a returning client's earlier intake is reused); on, each new period gets its own intake record pre-filled from the prior one — the HMIS 5.03 expectation of one Project Start per enrollment period. Enrolling from a shared intake form now enrolls into the program you clicked.
+- Enrollment periods are a report type of their own (see *Reports*) and a dashboard Custom List source.
+- **Program homepage:** enrollment counts, average enrollment duration, retention rate, six-month enrollment trend (all computed from enrollment periods since August 2026), resources distributed, dollars disbursed, and activity totals (visits, needs, goals, tasks, referrals) — plus embedded task lists and a program-wide message thread.
 
 **Compliance / reporting hooks:** episodic entry/exit history with attribution (HMIS-style); exit-reason categories; retention and outcome counts per program.
 
@@ -271,11 +283,13 @@ Need Navigator is case-management software for human-services organizations — 
 - Agency-defined billing codes with categories, modifiers, regions, units, and expected unit costs.
 - Billing records auto-generate from visit reasons (using actual visit duration, per client) and from need types; records can also be entered manually.
 - Record statuses (pending → batched → submitted → paid/rejected) with filtering, search, and export.
-- **Batching:** select unbatched records and generate a batch — records outside the client's insurance coverage dates are excluded, minutes convert to billable units under the 8-minute rule, and totals compute per client, code, and date with the insurance carrier stamped on each line. Export the batch to Excel.
+- **Batching:** select unbatched records and generate a batch — records outside the client's insurance coverage dates are excluded, minutes convert to billable units under the 8-minute rule, and totals compute per client, code, and date with the insurance carrier stamped on each line. Export the batch to Excel (the Grouped Summary export lists each person's active programs).
+- **Rate history (August 2026):** billing-code rates are effective-dated — a rate change takes an effective date and keeps the history, and each line is priced at the rate in effect on its own date of service.
+- **Batches freeze when submitted:** a batch stores the rate and service date on every line and recalculates once more at submission, so a submitted batch is a permanent record of what was billed; later rate edits re-price future work only, and submitted batches refuse further edits.
 
 **Compliance / reporting hooks:** insurance coverage-date validation; 8-minute rule unit calculation; full attribution of who created each record.
 
-**Maturity:** Stable through batch generation and Excel export (built to contract, including the 8-minute rule). Electronic remittance/claim submission was never built — the exported batch is the hand-off point. Some batch-editing actions are unrouted in the UI.
+**Maturity:** Stable through batch generation and Excel export (built to contract, including the 8-minute rule); rate history and frozen batches Recently shipped (August 2026). Electronic remittance/claim submission was never built — the exported batch is the hand-off point. A few batch-level controller actions (add/remove line, recalculate) remain unrouted; lines are managed from the record side.
 
 ---
 
@@ -327,13 +341,36 @@ Need Navigator is case-management software for human-services organizations — 
 
 **Key capabilities**
 
-- Admins compose a button from a sequence of actions (create Need / Referral / Visit, executed in the order added) with pre-set field values, template variables (client name, program, date), and embedded forms; anything left blank can prompt the worker at click time.
+- Admins compose a button from a sequence of actions (create Need / Referral / Visit, executed in the order added) with pre-set field values, template variables (client name, program, date), and embedded forms.
+- **Ask at run time:** anything left blank prompts the worker at click time — visit length, visit type (and where it happened), narrative, topics, and status — in a redesigned, column-laid-out run dialog; prompts are validated against the button's program, never a way around a rule.
+- **Household visit in one click (August 2026):** a visit action can record the whole household as participants, so people-served counts are right without reconstruction; a household run is all-or-nothing when a usage limit blocks a member.
+- Buttons show service-limit eligibility right on the profile ("Eligible again Mon, Aug 3") — see *Service Usage Limits*.
 - Billing records and funding-pool allocations are created exactly as they would be manually — consistency without retraining.
 - Buttons carry a color/icon or a short text abbreviation, can be favorited, and redirect to the created record.
 
-**Maturity:** Stable (the text-abbreviation option shipped July 2026).
+**Maturity:** Stable (text abbreviation July 2026; household visits, run-time prompts and the new run dialog August 2026).
 
 **Differentiators:** genuinely no-code standardization of multi-step front-desk workflows.
+
+---
+
+## Service Usage Limits
+
+**One sentence:** Ration a service — food boxes, bus passes, showers, hygiene kits — by setting how often a client (or their household) can receive it, and have the rule enforced on every screen that can record it.
+
+**Key capabilities**
+
+- Configured on the service itself (a visit reason or a need resource), not on a button: **per calendar period** ("once per calendar week, from Monday") or a **rolling window** ("not within 7 days of the last one"); scoped to the **individual** or their **household**; **warn only** or **block**.
+- Enforced wherever the service can be created — Smart Button, the normal visit form, a copied visit, a multi-date entry — so nobody routes around it. Smart Buttons show the next-eligible date on the profile; a blocked run leads with that date rather than an error.
+- **Overrides:** staff holding "Override Service Limits" can proceed with a reason; the reason, who gave it and which service are recorded permanently — the alternative (mis-filing under another reason or family member) corrupts the very records the limits count from.
+- Cancelled and no-show visits don't consume the allowance; a denied need doesn't count, a pending one does. Household counting starts from the release the feature shipped in (the app only began recording household membership at the moment of service then); individual limits count full history.
+- Recommended rollout: warn-only first, review the would-have-been-refused report, then switch to block — no deploy needed.
+
+**Compliance / reporting hooks:** honest rationing records with an audited override trail; household-at-time-of-service is now captured on every visit and need.
+
+**Maturity:** Recently shipped (August 2026).
+
+**Differentiators:** limits live on the service and apply everywhere, with a real override instead of a workaround.
 
 ---
 
@@ -379,10 +416,12 @@ Need Navigator is case-management software for human-services organizations — 
 - Handles large forms fast (incremental loading), with a unified search box, filters by date, client, submitter, program membership, and status.
 - **Saved views:** name a combination of column order/visibility, status filter, and sort; share a default view for the team.
 - The status shown per row is the linked assistance request's status — the grid doubles as a review/approval queue.
-- Export submissions to Excel filtered by date, client, submitter, and program (status and search filters do not yet carry into exports); print individual submissions.
+- Export submissions to Excel honoring every active filter — date, client, submitter, program, status, search and "in program only" (fixed August 2026) — as a branded, print-ready sheet; print individual submissions.
+- Link a single submission to a person from its row, or run the household link flow; both offer a "create new" escape hatch when the person really is new. Editing a cell changes only that cell — it never re-runs a form's enrollment automations.
+- Submission history shows field-level detail (which answers changed, from what to what) with the labels as they were at the time.
 - Show a form's latest submission data on client profiles (per-form toggle), open pre-filled forms from profile smart buttons, or surface a Quick Form grid as a dashboard widget.
 
-**Maturity:** Stable (grid rebuilt February 2026, extended continuously through July 2026).
+**Maturity:** Stable (grid rebuilt February 2026, extended continuously through August 2026).
 
 **Differentiators:** true multi-user real-time grid over case data — rare in this product category.
 
@@ -397,9 +436,11 @@ Need Navigator is case-management software for human-services organizations — 
 - Each incoming submission is classified **exact match / probable match / new individual** using name, date of birth, and signals like SSN/HMIS number.
 - From the grid, staff confirm a match, pick among ranked candidates, or create the person in one click — cutting duplicate records and data re-entry.
 - **Household capture:** when one submission collects several people (e.g., a family application), a guided stepper matches or creates each member, designates the primary member, builds the household, and attaches everyone in one pass.
+- The household wizard includes a **program enrollment step** (which program, who in the household, or "don't enroll right now"), so a fresh submission becomes matched, enrolled clients in one pass; clicking Enroll for someone who already applied through a public form opens their submission rather than a blank intake.
+- Matching works at the form-section level: any section carrying a first name, last name and date of birth counts as a person, and a public form that copies the applicant into the household section is distilled into one person.
 - Program intake submissions surface on the client's profile automatically; other forms can be shown there with a per-form toggle.
 
-**Maturity:** Recently shipped (released with the June 2026 update; household capture refined through July 2026), in active use.
+**Maturity:** Recently shipped (released with the June 2026 update; household capture, section-level matching and in-flow enrollment refined through August 2026), in active use.
 
 **Differentiators:** household-level intake materialization is a genuine differentiator for family-serving agencies.
 
@@ -473,11 +514,13 @@ Need Navigator is case-management software for human-services organizations — 
 - Facilitator tools: mobile attendance grid (present/absent/late/excused with credit overrides), on-the-spot walk-in enrollment, session notes.
 - Completion computed against the course's fidelity threshold; **completion certificates (PDF)** generate for qualifying participants; printable roster sheets and per-session QR check-in posters.
 - Class handouts/resources attach at the course and session level and hand off to participants at check-in via short-lived secure links.
-- Class enrollment and completion outcomes are reportable on dashboards.
+- Class enrollment and completion outcomes are reportable on dashboards (Class Offerings and Class Enrollments are Custom List sources).
+- Every course, class and session has a permanent link; facilitators preview exactly what a participant sees after check-in; reminders honor each participant's text-message consent (text where authorized, email otherwise).
+- Two permissions: "Manage Classes" owns the catalog, "Manage Course Offerings" runs a class (schedule, sessions, attendance, enrollment, publishing); both scoped to the course's program.
 
 **Compliance / reporting hooks:** attendance-driven completion to fidelity (a common evidence-based-program requirement); enrollment outcome reporting; program-scoped confidentiality protections for DV survivors.
 
-**Maturity:** Recently shipped (July 2026) — live with two agencies and ready for prime time.
+**Maturity:** Recently shipped (released with the August 2026 update) — live with two agencies; Mid-Valley Parenting's public site cut over to the class feed and registration pages in September 2026.
 
 **Differentiators:** enumeration-proof QR check-in; fidelity-threshold completion engine; SMS + email touchpoints throughout.
 
@@ -492,7 +535,7 @@ Need Navigator is case-management software for human-services organizations — 
 - A token-protected feed serves published events — and optionally public class offerings — as marketing data only (no client information by construction).
 - Per-site tokens with scoping, revocation, and rate limits; content available in English and Spanish.
 
-**Maturity:** Recently shipped (July 2026).
+**Maturity:** Recently shipped (August 2026 update; classes opt-in per site — first partner site connected September 2026).
 
 ---
 
@@ -521,7 +564,7 @@ Need Navigator is case-management software for human-services organizations — 
 - Staff can issue partner contacts their own login credentials (per-agency switch) and share documents/folders with per-share permissions, messages, and expiry; the partner-facing viewer lives in the separate portal application.
 - A controlled API lets the partner portal create and publish class offerings and events, record attendance, register walk-ins, submit Needs (against resources flagged for portal use), and post to task lists marked as accepting portal posts — every write is attributed to the acting contact, validated against their organization, and subject to the same rules as staff actions.
 
-**Maturity: Live** for configured agencies — the portal application runs separately (enabled per agency rather than by default) against Need Navigator's controlled API. (An unused in-app document viewer remains unfinished; the live portal supersedes it.)
+**Maturity:** **Live** for configured agencies — the portal application runs separately (enabled per agency rather than by default) against Need Navigator's controlled API. (An unused in-app document viewer remains unfinished; the live portal supersedes it.)
 
 ---
 
@@ -556,14 +599,19 @@ Need Navigator is case-management software for human-services organizations — 
 **Key capabilities**
 
 - One-tap location logging from the client profile (with the client's record and optionally a task attached); GPS capture on task creation for home-visit programs.
-- Locations cluster automatically into "places" (within ~250 feet); staff can name and dissolve places (merge and re-pin exist as back-end operations only — no screen exposes them yet).
+- Locations cluster automatically into "places" (within ~250 feet); staff name places, remove empty ones, freeze a named center so it stops drifting, and reposition a place by hand (August 2026).
+- The one-tap circle menu opens as a half-circle so every button stays on screen, and collapses after logging so a double-tap can't log twice.
 - Supervisor map with marker clustering and filters (worker, client, task list, place, date range); Excel export of location logs.
 
 **Compliance / reporting hooks:** location-stamped service verification for home-visiting/outreach funders; well-suited to HUD Point-in-Time (PIT) count fieldwork.
 
 **Maturity:** Stable — in heavy daily mobile use in the field at a large agency (Northwest Human Services); cleared for marketing.
 
+*(The 2026-09-04 export was cut off in the middle of the GeoTracker compliance line; the rest of that line and the maturity line above are carried over from 2026-07-24.)*
+
 ---
+
+<!-- ===== Carried over unchanged from the 2026-07-24 version (2026-09-04 export truncated before this point). Refresh from the next export. ===== -->
 
 # Part 6 — Insight & Oversight
 
@@ -583,6 +631,8 @@ Need Navigator is case-management software for human-services organizations — 
 **Compliance / reporting hooks:** demographic and expenditure breakdowns map to CSBG-style funder reporting; funder report aggregates funding-pool spending by calendar year; income, housing-status (current and prior), and projected-annual-income columns support eligibility documentation. There are no pre-built, named HUD/CSBG form templates — reports are assembled from the builder.
 
 **Maturity:** Stable. (Known gap: no funder-mandated report templates — HUD/CSBG requirements discovery is tracked as issue #25.)
+
+> ⚠️ **Stale count — do not quote "eleven" until re-synced (flagged 2026-09-04).** This section is carried over from 2026-07-24, but the September export's *Programs & Enrollment* section states that enrollment periods are now a report type of their own. The builder therefore spans at least twelve record types; the exact list is unknown until the rest of the export arrives. Six places in the site copy quote "eleven record types" — see SITE-PLAN §8.
 
 ---
 

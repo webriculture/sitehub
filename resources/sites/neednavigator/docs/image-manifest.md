@@ -4,7 +4,7 @@ Every image slot on the site is listed here. Placeholders are inline SVG / CSS c
 
 | # | Slot id | Page / location | Current placeholder | Replace with |
 |---|---|---|---|---|
-| 1 | `logo-header` | Layout header (every page) | `img/nn-logo-dark.png` — legacy white logo recolored to ink via ImageMagick | Vector (SVG) Need Navigator wordmark in dark ink for light backgrounds; keep the life-ring "O" with red ticks if brand continues |
+| 1 | `logo-header` | Layout header (every page) | `img/nn-logo.png` — the original white wordmark, now on the evergreen masthead. **It is clipped**: the final R touches the right canvas edge at 250x29 with no margin, and it is a raster at 1x. | Vector (SVG) of the **white** wordmark with the life-ring "O" intact, and margin on the right so the R is whole. The recolored dark variant (`nn-logo-dark.png`) is retired and no longer referenced. |
 | 2 | `logo-footer` | Layout footer (every page) | `img/nn-logo.png` — legacy white logo, verbatim from the old site | Vector (SVG) white/reversed wordmark for dark backgrounds |
 | 3 | `favicon` | Browser tab / bookmarks | `img/favicon.svg` + `favicon-32.png` + `apple-touch-icon.png` — geometric compass-needle mark, evergreen | Brand favicon (ideally derived from the life-ring mark), SVG + 32px PNG + 180px apple-touch |
 | 4 | `og-default` | Open Graph / social shares (every page) | `og/og-default.png` — generated: white logo + tagline on evergreen, DejaVu type | Designed 1200×630 OG card using brand type; consider per-page variants for the four solutions pages later |

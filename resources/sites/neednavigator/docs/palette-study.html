@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html{color-scheme:light dark}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Need Navigator Palette Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300..800;1,400&family=Source+Serif+4:opsz,wght@8..60,300..700&display=swap">
+<style>
+/* ============================================================
+   Page chrome tokens. Deliberately near-neutral with a cool
+   bias, so the three specimens below carry all the colour.
+   ============================================================ */
+:root {
+  --pg-bg:      #f2f3f2;
+  --pg-panel:   #ffffff;
+  --pg-ink:     #191d21;
+  --pg-muted:   #5b636a;
+  --pg-rule:    rgba(25, 29, 33, 0.14);
+  --pg-rule-soft: rgba(25, 29, 33, 0.07);
+  --pg-mark:    #0d5b62;
+  --pg-shadow:  0 1px 2px rgba(16, 20, 24, .05), 0 8px 24px -12px rgba(16, 20, 24, .18);
+
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans:  'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pg-bg:    #14171b;
+    --pg-panel: #1b1f25;
+    --pg-ink:   #e9ebed;
+    --pg-muted: #99a2aa;
+    --pg-rule:  rgba(233, 235, 237, 0.16);
+    --pg-rule-soft: rgba(233, 235, 237, 0.08);
+    --pg-mark:  #6fb3ba;
+    --pg-shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"] {
+  --pg-bg:    #14171b;
+  --pg-panel: #1b1f25;
+  --pg-ink:   #e9ebed;
+  --pg-muted: #99a2aa;
+  --pg-rule:  rgba(233, 235, 237, 0.16);
+  --pg-rule-soft: rgba(233, 235, 237, 0.08);
+  --pg-mark:  #6fb3ba;
+  --pg-shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--pg-bg);
+  color: var(--pg-ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1060px; margin-inline: auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+p { margin: 0; }
+a { color: inherit; }
+
+.masthead { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.6rem, 3vw, 2.2rem); }
+.kicker {
+  font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--pg-mark); margin-bottom: .8rem;
+}
+.masthead h1 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 2.9rem); margin-bottom: .6rem; }
+.standfirst { font-size: 1.0625rem; color: var(--pg-muted); max-width: 62ch; }
+.standfirst + .standfirst { margin-top: .7rem; }
+
+.rule { height: 1px; background: var(--pg-rule); border: 0; margin: 0; }
+
+/* ---- section scaffolding ------------------------------------ */
+.lane { padding-block: clamp(2rem, 5vw, 3.2rem); }
+.lane-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; margin-bottom: 1.4rem; }
+.lane-head h2 { font-size: clamp(1.35rem, 1.1rem + .8vw, 1.75rem); }
+.lane-head .role {
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: .22rem .55rem; border-radius: 3px; border: 1px solid var(--pg-rule);
+  color: var(--pg-muted);
+}
+.lane-head .role.is-pick { color: #0d5b62; border-color: #0d5b62; background: rgba(13,91,98,.09); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lane-head .role.is-pick { color: #7cc0c7; border-color: #7cc0c7; background: rgba(124,192,199,.12); }
+}
+:root[data-theme="dark"] .lane-head .role.is-pick { color: #7cc0c7; border-color: #7cc0c7; background: rgba(124,192,199,.12); }
+.lane-head .why { flex: 1 1 24rem; min-width: 0; font-size: .93rem; color: var(--pg-muted); }
+
+/* ============================================================
+   SPECIMENS.
+   Every colour below is a literal on purpose: these blocks are
+   colour samples, not themed UI, so they must look identical
+   in light and dark. Each .spec sets its own ground.
+   ============================================================ */
+.spec {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--pg-rule);
+  box-shadow: var(--pg-shadow);
+  font-size: 15px;
+}
+.spec-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.2rem; padding: .85rem 1.2rem;
+}
+.spec-nav img { display: block; height: 21px; width: auto; }
+.spec-links { display: flex; align-items: center; gap: 1.05rem; font-size: .82rem; font-weight: 500; }
+.spec-links span.on { font-weight: 700; }
+@media (max-width: 720px) { .spec-links { display: none; } }
+.spec-hero { padding: clamp(1.6rem, 4vw, 2.6rem) clamp(1.2rem, 3vw, 2.2rem) clamp(1.8rem, 4vw, 2.8rem); }
+.spec-eyebrow {
+  font-size: .68rem; font-weight: 700; letter-spacing: .13em;
+  text-transform: uppercase; margin-bottom: .75rem;
+}
+.spec-hero h3 {
+  font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.85rem);
+  max-width: 20ch; margin-bottom: .55rem;
+}
+.spec-hero .sub { font-size: .93rem; line-height: 1.55; max-width: 46ch; }
+.spec-btns { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.25rem; }
+.b {
+  font: inherit; font-size: .84rem; font-weight: 600; line-height: 1.2;
+  padding: .6rem 1.05rem; border-radius: 8px; border: 1px solid transparent;
+  text-decoration: none; display: inline-block;
+}
+
+/* body band beneath the hero: cards + product bits */
+.spec-body { padding: clamp(1.3rem, 3vw, 1.9rem) clamp(1.2rem, 3vw, 2.2rem) clamp(1.5rem, 3vw, 2.1rem); }
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+@media (max-width: 640px) { .spec-grid { grid-template-columns: 1fr; } }
+.mini { border-radius: 8px; padding: .95rem 1.05rem; }
+.mini .lbl {
+  font-size: .63rem; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; display: block; margin-bottom: .45rem;
+}
+.mini .val { font-family: var(--serif); font-size: 1.5rem; font-weight: 620; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.mini .note { font-size: .74rem; margin-top: .1rem; }
+.track { height: 8px; border-radius: 4px; overflow: hidden; margin-top: .6rem; }
+.fill { height: 100%; border-radius: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+.chip {
+  font-size: .69rem; font-weight: 700; letter-spacing: .04em;
+  padding: .22rem .55rem; border-radius: 999px; border: 1px solid;
+  display: inline-flex; align-items: center; gap: .3rem;
+}
+.chip .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+
+/* ---- token strip -------------------------------------------- */
+.tokens { margin-top: 1.1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(122px, 1fr)); gap: .55rem; }
+.tok {
+  border: 1px solid var(--pg-rule-soft); border-radius: 7px; overflow: hidden;
+  background: var(--pg-panel);
+}
+.tok .sw { height: 34px; }
+.tok .meta { padding: .4rem .55rem .5rem; }
+.tok .nm { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .01em; }
+.tok .hx { display: block; font-size: .69rem; color: var(--pg-muted); font-variant-numeric: tabular-nums; text-transform: uppercase; }
+
+/* ---- contrast table ----------------------------------------- */
+.tbl-scroll { overflow-x: auto; margin-top: 1.1rem; }
+table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: .85rem; }
+caption {
+  text-align: left; font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--pg-muted); padding-bottom: .55rem;
+}
+th, td { text-align: left; padding: .48rem .7rem .48rem 0; border-bottom: 1px solid var(--pg-rule-soft); }
+th { font-size: .7rem; letter-spacing: .07em; text-transform: uppercase; color: var(--pg-muted); font-weight: 700; }
+td.num { font-variant-numeric: tabular-nums; font-weight: 650; text-align: right; padding-right: 1rem; white-space: nowrap; }
+td.pass { color: #1c6b45; font-weight: 700; font-size: .74rem; letter-spacing: .05em; }
+td.warn { color: #8a5a0c; font-weight: 700; font-size: .74rem; letter-spacing: .05em; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) td.pass { color: #6fc396; }
+  :root:not([data-theme="light"]) td.warn { color: #d5a44e; }
+}
+:root[data-theme="dark"] td.pass { color: #6fc396; }
+:root[data-theme="dark"] td.warn { color: #d5a44e; }
+
+/* ---- prose blocks ------------------------------------------- */
+.note-panel {
+  background: var(--pg-panel); border: 1px solid var(--pg-rule-soft);
+  border-radius: 10px; padding: clamp(1.2rem, 3vw, 1.7rem);
+}
+.note-panel + .note-panel { margin-top: .9rem; }
+.note-panel h3 { font-size: 1.08rem; margin-bottom: .5rem; }
+.note-panel p { font-size: .93rem; color: var(--pg-muted); max-width: 68ch; }
+.note-panel p + p { margin-top: .6rem; }
+.note-panel strong { color: var(--pg-ink); font-weight: 650; }
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: .85em; background: var(--pg-rule-soft); padding: .1em .35em; border-radius: 3px;
+}
+
+ul.tight { margin: .6rem 0 0; padding-left: 1.1rem; font-size: .93rem; color: var(--pg-muted); }
+ul.tight li { margin-bottom: .35rem; max-width: 66ch; }
+ul.tight li::marker { color: var(--pg-mark); }
+
+.logo-compare { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1rem; }
+@media (max-width: 560px) { .logo-compare { grid-template-columns: 1fr; } }
+.logo-cell { border-radius: 8px; padding: 1.1rem 1rem; text-align: center; border: 1px solid var(--pg-rule-soft); }
+.logo-cell img { height: 26px; width: auto; }
+.logo-cell .cap { display: block; margin-top: .7rem; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 700; }
+
+footer.pg-foot { padding: clamp(2rem, 4vw, 3rem) 0 clamp(2.5rem, 5vw, 4rem); color: var(--pg-muted); font-size: .87rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="kicker">Need Navigator &middot; marketing site</p>
+    <h1>Give the green a dark mass and the logo a home</h1>
+    <p class="standfirst">Your portal screenshot settled this, so I rebuilt the study around it. The marketing site's hues were never the problem. What it is missing is a <strong>ramp</strong> and a <strong>dark mass</strong>: green exists only as a hairline accent and a single deep tone used once, on the closing band, so the page reads as beige with a green trim and the white wordmark has nowhere to stand.</p>
+    <p class="standfirst">I pulled the portal's stylesheet. It ships the marketing site's tokens verbatim, then adds the six-stop green ramp and the brass the site never had, and spends the dark end of that ramp on a full-height rail. That is the whole difference between the two.</p>
+    <p class="standfirst">So the first direction below is not a new palette. It is the site's own palette, extended to match the portal, which buys product-to-marketing continuity for free. Two more adventurous directions follow. Every specimen uses the site's real components and its two real typefaces, so the only variable is colour.</p>
+  </header>
+
+  <hr class="rule">
+
+  <!-- ============================ CURRENT ============================ -->
+  <section class="lane">
+    <div class="lane-head">
+      <h2>What is there now</h2>
+      <span class="role">Reference</span>
+      <p class="why">Two greens and a lot of cream. Evergreen appears as an eyebrow, an icon stroke and a button, never as a mass, so the eye reads the page as beige. The brand's red appears nowhere at all, and the wordmark in the corner is a raster recolour of the white original.</p>
+    </div>
+
+    <div class="spec" style="background:#faf8f3; color:#20241f;">
+      <div class="spec-nav" style="background:#faf8f3; border-bottom:1px solid rgba(32,36,31,.09);">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAAdCAMAAAC0c4E1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABzlBMVEX///////////////////////////////////////////////////8gJB8gJB////////////////////////8gJB8gJB////////8gJB////////////////////////////////////////////////////////8gJB8gJB////////////////////////8gJB////8gJB8gJB////////8gJB////////8gJB////8gJB////////////8gJB8gJB////////8gJB////8gJB////////////////8gJB////////8gJB8gJB////////////////////////////////8gJB8gJB////8gJB////////////////////////////////////8gJB////////8gJB8gJB8gJB////8gJB8gJB////////////////////////////////8gJB////////////////8gJB////////8gJB/XlJbDJzLDIy/dp6jYlpjDJTHeqqzRfoHDJDDWjpHSgIPdpafYlZjWkZPSg4beqavXlZfdqKnXkpTDJjLeq6zcpafWj5Hco6XThYfZmZvSgYT///+Cj+S+AAAAfXRSTlMAFFaNqb+9p4lQDkK1+/mrNiK5GFLz6T5k/U4CICooEjgwLmKjXqVY98+fXEhoRkrbGt3nCKHvDGzlQMd0eB7x4xAG1UTZnVqHCuuBfMXBJgSxlzR2JBbJ9ZPXtzyDi60ylVQs7Zt+w+Hfs8vTHGpwu2CZhW7NejpyZtGvj35ry+cAAAABYktHRACIBR1IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH6gcZBTYSmFR0lwAABqNJREFUWMPdmPlXU0cUxyesgiSEJcEQIQgoCbsECJsJBFGCgChLIqAWxa2KuAEt9tum+15trW3/3N558+bNvCTtOcRz4Oj9IW/ubO9+7rszdyaMfYjiKCgsKi4pPVZWftSWHLIcr3DCFFel+6itOUSpqoZNimqO2qLDkloPMsRbd9Q2HY6c8CFLXPVH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" alt="Need Navigator wordmark, current recoloured version">
+        <div class="spec-links" style="color:#20241f;">
+          <span class="on" style="color:#1e4d3a;">Features</span><span>Solutions</span><span>Pricing</span><span>Security</span><span>About</span>
+          <a class="b" style="background:#1e4d3a; border-color:#1e4d3a; color:#f5f2ea; padding:.42rem .8rem;">Request a demo</a>
+        </div>
+      </div>
+      <div class="spec-hero" style="background:#faf8f3;">
+        <p class="spec-eyebrow" style="color:#1e4d3a;">Case management</p>
+        <h3 style="color:#20241f;">Nonprofit case management software that works the way your agency does</h3>
+        <p class="sub" style="color:#565c55;">Individuals, households, needs, visits, referrals and goals in one place, configured to your programs instead of someone else's template.</p>
+        <div class="spec-btns">
+          <a class="b" style="background:#1e4d3a; border-color:#1e4d3a; color:#f5f2ea;">Request a demo</a>
+          <a class="b" style="background:transparent; border-color:#1e4d3a; color:#1e4d3a;">Explore the features</a>
+        </div>
+      </div>
+      <div class="spec-body" style="background:#f1ede2; border-top:1px solid rgba(32,36,31,.09);">
+        <div class="spec-grid">
+          <div class="mini" style="background:#fffdf9; border:1px solid rgba(32,36,31,.16);">
+            <span class="lbl" style="color:#565c55;">Energy assistance pool</span>
+            <span class="val" style="color:#20241f;">$18,420</span>
+            <span class="note" style="color:#565c55; display:block;">of $45,000 remaining</span>
+            <div class="track" style="background:#e9efe8;"><div class="fill" style="width:41%; background:#1e4d3a;"></div></div>
+          </div>
+          <div class="mini" style="background:#fffdf9; border:1px solid rgba(32,36,31,.16);">
+            <span class="lbl" style="color:#565c55;">Request status</span>
+            <div class="chips">
+              <span class="chip" style="color:#565c55; border-color:rgba(32,36,31,.28); background:#f1ede2;"><i class="dot" style="background:#565c55;"></i>Pending</span>
+              <span class="chip" style="color:#1e4d3a; border-color:#1e4d3a; background:#e9efe8;"><i class="dot" style="background:#1e4d3a;"></i>Approved</span>
+              <span class="chip" style="color:#8a5a0c; border-color:#b77414; background:#f7ece2;"><i class="dot" style="background:#b77414;"></i>Denied</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tokens">
+      <div class="tok"><div class="sw" style="background:#faf8f3;"></div><div class="meta"><span class="nm">paper</span><span class="hx">#faf8f3</span></div></div>
+      <div class="tok"><div class="sw" style="background:#f1ede2;"></div><div class="meta"><span class="nm">surface</span><span class="hx">#f1ede2</span></div></div>
+      <div class="tok"><div class="sw" style="background:#20241f;"></div><div class="meta"><span class="nm">ink</span><span class="hx">#20241f</span></div></div>
+      <div class="tok"><div class="sw" style="background:#1e4d3a;"></div><div class="meta"><span class="nm">evergreen</span><span class="hx">#1e4d3a</span></div></div>
+      <div class="tok"><div class="sw" style="background:#14382a;"></div><div class="meta"><span class="nm">evergreen deep</span><span class="hx">#14382a</span></div></div>
+      <div class="tok"><div class="sw" style="background:#e9efe8;"></div><div class="meta"><span class="nm">wash</span><span class="hx">#e9efe8</span></div></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============================ PORTAL GREEN ============================ -->
+  <section class="lane">
+    <div class="lane-head">
+      <h2>Portal Green</h2>
+      <span class="role is-pick">My pick</span>
+      <p class="why">Your read exactly: the top band flips to the mossy evergreen, the demo button goes white, harvest orange does the accent work. These are not new colours. The nav ground is <code>evergreen-600</code>, the tick under the active link is <code>harvest-500</code>, and both are lifted straight from the portal, where they already carry the sidebar and its active-item marker.</p>
+    </div>
+
+    <div class="spec" style="background:#faf8f3; color:#20241f;">
+      <div class="spec-nav" style="background:#1e4d3a;">
+        <img src="data:image/png;base64,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" alt="Need Navigator wordmark, original white version, on mossy evergreen">
+        <div class="spec-links" style="color:#b8ccbb;">
+          <span class="on" style="color:#ffffff; border-bottom:2px solid #c98620; padding-bottom:2px;">Features</span><span>Solutions</span><span>Pricing</span><span>Security</span><span>About</span>
+          <a class="b" style="background:#ffffff; border-color:#ffffff; color:#14382a; padding:.42rem .8rem;">Request a demo</a>
+        </div>
+      </div>
+      <div class="spec-hero" style="background:linear-gradient(#1e4d3a,#173f2e);">
+        <p class="spec-eyebrow" style="color:#e4bd80;">Case management</p>
+        <h3 style="color:#ffffff;">Nonprofit case management software that works the way your agency does</h3>
+        <p class="sub" style="color:#c9d8cb;">Individuals, households, needs, visits, referrals and goals in one place, configured to your programs instead of someone else's template.</p>
+        <div class="spec-btns">
+          <a class="b" style="background:#ffffff; border-color:#ffffff; color:#14382a;">Request a demo</a>
+          <a class="b" style="background:transparent; border-color:rgba(233,239,232,.55); color:#e9efe8;">Explore the features</a>
+        </div>
+      </div>
+      <div class="spec-body" style="background:#faf8f3;">
+        <div class="spec-grid">
+          <div class="mini" style="background:#fffdf9; border:1px solid rgba(32,36,31,.16);">
+            <span class="lbl" style="color:#565c55;">Energy assistance pool</span>
+            <span class="val" style="color:#20241f;">$18,420</span>
+            <span class="note" style="color:#565c55; display:block;">of $45,000 remaining</span>
+            <div class="track" style="background:#e9efe8;"><div class="fill" style="width:41%; background:#3f6f56;"></div></div>
+          </div>
+          <div class="mini" style="background:#fffdf9; border:1px solid rgba(32,36,31,.16);">
+            <span class="lbl" style="color:#565c55;">Request status</span>
+            <div class="chips">
+              <span class="chip" style="color:#854d0e; border-color:#b77414; background:#f7ece2;"><i class="dot" style="background:#b77414;"></i>Pending</span>
+              <span class="chip" style="color:#1e4d3a; border-color:#1e4d3a; background:#e9efe8;"><i class="dot" style="background:#1e4d3a;"></i>Approved</span>
+              <span class="chip" style="color:#a8202c; border-color:#c3232f; background:#fbeced;"><i class="dot" style="background:#c3232f;"></i>Denied</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tokens">
+      <div class="tok"><div class="sw" style="background:#0e281e;"></div><div class="meta"><span class="nm">ground deep</span><span class="hx">#0e281e</span></div></div>
+      <div class="tok"><div class="sw" style="background:#14382a;"></div><div class="meta"><span class="nm">ground</span><span class="hx">#14382a</span></div></div>
+      <div class="tok"><div class="sw" style="background:#1e4d3a;"></div><div class="meta"><span class="nm">evergreen</span><span class="hx">#1e4d3a</span></div></div>
+      <div class="tok"><div class="sw" style="background:#3f6f56;"></div><div class="meta"><span class="nm">green mid</span><span class="hx">#3f6f56</span></div></div>
+      <div class="tok"><div class="sw" style="background:#b8ccbb;"></div><div class="meta"><span class="nm">sage link</span><span class="hx">#b8ccbb</span></div></div>
+      <div class="tok"><div class="sw" style="background:#e9efe8;"></div><div class="meta"><span class="nm">wash</span><span class="hx">#e9efe8</span></div></div>
+      <div class="tok"><div class="sw" style="background:#e4bd80;"></div><div class="meta"><span class="nm">harvest 300</span><span class="hx">#e4bd80</span></div></div>
+      <div class="tok"><div class="sw" style="background:#c98620;"></div><div class="meta"><span class="nm">harvest 500</span><span class="hx">#c98620</span></div></div>
+      <div class="tok"><div class="sw" style="background:#b77414;"></div><div class="meta"><span class="nm">harvest 600</span><span class="hx">#b77414</span></div></div>
+      <div class="tok"><div class="sw" style="background:#faf8f3;"></div><div class="meta"><span class="nm">paper</span><span class="hx">#faf8f3</span></div></div>
+      <div class="tok"><div class="sw" style="background:#c3232f;"></div><div class="meta"><span class="nm">brand red</span><span class="hx">#c3232f</span></div></div>
+    </div>
+
+    <div class="tbl-scroll">
+      <table>
+        <caption>Contrast, Portal Green</caption>
+        <thead><tr><th>Pairing</th><th>Ratio</th><th>Grade</th></tr></thead>
+        <tbody>
+          <tr><td>White logo on the nav green</td><td class="num">9.6</td><td class="pass">AAA</td></tr>
+          <tr><td>Cream hero text on the nav green</td><td class="num">8.6</td><td class="pass">AAA</td></tr>
+          <tr><td>Sage inactive link on the nav green</td><td class="num">5.7</td><td class="pass">AA</td></tr>
+          <tr><td>Harvest 300 eyebrow on the nav green</td><td class="num">5.5</td><td class="pass">AA</td></tr>
+          <tr><td>Ink on the white demo button</td><td class="num">12.9</td><td class="pass">AAA</td></tr>
+          <tr><td>Ink on paper</td><td class="num">14.8</td><td class="pass">AAA</td></tr>
+          <tr><td>Evergreen on paper</td><td class="num">9.1</td><td class="pass">AAA</td></tr>
+          <tr><td>Brand red on paper</td><td class="num">5.5</td><td class="pass">AA</td></tr>
+          <tr><td>Harvest 500 tick on the nav green</td><td class="num">3.2</td><td class="warn">Shapes only</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============================ OPTION A ============================ -->
+  <section class="lane">
+    <div class="lane-head">
+      <h2>Deep Water</h2>
+      <span class="role">Cooler alternative</span>
+      <p class="why">The same dark-ground idea, but it leaves the green family for a colder petrol teal and cools the paper off the cream. Worth seeing because it is the most distinct from the portal. Worth rejecting for exactly that reason: it would put the marketing site and the product in two different worlds.</p>
+    </div>
+
+    <div class="spec" style="background:#f7f6f2; color:#171c1f;">
+      <div class="spec-nav" style="background:#0e1b22;">
+        <img src="data:image/png;base64,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" alt="Need Navigator wordmark, original white version">
+        <div class="spec-links" style="color:#d3dbdd;">
+          <span class="on" style="color:#ffffff; border-bottom:2px solid #c3232f; padding-bottom:2px;">Features</span><span>Solutions</span><span>Pricing</span><span>Security</span><span>About</span>
+          <a class="b" style="background:#f7f6f2; border-color:#f7f6f2; color:#08434a; padding:.42rem .8rem;">Request a demo</a>
+        </div>
+      </div>
+      <div class="spec-hero" style="background:#0e1b22;">
+        <p class="spec-eyebrow" style="color:#8fc9cd;">Case management</p>
+        <h3 style="color:#ffffff;">Nonprofit case management software that works the way your agency does</h3>
+        <p class="sub" style="color:#c3ced2;">Individuals, households, needs, visits, referrals and goals in one place, configured to your programs instead of someone else's template.</p>
+        <div class="spec-btns">
+          <a class="b" style="background:#f7f6f2; border-color:#f7f6f2; color:#08434a;">Request a demo</a>
+          <a class="b" style="background:transparent; border-color:rgba(255,255,255,.5); color:#f7f6f2;">Explore the features</a>
+        </div>
+      </div>
+      <div class="spec-body" style="background:#f7f6f2;">
+        <div class="spec-grid">
+          <div class="mini" style="background:#fffdfa; border:1px solid rgba(23,28,31,.15);">
+            <span class="lbl" style="color:#525a5e;">Energy assistance pool</span>
+            <span class="val" style="color:#171c1f;">$18,420</span>
+            <span class="note" style="color:#525a5e; display:block;">of $45,000 remaining</span>
+            <div class="track" style="background:#e2edec;"><div class="fill" style="width:41%; background:#0d5b62;"></div></div>
+          </div>
+          <div class="mini" style="background:#fffdfa; border:1px solid rgba(23,28,31,.15);">
+            <span class="lbl" style="color:#525a5e;">Request status</span>
+            <div class="chips">
+              <span class="chip" style="color:#525a5e; border-color:rgba(23,28,31,.28); background:#eae9e3;"><i class="dot" style="background:#525a5e;"></i>Pending</span>
+              <span class="chip" style="color:#0d5b62; border-color:#0d5b62; background:#e2edec;"><i class="dot" style="background:#0d5b62;"></i>Approved</span>
+              <span class="chip" style="color:#a8202c; border-color:#c3232f; background:#fbeced;"><i class="dot" style="background:#c3232f;"></i>Denied</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tokens">
+      <div class="tok"><div class="sw" style="background:#0e1b22;"></div><div class="meta"><span class="nm">ground</span><span class="hx">#0e1b22</span></div></div>
+      <div class="tok"><div class="sw" style="background:#f7f6f2;"></div><div class="meta"><span class="nm">paper</span><span class="hx">#f7f6f2</span></div></div>
+      <div class="tok"><div class="sw" style="background:#eae9e3;"></div><div class="meta"><span class="nm">surface</span><span class="hx">#eae9e3</span></div></div>
+      <div class="tok"><div class="sw" style="background:#171c1f;"></div><div class="meta"><span class="nm">ink</span><span class="hx">#171c1f</span></div></div>
+      <div class="tok"><div class="sw" style="background:#0d5b62;"></div><div class="meta"><span class="nm">petrol</span><span class="hx">#0d5b62</span></div></div>
+      <div class="tok"><div class="sw" style="background:#08434a;"></div><div class="meta"><span class="nm">petrol deep</span><span class="hx">#08434a</span></div></div>
+      <div class="tok"><div class="sw" style="background:#c3232f;"></div><div class="meta"><span class="nm">brand red</span><span class="hx">#c3232f</span></div></div>
+      <div class="tok"><div class="sw" style="background:#e2edec;"></div><div class="meta"><span class="nm">wash</span><span class="hx">#e2edec</span></div></div>
+    </div>
+
+    <div class="tbl-scroll">
+      <table>
+        <caption>Contrast, Deep Water</caption>
+        <thead><tr><th>Pairing</th><th>Ratio</th><th>Grade</th></tr></thead>
+        <tbody>
+          <tr><td>Ink on paper</td><td class="num">15.9</td><td class="pass">AAA</td></tr>
+          <tr><td>Muted on paper</td><td class="num">6.5</td><td class="pass">AA</td></tr>
+          <tr><td>Petrol on paper</td><td class="num">7.2</td><td class="pass">AAA</td></tr>
+          <tr><td>White on petrol button</td><td class="num">7.8</td><td class="pass">AAA</td></tr>
+          <tr><td>White logo and nav on ground</td><td class="num">17.5</td><td class="pass">AAA</td></tr>
+          <tr><td>Brand red on paper</td><td class="num">5.4</td><td class="pass">AA</td></tr>
+          <tr><td>Brand red on the dark ground</td><td class="num">3.0</td><td class="warn">Shapes only</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============================ OPTION B ============================ -->
+  <section class="lane">
+    <div class="lane-head">
+      <h2>Hull &amp; Ember</h2>
+      <span class="role">Bolder</span>
+      <p class="why">Takes the logo literally. The near-black from the wordmark's own artwork becomes the ground, and the brand red is promoted all the way to the action colour. Nothing on the page is safe about it. It also creates one real problem, described under the specimens.</p>
+    </div>
+
+    <div class="spec" style="background:#fafaf8; color:#14181d;">
+      <div class="spec-nav" style="background:#12161c;">
+        <img src="data:image/png;base64,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" alt="Need Navigator wordmark, original white version">
+        <div class="spec-links" style="color:#cfd5dc;">
+          <span class="on" style="color:#ffffff; border-bottom:2px solid #c3232f; padding-bottom:2px;">Features</span><span>Solutions</span><span>Pricing</span><span>Security</span><span>About</span>
+          <a class="b" style="background:#c3232f; border-color:#c3232f; color:#ffffff; padding:.42rem .8rem;">Request a demo</a>
+        </div>
+      </div>
+      <div class="spec-hero" style="background:#12161c;">
+        <p class="spec-eyebrow" style="color:#9aa4b0;">Case management</p>
+        <h3 style="color:#ffffff;">Nonprofit case management software that works the way your agency does</h3>
+        <p class="sub" style="color:#c2c9d1;">Individuals, households, needs, visits, referrals and goals in one place, configured to your programs instead of someone else's template.</p>
+        <div class="spec-btns">
+          <a class="b" style="background:#c3232f; border-color:#c3232f; color:#ffffff;">Request a demo</a>
+          <a class="b" style="background:transparent; border-color:rgba(255,255,255,.5); color:#fafaf8;">Explore the features</a>
+        </div>
+      </div>
+      <div class="spec-body" style="background:#fafaf8;">
+        <div class="spec-grid">
+          <div class="mini" style="background:#ffffff; border:1px solid rgba(20,24,29,.15);">
+            <span class="lbl" style="color:#565e66;">Energy assistance pool</span>
+            <span class="val" style="color:#14181d;">$18,420</span>
+            <span class="note" style="color:#565e66; display:block;">of $45,000 remaining</span>
+            <div class="track" style="background:#eceff2;"><div class="fill" style="width:41%; background:#2b3a47;"></div></div>
+          </div>
+          <div class="mini" style="background:#ffffff; border:1px solid rgba(20,24,29,.15);">
+            <span class="lbl" style="color:#565e66;">Request status</span>
+            <div class="chips">
+              <span class="chip" style="color:#565e66; border-color:rgba(20,24,29,.28); background:#f1f2f4;"><i class="dot" style="background:#565e66;"></i>Pending</span>
+              <span class="chip" style="color:#1e6146; border-color:#1e6146; background:#e7f1ec;"><i class="dot" style="background:#1e6146;"></i>Approved</span>
+              <span class="chip" style="color:#7a1620; border-color:#7a1620; background:#f7eaeb;"><i class="dot" style="background:#7a1620;"></i>Denied</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tokens">
+      <div class="tok"><div class="sw" style="background:#12161c;"></div><div class="meta"><span class="nm">ground</span><span class="hx">#12161c</span></div></div>
+      <div class="tok"><div class="sw" style="background:#fafaf8;"></div><div class="meta"><span class="nm">paper</span><span class="hx">#fafaf8</span></div></div>
+      <div class="tok"><div class="sw" style="background:#14181d;"></div><div class="meta"><span class="nm">ink</span><span class="hx">#14181d</span></div></div>
+      <div class="tok"><div class="sw" style="background:#c3232f;"></div><div class="meta"><span class="nm">ember</span><span class="hx">#c3232f</span></div></div>
+      <div class="tok"><div class="sw" style="background:#9e1b25;"></div><div class="meta"><span class="nm">ember deep</span><span class="hx">#9e1b25</span></div></div>
+      <div class="tok"><div class="sw" style="background:#2b3a47;"></div><div class="meta"><span class="nm">slate</span><span class="hx">#2b3a47</span></div></div>
+      <div class="tok"><div class="sw" style="background:#7a1620;"></div><div class="meta"><span class="nm">oxblood</span><span class="hx">#7a1620</span></div></div>
+      <div class="tok"><div class="sw" style="background:#1e6146;"></div><div class="meta"><span class="nm">go green</span><span class="hx">#1e6146</span></div></div>
+    </div>
+
+    <div class="tbl-scroll">
+      <table>
+        <caption>Contrast, Hull and Ember</caption>
+        <thead><tr><th>Pairing</th><th>Ratio</th><th>Grade</th></tr></thead>
+        <tbody>
+          <tr><td>Ink on paper</td><td class="num">17.1</td><td class="pass">AAA</td></tr>
+          <tr><td>Muted on paper</td><td class="num">6.3</td><td class="pass">AA</td></tr>
+          <tr><td>Ember link on paper</td><td class="num">5.6</td><td class="pass">AA</td></tr>
+          <tr><td>White on ember button</td><td class="num">5.8</td><td class="pass">AA</td></tr>
+          <tr><td>White on ember deep, hover</td><td class="num">8.0</td><td class="pass">AAA</td></tr>
+          <tr><td>Slate on paper</td><td class="num">11.2</td><td class="pass">AAA</td></tr>
+          <tr><td>Ember on the dark ground</td><td class="num">3.1</td><td class="warn">Shapes only</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ============================ NOTES ============================ -->
+  <section class="lane">
+    <div class="lane-head"><h2>What I found while checking this</h2></div>
+
+    <div class="note-panel">
+      <h3>Is it as simple as flipping the top nav? Almost</h3>
+      <p>Flipping the nav band alone gets you most of it and costs about a dozen lines. The one thing to decide is what sits directly under it. Right now that is cream, so a dark nav on its own reads as a stripe laid over a light page rather than as the top of the page.</p>
+      <p><strong>Nav only</strong> works if the band is given weight: keep it full-bleed, let it run a little taller than it does today, and finish it with a harvest hairline instead of the current grey one, so it reads as a masthead rather than a floating bar. Cheapest option, and reversible in an afternoon.</p>
+      <p><strong>Nav plus hero</strong>, which is what the specimen above shows, is the version that actually looks like your portal. The dark mass runs from the top of the page through the headline, then hands off to cream for the body. It is more work only because the hero has never had a dark variant, and it is the one I would build.</p>
+      <p>Either way the demo button goes white, which you already called. White on the mossy green measures 12.9 to one, so it is the strongest thing in the band, which is correct for the one action you want people to take.</p>
+    </div>
+
+    <div class="note-panel">
+      <h3>The portal is already running your marketing tokens</h3>
+      <p>I pulled the portal's compiled stylesheet rather than guess at the screenshot. Its paper, surface, card, wash and deep evergreen are the marketing site's values to the digit: <code>#faf8f3</code>, <code>#f1ede2</code>, <code>#fffdf9</code>, <code>#e9efe8</code>, <code>#14382a</code>. What it adds is the middle and the ends of the ramp, <code>#0e281e</code>, <code>#3f6f56</code>, <code>#a9bfab</code>, <code>#cfdccf</code>, plus a brass run from <code>#e4bd80</code> down to <code>#854d0e</code>.</p>
+      <p>So the two properties are not in different palettes. The site has fewer stops and never uses the dark ones for area. That is worth saying plainly because it makes Portal Green cheap: <strong>the direction is additive</strong>, and nothing already on the page has to change hue.</p>
+    </div>
+
+    <div class="note-panel">
+      <h3>Red as the action colour costs you the denial colour</h3>
+      <p>This is the argument against Hull and Ember. Need Navigator's own screens lean on red to mean stop: a denied assistance request, a blocked service limit, a validation error. Promote red to the button colour and every stylised screenshot has to find a second red for refusal, which is why its chips above fall back to oxblood and a green appears for approval in a palette that otherwise has no green. Portal Green keeps red scarce, so red still means what it means.</p>
+    </div>
+
+    <div class="note-panel">
+      <h3>One thing I got wrong on the first pass</h3>
+      <p>I had flagged that the brand red measures poorly against a dark ground, three to one on near-black and only 2.2 to one on the evergreen. That figure is real but it does not apply to the logo, because the red arms of the life ring sit inside a white disc and never touch the ground. I composited the wordmark on all four candidate grounds to confirm it, and the mark holds on every one.</p>
+      <p>The constraint is narrower than I first wrote: red <strong>text or hairlines</strong> on the dark ground would fail, so keep red off the dark surfaces except as a shape with its own light backing. On paper it is fine at 5.5 to one.</p>
+    </div>
+
+    <div class="note-panel">
+      <h3>The logo file itself is clipped, and it is the same file you already had</h3>
+      <p>The file you dropped in the working tree is byte for byte the one committed in July as the site's white logo. Both end mid stroke: the final <strong>R</strong> is cut off by the right edge of the canvas, at 250 by 29 pixels with no margin. It reads as a rendering fault at any size, and at 21 pixels tall in a header it will not survive a retina screen either.</p>
+      <p>The dark version in the corner today is a raster recolour of that same white file. Inverting a white wordmark filled the life ring's negative space with black, which is what makes it look wrong. A dark ground removes the need for that file entirely. A traced vector wordmark would fix the clipping and the resolution together, and the image manifest already has a slot open for exactly that.</p>
+      <div class="logo-compare">
+        <div class="logo-cell" style="background:#faf8f3;">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAAdCAMAAAC0c4E1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABzlBMVEX///////////////////////////////////////////////////8gJB8gJB////////////////////////8gJB8gJB////////8gJB////////////////////////////////////////////////////////8gJB8gJB////////////////////////8gJB////8gJB8gJB////////8gJB////////8gJB////8gJB////////////8gJB8gJB////////8gJB////8gJB////////////////8gJB////////8gJB8gJB////////////////////////////////8gJB8gJB////8gJB////////////////////////////////////8gJB////////8gJB8gJB8gJB////8gJB8gJB////////////////////////////////8gJB////////////////8gJB////////8gJB/XlJbDJzLDIy/dp6jYlpjDJTHeqqzRfoHDJDDWjpHSgIPdpafYlZjWkZPSg4beqavXlZfdqKnXkpTDJjLeq6zcpafWj5Hco6XThYfZmZvSgYT///+Cj+S+AAAAfXRSTlMAFFaNqb+9p4lQDkK1+/mrNiK5GFLz6T5k/U4CICooEjgwLmKjXqVY98+fXEhoRkrbGt3nCKHvDGzlQMd0eB7x4xAG1UTZnVqHCuuBfMXBJgSxlzR2JBbJ9ZPXtzyDi60ylVQs7Zt+w+Hfs8vTHGpwu2CZhW7NejpyZtGvj35ry+cAAAABYktHRACIBR1IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH6gcZBTYSmFR0lwAABqNJREFUWMPdmPlXU0cUxyesgiSEJcEQIQgoCbsECJsJBFGCgChLIqAWxa2KuAEt9tum+15trW3/3N558+bNvCTtOcRz4Oj9IW/ubO9+7rszdyaMfYjiKCgsKi4pPVZWftSWHLIcr3DCFFel+6itOUSpqoZNimqO2qLDkloPMsRbd9Q2HY6c8CFLXPVH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" alt="Recoloured wordmark on light paper, with a filled-in life ring">
+          <span class="cap" style="color:#565c55;">Today: recoloured, ring filled in</span>
+        </div>
+        <div class="logo-cell" style="background:#0e1b22;">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAAdCAYAAACDrXEHAAAACXBIWXMAAA7EAAAOxAGVKw4bAAANK0lEQVR4nO2ceZAU1R3HPzusE4raoLXZIoQQtMAYSgkYYpQihvJASolRQ0xURIQFD6KGpLSiJEaLGERiWUa5QlAJEMIpRlOAHGoURUAujQmggCCs3IeCu8vuzPzyx6/bftP08Xp2IFLOt+rVvu3+/d7V7/hdb8pEhBJKKKGoqAIuAS4A2gKtgBywB/gQeBN4GfjkRDWo/ERVVEIJXwBcAtwN9CJ+bTUALwCPAiuPc7soK53oJZTQZLQHxqMLvBDMAoYCu4rWIh9KC72EEpqGPsBkoKKJ5ewBfgq81uQWBSB1PAotoYQvCAYDsyWXqziyfUfBhRzetg1Uj18MXFWcpuWjtNBLOBFIAWcAZwMdgcr/a2uKg2uACblMJrVx/ATWXXY1e99albiQmsVLePvSq9kyYyYikgZmA92K3dgUsBsQ4ChwriXfYw6PAJ1976qNd3Fpqo+3fwLeaT7e650+BKU6p59rgUlAP6ClZV+jsNZoz+WWPLcbPLY6XW/gfSO1iaFPAZvRvu8EmlvW42Iy3tiZc+Il59lBizIqgDuBV4BPgQ+A/wDrgf1AjVPPRQnb5iKFWq/dMbnHgqcP4XMkKt3nK6cdMBmR1PsTn2bf4xMgk2XjjbeyZ4W9XW3Hiwv5YIg2+6P7R7J1zlwAd7GfFsCSjmnnx+gYTwJ6mowpXyEzabquYSKDWhejUrF4U2gf0hwrqZSjotG5wAB0g6kBRgItCulYAKYSvwALxVDgTCPdFkOfQz92GmgN/CxBXVXoppkGVgHrjHflzvO4jaMaXdij0YXs0mcMmjboxv4K8CpwVoI2AlyJnnzumNxN4V4kt19pS/rRQMtsYyNHd+32nuZyvNfvNna/uTy2gO3zFrD1znvzntXvqEFyOVCX3MgQ1nREaolKTQNQNWAhjvTkXxBnARNiW2mPm4AvRaRBEbw3x/AOjOAd6KM9BTgV+B5wL/AeuqHdh57KZxbSOR+qgOkUXx1qj293RnXDuEn9F7zN8I4E9VXjTfjRCfhA+z4JeBodj1pgDHAxOv6nAM2AbwJ3ARscvh7AWyQ73Yf4/m9NvH47l+C59Lrzvjbk/SNGGd3cepql05wz7NecetO13lsRPv1gq7tgA5FraKB224d5z77yi8F8666fU5b6bPoMRtWdMLwAlPnSl4EfoFZ8UIlxHpBCRHaLolE8DBYRItJjBm1n37tq4931MeX4U3+Dt29C3r4Gb78Y2pSI3CMiWYd+u4i0TlgfIrLW4XfLERF5KIbndoO2l0Udjxr0zxr5Pha8kw36rhb0KRHZ7NDvFJG07/2rzru6EP7RRn1viEi7mPrKff07LCIdLdrZ3uCZJyJHnfxLFrxBye3Xpxa008SHTH29vPPQw7K0QxfZsWix+7hRRMaKSDcRqRCRliLSQ0SmikhWcjnZMnO2LO3QRdaPGSe5TMZfrDhjY9adNt49H9NO89tfi3gLfYWIzHbydSLSKaKQk32hB7U1buCCkrvQ9xtjkhWRnhE8SRZ6WkT2OrRrRaRKvEm90KJ95xt1TbSgv9ygfyDgfdRC72XwrhCR5gnGcbzBu9SCfpRB30108bg4M0G9/n7FLfTmDs0xyBw9KjVLXnb/3e+0K6yc3iJSl8tmZfvCxWGLXERkm48vyUI/z6Cd6BczBwFbUZ1qNsXTXz+veAaY7+Svwt4YGYRhaIRTCjUUtm5a0wDVrauc/ARgHyp+goplcSrHSryoq74EG3hMuCJ+Ayr6J8EI528GVdnqE/DeDVzhpBFE68ppVL0AeBdYTr666Rfpi4luhKyJZuk0bS692P33BqddYZgP3FGWStG2V0/KmjULo2tH4WqlGXxT4V/on6BO+wbUDTK+wEpOJjxh5K9rQjkNDv8h1PA3jabr6+6kPQL8zcmPD3gfBbd/LVBvQxjaodZ9gDkki9LqCJzn5P+B2kCSoBZ40UhRRlpz83PH4nXgv05+AMm9DLawOQiWAIss6J7Bs1FEwe/VsoXJ91HQRFyFGqxAraIDCqzoZMHrRr6p/suteAbGS4D7m1BWZ6C7k/87uthBI6fcCTKA+Ek9B426guiN4Ta8jSmpEa67kV+YkDcpgjY/8E71SpJ5GZLg6xY0/0xQ3vx4EtolKM9FBfCQ8f/MsBPnT6hVD2AsarIvBNMJ94O/GsM7LYJ3aYHtCUIt3ulVFUVoibnAOCf/IIX7iU1Lud8TkmRSNwB/dvJnh7QnjVp5QTf6eP9QPk438ltDaNqjfnOb9JuQMszNbxb5t7+moN8Sjp/4biMpfJSgvO0WNGHqc0t0PMzUHfgl8DbQ1aEbB6yMctEMRF1P7VD/+gV4A2mLWvJ9pyaOhDwvBm9SuKJisW7z/QqVDrqim10XvFPVBhWoTg268Nb43k9B/azN0ZN4Skx549HFU44ugn/53vdB1Q1IfppDvooS5ldqhUqINlgGPBzw3FzAfrXyELr4B6Bj3xl4x7I+W0SpFC6SHBZftaAJs3VchC7oKL4/AsMhWoc8gBoVMkAnCpsAg1D/aVD6YQzvLRG8VxTQljCU4wW6HChSma6+fgQ1yk0lmb7eHy9wKchOcgAVyUF38Tg9bpdB34djDYXuAtoDzEjQThfmyRQWNPQe8OOINNSgDbqnXYFnY1iDboB+mJJPktgBW+y0oEkyN20iI8OC6Pfg2TReNp5n0O/5DVSizEH85FsG/NbJVxNtzDlZ0RXvJC/mCbAJ3axAP6g/jDIKbuTbJ4QvvLFG3kZUdTfqcjyrNag438PJP4XdqeWHGfd5WQjNAdRQF5b2GbR+CQZ07kVtfqAqhxvJ15fiRnmC3fy4Ejjfgu4qPPE6Cu+GPF+O56m4FE+qK0elCnM8rU6ZP6K7BugAJw1V/LzjFiP/fJHLnoHnphoOXGjBY57Q5cBqND7cnyYZPOYiCMMyvAU0BO/bu5tEhvzNIwnW4RkIr6WwUGAzSnJmwHtzMxtG8JisxzNeVWCvKthiGSEboWSz7FuzFnRcnyXaLXYezvfbu3oNSOhV8T143oQ4mPfZf4dPyrMVJ29CjQwVqH/9eLkvTjR64J1u6/A2tGJiKHoSlKP6epwOZ4qcLVDXVVhyYYq1UXBP9bboyWMuhrkkMyT58aDR5qdJZu/oh3opQE93/8npV0/aEz4m5s24uDsBSXGEgDki2SwbJ0xkw3XV7F21GnR8V6NSnLnptUdtK28AlTWLl7Dxumq2zJodttjnBD0MwSG8zTCNGjW9byD5kXFRkTY9xAv1rDOibk7WyLjLReSg0Z9zE9aH5EfGRdF1FA3vFMmPrPJHxlUZY7tCNIQ0KnU0ynvbor3NxYu0WyAitxptudCCPy4EdqZR3nMicppFmdcbfd4pIm0CaMzIt54W42LSd0/QL5sQWDMCUHKNjbL+yTGytEMXTWd1le0LF0kua0ZFy0ER+dj9J9vYKFtmz/F4OnSRTdOmi+Ry4sPZvrptIuPMb/BZOHYSA9FreLv2yXqiV6L3iOcBC9BIsSPA1eTf0io2NuCd1FHRhtV4YzsW/SHBqLQBT4c3XU9hqEf1cNBrtcOc/Dry4wkKxc14vuFrgI2otd+v7rVw6l+ASjnNUTH1Co6VKqrwXIgr0YCUuHExg6CKbZRbhPMrMLlMhg1jxrHviYne22yWXEOjeTkFdJ59di26LJUiV380r9CdDzzC5mnTEe9kn4G92G7iDjz9/D6cQKakkVsPk2/hi8NjhOtS6wm/igf6o3lRvKMieEf5aN8H9qL3oJ/DiwCbD3wHu0impmIK8NeI9yk8UfMQ9mKbaWm2EVXH4rktz3D+FuJRCUI98CNUR6xHXWoj0AV/GL26WuPkF+Dd4V+C3iwM2mzN23S2NytNl2QfihMfYWIIUF9WVka2Nt/jfProUbS7sncwl4OyVIoON97A136fb5/N1tZSptkDqIu2EOzD29zKURE+nUR0d1MrURHLRZToHofJPt7+0eR5mOrj7RtNLiIqmq0QkZFybLsLSbaiu5taiMh6oz2m6G5eKHk8YTtWO3x1IlJpQe9eXnLbbnsBJU50N1MbERkhIhslGIdFb+NFXQAyb9MddMbPdkwGG3XdY9kvG9E9r/xMXZ28M/wPsrRDF9m+cFFIV0OQy8nmGTP1BtuTYyTb2Cii6nHvkDqTXGp5zqB9tExE2qKnSQP28c2VeFbeXeRbIiuw/6mgI+T7rltgv/vWku9CiOP111UMtEZPmxzh/k4/WuJdLtmDFxBhPt9HsuAk83uYZYbB/Eb12AfztELF7CT9dfnOQPvnzrNNhAdEuUihhq2k7QTvRzfg2LkS1L5C+vUAMDzX2MihDRup/HanBKwORNj/73ep7HQOZalUDpXKnorgcL0KcX0y10Ou9CuwJZTQNNwJPE7Toypr0WjUWXGEhaC00Esooek4H3UpFnCkA+qfH4TdbbaCUPoV2BJKaDpWokbdgSSLrlwO/AT4PsdxkUPpRC+hhOOBTqhH4btohJzrWjuExvyvQANvNp2oBv0PInrpibzqL7cAAAAASUVORK5CYII=" alt="Original white wordmark on a dark ground, life ring reading correctly">
+          <span class="cap" style="color:#c3ced2;">Original, untouched, on a dark ground</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-panel">
+      <h3>Either direction is a token edit, not a rebuild</h3>
+      <p>The stylesheet is already fully tokenised, and every icon inherits <code>currentColor</code>. For Portal Green nothing needs a new hue at all, so the work is structural rather than chromatic.</p>
+      <ul class="tight">
+        <li>Add the missing ramp stops and the brass run to <code>:root</code>, copied from the portal so the two stay in step.</li>
+        <li>Give the header, nav and hero a dark variant on <code>--evergreen-deep</code>. This is the only genuinely new component work, since neither has ever had one.</li>
+        <li>Serve the original white logo everywhere and retire the recoloured file.</li>
+        <li>Spend brass where cream is currently doing the warmth alone: eyebrows, icon tiles, the active nav underline.</li>
+        <li>Re-check the stylised screenshots, which hand-set a few colours rather than reading tokens.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="pg-foot">
+    Specimens use the site's own faces, Source Serif 4 and Public Sans, and its real components: nav, hero, funding pool meter and request status chips. Contrast figures are computed against WCAG 2.1, small text unless noted.
+  </footer>
+
+</div>
+</body>
+</html>

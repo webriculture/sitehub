@@ -74,52 +74,20 @@
     {{-- ================= Portal phone + arrival UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: portal-phone-intake | replace with: real screenshot pair: the MyNeedNav portal form on a phone (guided income capture step, portrait, light theme) beside the staff review queue showing the arrived submission with a "Probable match" classification and its income tagged Unverified. Placeholder: stylized HTML recreation of both. --}}
-            <figure class="ui-portal" style="margin:0">
-                <div class="ui-portal-duo" aria-hidden="true">
-                    <div class="phone">
-                        <div class="phone-top"><i></i></div>
-                        <div class="phone-screen">
-                            <div class="p-head">
-                                <strong>Rent assistance application</strong>
-                                <span class="p-lang"><span class="on">EN</span><span>ES</span></span>
-                            </div>
-                            <p class="p-step">Income (step 3 of 4)</p>
-                            <p class="p-q">Does anyone in your household have income right now?</p>
-                            <div class="p-source">
-                                <strong>Source 1 &middot; Part-time work</strong>
-                                <span>Paid every two weeks &middot; $640</span>
-                            </div>
-                            <div class="p-add">+ Add another source</div>
-                            <div class="p-next">Continue</div>
-                        </div>
-                    </div>
-                    <div class="uiframe">
-                        <div class="uiframe-bar"><i></i><i></i><i></i><span>Intake review queue: Monday 8:15 a.m.</span></div>
-                        <div class="uiframe-body">
-                            <div class="arrival-row">
-                                <div class="arrival-main">
-                                    <strong>Rent assistance application</strong>
-                                    <span class="arrival-sub">Received Sunday 10:05 p.m. &middot; MyNeedNav portal</span>
-                                </div>
-                                <span class="badge badge-match">Probable match</span>
-                            </div>
-                            <div class="arrival-row">
-                                <div class="arrival-main">
-                                    <strong>Household income &middot; 2 sources</strong>
-                                    <span class="arrival-sub">Self-reported by applicant</span>
-                                </div>
-                                <span class="badge badge-unverified">Unverified</span>
-                            </div>
-                            <div class="arrival-actions">
-                                <span>Confirm match</span>
-                                <span>View candidates</span>
-                                <span>Create new person</span>
-                            </div>
-                        </div>
-                    </div>
+            {{-- IMAGE SLOT: portal-phone-intake | filled 2026-09-05 with real screenshots: img/screens/portal-application and img/screens/portal-income-step (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            <figure style="margin:0">
+                <div class="uiframe shot-medium">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>MyNeedNav: Emergency Financial Assistance Application</span></div>
+                    @include('site::partials.screen', ['name' => 'portal-application', 'alt' => 'The public intake portal: a green header with the Need Navigator wordmark, a language selector and sign in link, the application title, a Helpful to have checklist, and the Contact Information section with required first name, last name, date of birth and phone fields', 'width' => 1181, 'height' => 852])
                 </div>
-                <figcaption class="ui-caption">An illustration of the portal on a phone (guided income capture mid-application) and the same submission arriving in the staff review queue with its income marked unverified.</figcaption>
+                <figcaption class="ui-caption">The public portal on a test instance: the agency&rsquo;s form rendered for the applicant, in their language, with a plain checklist of what helps and no account to create.</figcaption>
+            </figure>
+            <figure style="margin:1.4rem 0 0">
+                <div class="uiframe shot-medium">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>MyNeedNav: guided income capture</span></div>
+                    @include('site::partials.screen', ['name' => 'portal-income-step', 'alt' => 'The guided income step of the portal: an income source from the State of Oregon paid monthly, two recent pay records of 2,500 with dates and optional photo buttons, links to add a record or another income source, and a Submit application button', 'width' => 1178, 'height' => 958])
+                </div>
+                <figcaption class="ui-caption">Guided income capture: one source at a time, recent pay records with an optional paystub photo, and a submit button. Everything arrives on the staff side marked unverified until someone confirms it.</figcaption>
             </figure>
         </div>
     </section>

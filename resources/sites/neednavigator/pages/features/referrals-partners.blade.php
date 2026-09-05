@@ -74,42 +74,13 @@
     {{-- ================= Printed referral UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: referrals-printed-qr | replace with: real screenshot of a printed referral, light theme, portrait or landscape: destination organization, referral reason, the QR code, and the recorded loop closure (received-by, feedback, timestamp) all visible. Placeholder: stylized HTML recreation of the printed referral with its closure record. --}}
-            <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Referral #1873: print preview</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-referral">
-                            <div class="r-head">
-                                <span class="r-title">Referral &middot; #1873</span>
-                                <span class="r-chip">Completed</span>
-                            </div>
-                            <div class="r-grid">
-                                <div class="r-rows">
-                                    <div class="r-row"><span>Referred to</span><strong>Cedarwood Community Pantry</strong></div>
-                                    <div class="r-row"><span>Contact</span><strong>Front desk</strong></div>
-                                    <div class="r-row"><span>Reason</span><strong>Emergency food box</strong></div>
-                                    <div class="r-row"><span>Referred by</span><strong>Housing Stability program</strong></div>
-                                    <div class="r-row"><span>Printed</span><strong>Tue, Mar 3</strong></div>
-                                </div>
-                                <div class="r-qr">
-                                    <svg width="92" height="92" viewBox="0 0 21 21" fill="currentColor">
-                                        <path d="M0 0h7v7H0zm1 1v5h5V1z" fill-rule="evenodd"/><rect x="2" y="2" width="3" height="3"/>
-                                        <path d="M14 0h7v7h-7zm1 1v5h5V1z" fill-rule="evenodd"/><rect x="16" y="2" width="3" height="3"/>
-                                        <path d="M0 14h7v7H0zm1 1v5h5v-5z" fill-rule="evenodd"/><rect x="2" y="16" width="3" height="3"/>
-                                        <path d="M8 6h1v1H8zM10 6h1v1h-1zM12 6h1v1h-1zM6 8h1v1H6zM6 10h1v1H6zM6 12h1v1H6zM8 1h1v1H8zM10 2h1v1h-1zM12 1h1v1h-1zM9 3h1v1H9zM11 4h1v1h-1zM13 3h1v1h-1zM8 5h1v1H8zM1 8h1v1H1zM3 9h1v1H3zM0 10h1v1H0zM2 11h1v1H2zM4 12h1v1H4zM5 9h1v1H5zM1 13h1v1H1zM8 8h1v1H8zM10 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM17 9h1v1h-1zM19 8h1v1h-1zM20 10h1v1h-1zM9 10h1v1H9zM11 10h1v1h-1zM12 11h1v1h-1zM14 10h1v1h-1zM16 11h1v1h-1zM18 10h1v1h-1zM8 12h1v1H8zM10 13h1v1h-1zM12 12h1v1h-1zM15 12h1v1h-1zM17 13h1v1h-1zM19 12h1v1h-1zM9 14h1v1H9zM11 15h1v1h-1zM13 14h1v1h-1zM16 14h1v1h-1zM18 15h1v1h-1zM20 15h1v1h-1zM8 16h1v1H8zM10 17h1v1h-1zM12 16h1v1h-1zM14 17h1v1h-1zM19 17h1v1h-1zM9 18h1v1H9zM11 19h1v1h-1zM13 18h1v1h-1zM15 19h1v1h-1zM17 18h1v1h-1zM20 18h1v1h-1zM8 20h1v1H8zM10 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1z"/>
-                                    </svg>
-                                    <span>Scan to record receipt (no login needed)</span>
-                                </div>
-                            </div>
-                            <div class="r-closure">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                                <p><span class="r-when">Loop closed: Thu, Mar 5, 2:41 p.m.</span>Received by front-desk staff, who noted the household picked up a three-day food box.</p>
-                            </div>
-                        </div>
-                    </div>
+            {{-- IMAGE SLOT: referrals-printed-qr | filled 2026-09-05 with a real screenshot: img/screens/printed-referral, browser print chrome trimmed (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            <figure class="shot-duo" style="margin:0">
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Referral: print preview</span></div>
+                    @include('site::partials.screen', ['name' => 'printed-referral', 'alt' => 'A printed referral from Harbor Hope: client information, the referring provider and program, a reference number, referral details, the organization and contact it is referred to with the reason, and a QR code captioned please scan to confirm client arrival', 'width' => 628, 'height' => 792])
                 </div>
-                <figcaption class="ui-caption">An illustration of a printed referral: where the client is headed and why, the QR code the receiving provider scans to record receipt with no login, and the loop closure that comes back with feedback and a timestamp.</figcaption>
+                <figcaption class="ui-caption">A printed referral on a test instance: who is being referred and by whom, where they are headed and why, and the QR code the receiving provider scans to confirm the client arrived, no login and no account. The scan closes the loop with a timestamp.</figcaption>
             </figure>
         </div>
     </section>

@@ -71,70 +71,18 @@
         </div>
     </section>
 
-    {{-- ================= Event page + day-of check-in UI representation ================= --}}
+    {{-- ================= Event back office screenshot ================= --}}
     <section class="section section--surface">
         <div class="container">
-            <div class="ui-event">
-                <div class="duo">
-                    {{-- IMAGE SLOT: events-public-page | replace with: real screenshot of a published public event page, light theme - hero image, schedule, location, capacity indicator, and ticket types visible; demo event data only. Placeholder: stylized HTML recreation of the page. --}}
-                    <figure style="margin:0">
-                        <div class="uiframe" aria-hidden="true">
-                            <div class="uiframe-bar"><i></i><i></i><i></i><span>Harvest Dinner &amp; Auction: published event page</span></div>
-                            <div class="uiframe-body">
-                                <div class="ev-page">
-                                    <div class="ev-hero">Hero image</div>
-                                    <div class="ev-title">Harvest Dinner &amp; Auction</div>
-                                    <div class="ev-meta">
-                                        <span>Sat, Oct 17 &middot; 5:30&ndash;9:00 p.m.</span>
-                                        <span>Riverfront Hall, Salem</span>
-                                    </div>
-                                    <div class="ev-capline"><strong>86 of 120 seats reserved</strong><span>Registration closes when full</span></div>
-                                    <div class="ev-track"><i style="width:72%"></i></div>
-                                    <div class="ev-ticket"><span>Dinner seat</span><span class="qty">Qty 2</span></div>
-                                    <div class="ev-ticket"><span>Student seat</span><span class="qty">Qty 1</span></div>
-                                    <span class="ev-chip">Code FALL10 applied: 10% off</span>
-                                    <div class="ev-ticket"><span>Add a donation pledge</span><span class="qty">$25 &middot; $50 &middot; $100 &middot; custom</span></div>
-                                    <p class="ev-note">Pledges are recorded now and collected at the event.</p>
-                                    <span class="ev-btn">Register</span>
-                                </div>
-                            </div>
-                        </div>
-                        <figcaption class="ui-caption">An illustration of a public event page: hero image, schedule and location, a capacity indicator, ticket types, a promo code applied, and a donation pledge option.</figcaption>
-                    </figure>
-                    {{-- IMAGE SLOT: events-dayof-checkin | replace with: real screenshot of the day-of check-in screen, light theme - checked-in guests, undo, a walk-in registration, and a no-show visible; test attendees only, no real names. Placeholder: stylized HTML recreation of the list. --}}
-                    <figure style="margin:0">
-                        <div class="uiframe" aria-hidden="true">
-                            <div class="uiframe-bar"><i></i><i></i><i></i><span>Day-of check-in: Harvest Dinner &amp; Auction</span></div>
-                            <div class="uiframe-body">
-                                <div class="ev-checkin">
-                                    <div class="ev-counts">
-                                        <span><strong>64</strong> checked in</span>
-                                        <span><strong>89</strong> registered</span>
-                                        <span><strong>3</strong> walk-ins</span>
-                                    </div>
-                                    <div class="ev-row">
-                                        <span class="who">Guest 041<span>2 seats &middot; QR check-in</span></span>
-                                        <span class="acts"><span class="st st-in">Checked in 5:42</span><span class="undo">Undo</span></span>
-                                    </div>
-                                    <div class="ev-row">
-                                        <span class="who">Guest 042<span>1 seat</span></span>
-                                        <span class="acts"><svg class="qr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h3v3h-3zM20 20h-3"/></svg><span class="st st-open">Check in</span></span>
-                                    </div>
-                                    <div class="ev-row">
-                                        <span class="who">Guest 057<span>Walk-in &middot; registered at the door 6:04</span></span>
-                                        <span class="acts"><span class="st st-in">Checked in 6:04</span></span>
-                                    </div>
-                                    <div class="ev-row">
-                                        <span class="who">Guest 019<span>1 seat</span></span>
-                                        <span class="acts"><span class="st st-no">No-show</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <figcaption class="ui-caption">An illustration of the day-of check-in list: QR check-ins with undo, a walk-in registered at the door, and a no-show marked.</figcaption>
-                    </figure>
+            {{-- IMAGE SLOT: events-public-page | removed 2026-09-05 at Dave's request: no demo shot of a public event page yet; the feature stays in the copy. --}}
+            {{-- IMAGE SLOT: events-dayof-checkin | filled 2026-09-05 with a real screenshot of the event back office instead: img/screens/event-back-office (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            <figure style="margin:0">
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>BBQ Fundraiser 2026</span></div>
+                    @include('site::partials.screen', ['name' => 'event-back-office', 'alt' => 'An event in the back office: event details with type, program, narrative, date, location and attendance, public event settings with the registration window and public description, a supplies form attached to the event, action buttons for editing, viewing the public page, attendees, orders and donations, and metrics for registered, checked in and waitlisted', 'width' => 1654, 'height' => 877])
                 </div>
-            </div>
+                <figcaption class="ui-caption">An event&rsquo;s back office on a test instance: the details and public settings, including the registration window and the description that appears on the public page, a supplies form attached to the event, the actions for attendees, orders and donations, and the live counts of registrations and check-ins.</figcaption>
+            </figure>
         </div>
     </section>
 

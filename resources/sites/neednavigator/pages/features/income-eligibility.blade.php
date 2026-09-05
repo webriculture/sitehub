@@ -74,51 +74,13 @@
     {{-- ================= Eligibility verdict UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: income-eligibility-verdict | replace with: real screenshot of a program eligibility check, light theme, landscape - household income compared to a program's income limit, with verified and unverified amounts distinguishable and the eligible verdict visible. Placeholder: stylized HTML recreation of the eligibility check. --}}
+            {{-- IMAGE SLOT: income-eligibility-verdict | filled 2026-09-05 with real screenshots: img/screens/income-verdict (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Eligibility check: Energy Assistance</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-elig">
-                            <div class="elig-head">
-                                <div>
-                                    <strong>Energy Assistance income rule</strong>
-                                    <span class="elig-meta">200% of FPL &middot; household of 4 &middot; Marion County, Oregon</span>
-                                </div>
-                                <div class="elig-limit">$64,500<span>Program limit</span></div>
-                            </div>
-                            <div class="elig-row">
-                                <div><span class="who">Head of household</span><span class="src">Employment &middot; paystub attached</span></div>
-                                <span class="elig-amt">$1,840/mo</span>
-                                <span class="tag tag--verified">Verified</span>
-                            </div>
-                            <div class="elig-row">
-                                <div><span class="who">Adult member</span><span class="src">Self-employment &middot; proof attached</span></div>
-                                <span class="elig-amt">$760/mo</span>
-                                <span class="tag tag--verified">Verified</span>
-                            </div>
-                            <div class="elig-row">
-                                <div><span class="who">Adult member</span><span class="src">Gig work &middot; entered on public application</span></div>
-                                <span class="elig-amt">$520/mo</span>
-                                <span class="tag tag--pending">Self-reported</span>
-                            </div>
-                            <div class="elig-row">
-                                <div><span class="who">Teen member</span><span class="src">Part-time job &middot; minor income off for this program</span></div>
-                                <span class="elig-amt">$410/mo</span>
-                                <span class="tag tag--excluded">Not counted</span>
-                            </div>
-                            <div class="pool-meter">
-                                <div class="pool-row"><strong>Verified household income, annualized</strong><span>$31,200 of $64,500 limit</span></div>
-                                <div class="pool-track"><div class="pool-fill" style="width:49%"></div></div>
-                            </div>
-                            <div class="elig-verdict">
-                                <span class="badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>Under the limit: eligible</span>
-                                <span class="verdict-note">Self-reported income counts once staff verify it.</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Income and eligibility</span></div>
+                    @include('site::partials.screen', ['name' => 'income-verdict', 'alt' => 'An income and eligibility panel: one earned income source at Safeway with three records, monthly, an estimated annual income of 28,355.08, household size 5, maximum income allowed 29,600.00, a difference of 1,244.92 and an Under Limit verdict', 'width' => 1170, 'height' => 276])
                 </div>
-                <figcaption class="ui-caption">An illustration of a program eligibility check: verified income counted, self-reported income held for staff review, minor income excluded by the program's rule, and the household total compared to the program's limit.</figcaption>
+                <figcaption class="ui-caption">The eligibility math on a test record: income sources annualized, the household size, the program&rsquo;s maximum allowed income, and the verdict, here under the limit by 1,244.92.</figcaption>
             </figure>
         </div>
     </section>

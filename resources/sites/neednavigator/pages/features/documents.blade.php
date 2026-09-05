@@ -74,33 +74,13 @@
     {{-- ================= Document Inbox UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: documents-inbox-triage | replace with: real screenshot of the Document Inbox triage screen, light theme, landscape - the queue of incoming scans on the left, one file previewed on the right with its client, document type, and folder fields filled in. Placeholder: stylized HTML recreation of the triage screen. --}}
+            {{-- IMAGE SLOT: documents-inbox-triage | filled 2026-09-05 with real screenshots: img/screens/document-inbox (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Document Inbox: this morning's scans</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-docinbox">
-                            <div class="di-queue">
-                                <div class="di-queue-head">Inbox <span>6 to file</span></div>
-                                <div class="di-item is-active"><span>scan_0412.pdf</span><span class="di-src">Scanner</span></div>
-                                <div class="di-item"><span>scan_0413.pdf</span><span class="di-src">Scanner</span></div>
-                                <div class="di-item"><span>paystub-march.jpg</span><span class="di-src">SFTP</span></div>
-                                <div class="di-item"><span>lease-2026.pdf</span><span class="di-src">SFTP</span></div>
-                            </div>
-                            <div class="di-detail">
-                                <div class="di-preview"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                                <div class="di-fields">
-                                    <div class="di-field"><span class="di-label">Client</span><span class="di-value di-match">Client record selected <span>&#10003;</span></span></div>
-                                    <div class="di-field"><span class="di-label">Type</span><span class="di-value">Utility bill <span class="di-caret">&#9662;</span></span></div>
-                                    <div class="di-field"><span class="di-label">Folder</span><span class="di-value">Energy Assistance <span class="di-caret">&#9662;</span></span></div>
-                                    <div class="di-field"><span class="di-label">Attach to</span><span class="di-value">Need (utility shut-off) <span class="di-caret">&#9662;</span></span></div>
-                                    <div class="di-actions"><span class="di-btn">File it</span><span class="di-btn is-ghost">Skip</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Document Inbox</span></div>
+                    @include('site::partials.screen', ['name' => 'document-inbox', 'alt' => 'The Document Inbox: fifty files awaiting processing listed on the left with sizes and times, one PDF selected and previewed on the right with program, document type and file name fields, an individual search, and a Process Document button', 'width' => 1656, 'height' => 785])
                 </div>
-                <figcaption class="ui-caption">An illustration of the Document Inbox triage screen: incoming scans queued on the left, one previewed and filed to a client with a document type and folder.</figcaption>
+                <figcaption class="ui-caption">The Document Inbox on a test instance: this morning&rsquo;s scans queued on the left, the selected file previewed on the right, and the three steps that file it, a program and document type, then the person it belongs to.</figcaption>
             </figure>
         </div>
     </section>

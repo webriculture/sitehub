@@ -70,52 +70,13 @@
     {{-- ================= Distribution-day grid UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: fbca-distribution-grid | replace with: real screenshot of the Quick Forms submissions grid worked during a distribution day, light theme, landscape - match badges, household details, and request statuses visible. Placeholder: stylized HTML recreation of the grid. --}}
+            {{-- IMAGE SLOT: fbca-distribution-grid | filled 2026-09-05 with real screenshots: img/screens/pantry-intake-grid (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Quick Forms: Saturday distribution check-in</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-fooddist">
-                            <div class="fd-live"><i></i>2 staff working this grid</div>
-                            <table>
-                                <thead>
-                                    <tr><th scope="col">Checked in</th><th scope="col">Household</th><th scope="col">Match</th><th scope="col">Receiving</th><th scope="col">Status</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>9:02 a.m.</td>
-                                        <td><strong>Household of 4</strong> · returning</td>
-                                        <td><span class="fd-badge is-match">Exact match</span></td>
-                                        <td>Food box (large)</td>
-                                        <td><span class="fd-status">Finalized</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>9:04 a.m.</td>
-                                        <td><strong>Household of 2</strong></td>
-                                        <td><span class="fd-badge is-probable">Probable – confirm</span></td>
-                                        <td>Food box (small)</td>
-                                        <td><span class="fd-status">Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>9:07 a.m.</td>
-                                        <td><strong>Household of 1</strong> · first visit</td>
-                                        <td><span class="fd-badge is-new">New individual</span></td>
-                                        <td>Food box + hygiene kit</td>
-                                        <td><span class="fd-status">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>9:09 a.m.</td>
-                                        <td><strong>Household of 5</strong> · returning</td>
-                                        <td><span class="fd-badge is-match">Exact match</span></td>
-                                        <td>Food box (large), diapers</td>
-                                        <td><span class="fd-status">Approved</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Quick Forms: Program Intake Form</span></div>
+                    @include('site::partials.screen', ['name' => 'pantry-intake-grid', 'alt' => 'The Quick Forms grid for a program intake form: rows of applicants with created time, individual match state, submitter, name, date of birth, services requested such as Food Pantry and EFA, phone, email and address, with two staff viewing', 'width' => 1681, 'height' => 589])
                 </div>
-                <figcaption class="ui-caption">An illustration of the live submissions grid on a distribution morning: each row carries its match result, the household, what they received, and the request's status.</figcaption>
+                <figcaption class="ui-caption">The submissions grid on a test instance during intake: each row carries its match state, a linked person, a new-person marker or a probable match to confirm, alongside what each household asked for. Two staff are in the grid at once.</figcaption>
             </figure>
         </div>
     </section>

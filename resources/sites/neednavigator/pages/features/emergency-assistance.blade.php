@@ -74,13 +74,13 @@
     {{-- ================= Voucher UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: emergency-assistance-voucher | filled 2026-09-04 with a real screenshot: img/screens/need-status-timeline (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            {{-- IMAGE SLOT: emergency-assistance-voucher | filled 2026-09-04 with a real screenshot: img/screens/need-status-timeline, from efa2 (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
                 <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>Viewing a need</span></div>
-                    @include('site::partials.screen', ['name' => 'need-status-timeline', 'alt' => 'An assistance request: program, need type, the person, who entered it, amount, recipient organization, a status timeline with Ready for Review reached, and the rental assistance form and funding allocation below', 'width' => 1665, 'height' => 880])
+                    @include('site::partials.screen', ['name' => 'need-status-timeline', 'alt' => 'An assistance request: program, need type, the person, who entered it, amount, recipient organization, a status timeline with Ready for Review reached, the emergency financial assistance form below, and a Messages thread on the right where a colleague asks for income documentation and later reports the request approved', 'width' => 1656, 'height' => 876])
                 </div>
-                <figcaption class="ui-caption">A live assistance request on a test instance: the program and resource, the amount, the recipient organization, the status timeline with the date each step was reached, and the request&rsquo;s own form and funding-pool allocation directly below it.</figcaption>
+                <figcaption class="ui-caption">A live assistance request on a test instance: the program and resource, the amount, the recipient organization, the status timeline with the date each step was reached, the request&rsquo;s own form directly below it, and the message thread that lives on the request, where a colleague asks for income documentation and comes back with the answer.</figcaption>
             </figure>
         </div>
     </section>

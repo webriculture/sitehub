@@ -70,49 +70,13 @@
     {{-- ================= Household panel UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: households-panel | replace with: real screenshot of a household record, light theme, landscape - member list with the head-of-household badge, the relationship matrix (with at least one outside-household relationship), and the address-change sync prompt offering to copy address/phone/housing status to selected members. Test data only, no real client names. Placeholder: stylized HTML recreation of the household panel. --}}
+            {{-- IMAGE SLOT: households-panel | filled 2026-09-05 with a real screenshot: img/screens/household-edit (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Household: family of four</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-household">
-                            <div>
-                                <div class="hh-members">
-                                    <span class="hh-member"><span class="hh-avatar">P</span>Parent A <span class="hh-badge">Head of household</span></span>
-                                    <span class="hh-member"><span class="hh-avatar">P</span>Parent B</span>
-                                    <span class="hh-member"><span class="hh-avatar">C</span>Child (9)</span>
-                                    <span class="hh-member"><span class="hh-avatar">C</span>Child (6)</span>
-                                </div>
-                                <div class="hh-matrix">
-                                    <table>
-                                        <thead>
-                                            <tr><th scope="col">Relationships</th><th scope="col">Parent A</th><th scope="col">Parent B</th><th scope="col">Child (9)</th><th scope="col">Child (6)</th></tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr><th scope="row">Parent A</th><td class="hh-self">&ndash;</td><td>Spouse</td><td>Parent</td><td>Parent</td></tr>
-                                            <tr><th scope="row">Parent B</th><td>Spouse</td><td class="hh-self">&ndash;</td><td>Parent</td><td>Parent</td></tr>
-                                            <tr><th scope="row">Child (9)</th><td>Child</td><td>Child</td><td class="hh-self">&ndash;</td><td>Sibling</td></tr>
-                                            <tr><th scope="row">Child (6)</th><td>Child</td><td>Child</td><td>Sibling</td><td class="hh-self">&ndash;</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="hh-outside">+ Outside the household: <strong>Grandparent</strong>, grandparent of Child (9) and Child (6)</div>
-                            </div>
-                            <div class="hh-sync">
-                                <div class="hh-sync-head">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v5h5"/><path d="M4.6 9a8 8 0 1 1-.6 4"/></svg>
-                                    Address updated: Parent A
-                                </div>
-                                <p>Copy the new address, phone, and housing status to:</p>
-                                <div class="hh-check"><span class="hh-box">&#10003;</span>Parent B</div>
-                                <div class="hh-check"><span class="hh-box">&#10003;</span>Child (9)</div>
-                                <div class="hh-check"><span class="hh-box">&#10003;</span>Child (6)</div>
-                                <div class="hh-actions"><span class="hh-btn">Update selected</span><span class="hh-btn is-ghost">Not now</span></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Edit household</span></div>
+                    @include('site::partials.screen', ['name' => 'household-edit', 'alt' => 'Editing a household: the Gamgee Family with Samwise Gamgee as head of household, four member cards, a relationships panel setting how Merry, Pippin and Sam relate to Frodo Baggins, an Add Member search, and a Manage ROI panel with a PDF and an expiration date', 'width' => 1667, 'height' => 637])
                 </div>
-                <figcaption class="ui-caption">An illustration of the household panel: four members with a designated head of household, the relationship matrix (including a grandparent outside the household), and the one-step prompt to copy an address change to selected members.</figcaption>
+                <figcaption class="ui-caption">A household on a test instance: the head of household, a card for each member, and the relationships panel that records how everyone relates to the selected person. The release of information lives on the same screen, with its expiration date, and covers the household through its head.</figcaption>
             </figure>
         </div>
     </section>

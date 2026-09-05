@@ -70,13 +70,13 @@
     {{-- ================= Funding pools UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: caa-funding-pools | filled 2026-09-04 with a real screenshot: img/screens/funding-pools (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            {{-- IMAGE SLOT: caa-funding-pools | filled 2026-09-04 with a real screenshot: img/screens/funding-pools-fy, composited from funding-pools3 without its "Community Action Agency DAP" row (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
                 <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>Funding pools</span></div>
-                    @include('site::partials.screen', ['name' => 'funding-pools', 'alt' => 'Three funding pools with amount spent against total, percentage bars, number of requests drawn from each, and start and end dates', 'width' => 1360, 'height' => 296])
+                    @include('site::partials.screen', ['name' => 'funding-pools-fy', 'alt' => 'Three fiscal-year funding pools: a utilities fund at 87 percent spent with 12 requests, a state family-preservation fund at 62 percent with 35 requests, and a reimbursements pool at zero, each with start and end dates', 'width' => 1373, 'height' => 284])
                 </div>
-                <figcaption class="ui-caption">Funding pools on a test instance: each pool&rsquo;s spend against its total, how many requests have drawn on it, and the date range it covers.</figcaption>
+                <figcaption class="ui-caption">Fiscal-year funding pools on a test instance: each pool&rsquo;s spend against its total, how many requests have drawn on it, and the year it covers, with a reimbursement pool that has no ceiling.</figcaption>
             </figure>
         </div>
     </section>

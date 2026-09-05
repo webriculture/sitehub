@@ -538,8 +538,9 @@ img, svg { max-width: 100%; height: auto; }
 /* The dialog shrink-wraps its content so the UA's margin:auto centres it; a
    stretched width was what left the image off-centre and the close button offscreen. */
 .lightbox {
+  position: fixed; inset: 0; margin: auto;            /* restated so no UA default can stretch it */
   border: 0; padding: 0; background: transparent;
-  width: fit-content; height: fit-content; margin: auto;
+  width: fit-content; height: fit-content;
   max-width: min(96vw, 1800px); max-height: 94vh; overflow: visible;
   text-align: center;
 }

@@ -88,7 +88,7 @@
     <link rel="apple-touch-icon" href="/sites/neednavigator/img/apple-touch-icon.png">
     <link rel="preload" href="/sites/neednavigator/fonts/source-serif-4-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/sites/neednavigator/fonts/public-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/sites/neednavigator/css/site.css">
+    <link rel="stylesheet" href="/sites/neednavigator/css/site.css?v={{ filemtime(public_path('sites/neednavigator/css/site.css')) }}">
     <script type="application/ld+json">{!! json_encode($orgJsonLd, JSON_HEX_TAG | JSON_UNESCAPED_UNICODE) !!}</script>
     <script type="application/ld+json">{!! json_encode($appJsonLd, JSON_HEX_TAG | JSON_UNESCAPED_UNICODE) !!}</script>
     @yield('structured')
@@ -168,6 +168,6 @@
         <img alt="" data-lightbox-img>
         <p class="lightbox-caption" data-lightbox-caption></p>
     </dialog>
-    <script defer src="/sites/neednavigator/js/site.js"></script>
+    <script defer src="/sites/neednavigator/js/site.js?v={{ filemtime(public_path('sites/neednavigator/js/site.js')) }}"></script>
 </body>
 </html>

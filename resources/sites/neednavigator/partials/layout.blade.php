@@ -82,10 +82,10 @@
     <meta name="twitter:title" content="@yield('title', 'Need Navigator | Case Management for Human Services')">
     <meta name="twitter:description" content="@yield('description', 'Case management software built with human-services agencies: client records, assistance, reporting, and transparent per-seat pricing.')">
     <meta name="twitter:image" content="{{ $ogImage }}">
-    <meta name="theme-color" content="#14382a">
-    <link rel="icon" href="/sites/neednavigator/img/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/sites/neednavigator/img/favicon-32.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="/sites/neednavigator/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#1e4d3a">
+    <link rel="icon" href="/sites/neednavigator/img/favicon.svg?v={{ filemtime(public_path('sites/neednavigator/img/favicon.svg')) }}" type="image/svg+xml">
+    <link rel="icon" href="/sites/neednavigator/img/favicon-32.png?v={{ filemtime(public_path('sites/neednavigator/img/favicon-32.png')) }}" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/sites/neednavigator/img/apple-touch-icon.png?v={{ filemtime(public_path('sites/neednavigator/img/apple-touch-icon.png')) }}">
     <link rel="preload" href="/sites/neednavigator/fonts/source-serif-4-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/sites/neednavigator/fonts/public-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/sites/neednavigator/css/site.css?v={{ filemtime(public_path('sites/neednavigator/css/site.css')) }}">

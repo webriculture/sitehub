@@ -405,6 +405,9 @@ img, svg { max-width: 100%; height: auto; }
 @media (max-width: 560px) {
   .module-links a { grid-template-columns: minmax(0, 1fr) auto; }
   .module-links a > span:not(.arrow) { grid-column: 1 / -1; }
+  /* Keep the arrow on the title row, at the right; auto-placement had been
+     dropping it onto a third line on its own once the description spanned the row. */
+  .module-links .arrow { grid-column: 2; grid-row: 1; justify-self: end; }
 }
 
 /* ---- Audience router ----------------------------------------------------- */

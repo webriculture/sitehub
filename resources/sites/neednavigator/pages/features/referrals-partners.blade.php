@@ -78,7 +78,7 @@
             <figure class="shot-duo" style="margin:0">
                 <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>Referral: print preview</span></div>
-                    @include('site::partials.screen', ['name' => 'printed-referral', 'alt' => 'A printed referral from Harbor Hope: client information, the referring provider and program, a reference number, referral details, the organization and contact it is referred to with the reason, and a QR code captioned please scan to confirm client arrival', 'width' => 628, 'height' => 792])
+                    @include('site::partials.screen', ['name' => 'printed-referral', 'alt' => 'A printed referral from Harbor Hope: client information, the referring provider and program, a reference number, referral details, the organization and contact it is referred to with the reason, and a QR code captioned please scan to confirm client arrival', 'width' => 628, 'height' => 830])
                 </div>
                 <figcaption class="ui-caption">A printed referral on a test instance: who is being referred and by whom, where they are headed and why, and the QR code the receiving provider scans to confirm the client arrived, no login and no account. The scan closes the loop with a timestamp.</figcaption>
             </figure>

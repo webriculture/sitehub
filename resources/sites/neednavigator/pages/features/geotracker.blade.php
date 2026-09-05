@@ -70,13 +70,13 @@
     {{-- ================= Supervisor map UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: geotracker-supervisor-map | filled 2026-09-04 with a real screenshot: img/screens/geotracker-map (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            {{-- IMAGE SLOT: geotracker-supervisor-map | filled 2026-09-04 with a real screenshot: img/screens/geotracker-map, from geolocation.png (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
                 <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>GeoTracker: supervisor map</span></div>
-                    @include('site::partials.screen', ['name' => 'geotracker-map', 'alt' => 'A map of Salem, Oregon with location logs clustered into numbered markers and place pins, beside a filter panel for task list, place, user, individual, and date range, with apply and export buttons', 'width' => 1680, 'height' => 709])
+                    @include('site::partials.screen', ['name' => 'geotracker-map', 'alt' => 'A map of Salem, Oregon with location logs gathered into numbered clusters and single place pins, beside a filter panel for task list, place, user, individual and date range, with apply and export buttons', 'width' => 1677, 'height' => 736])
                 </div>
-                <figcaption class="ui-caption">The GeoTracker supervisor map on a test instance: location logs across Salem clustered into counted markers and named places, with filters for task list, place, worker, client, and date range, and an export of the underlying logs.</figcaption>
+                <figcaption class="ui-caption">The GeoTracker supervisor map on a test instance: a team&rsquo;s location logs across Salem gathered into counted clusters and place pins, with filters for task list, place, worker, client and date range, and an export of the underlying logs.</figcaption>
             </figure>
         </div>
     </section>

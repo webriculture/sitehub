@@ -6,6 +6,7 @@ namespace App\Mail;
 
 use App\Models\Site;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 
@@ -22,7 +23,11 @@ final class FormSubmissionReceived extends Mailable
         $subject = $this->site->settings['form_subject']
             ?? $this->site->name.' website';
 
+        // The address stays platform-wide (it is what the SMTP relay is
+        // verified for); the display name is the site's, so a message from
+        // one client's form never arrives signed with another client's name.
         return new Envelope(
+            from: new Address((string) config('mail.from.address'), $this->site->name),
             subject: $subject.' | New message',
             replyTo: isset($this->payload['email']) ? [$this->payload['email']] : [],
         );

@@ -31,7 +31,8 @@ it('stores a submission and emails the configured recipients', function (): void
     expect(Submission::query()->count())->toBe(1)
         ->and(Submission::query()->first()->payload['name'])->toBe('Maria Lopez');
 
-    Mail::assertSent(FormSubmissionReceived::class, fn ($mail) => $mail->hasTo('staff@example.org'));
+    Mail::assertSent(FormSubmissionReceived::class, fn ($mail) => $mail->hasTo('staff@example.org')
+        && $mail->hasFrom(config('mail.from.address'), $site->name)); // signed with this site's name, never the platform default
 });
 
 it('pretends success for honeypot submissions without storing anything', function (): void {

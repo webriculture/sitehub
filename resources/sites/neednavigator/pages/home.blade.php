@@ -19,8 +19,8 @@
                 <p class="hero-note">$25 per user per month, published right on the <a href="/pricing">pricing page</a>. Every agency runs on its own private database.</p>
             </div>
             <div class="hero-art">
-                {{-- IMAGE SLOT: home-hero | filled 2026-09-04 with a real screenshot: img/screens/hero-jimmy-calvert (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
-                @include('site::partials.screen', ['name' => 'hero-jimmy-calvert', 'alt' => 'A client profile card in Need Navigator: a black and white photo of a scowling baby, Jimmy Calvert, age 2, with an insurance renewal reminder and the demographic fields his agency chose to show', 'width' => 529, 'height' => 698, 'class' => 'hero-card', 'eager' => true])
+                {{-- IMAGE SLOT: home-hero | filled 2026-09-04 with a real screenshot: img/screens/hero-sonia-garcia (source in /home/ubuntu/sitehub-image-sources/neednavigator). hero-jimmy-calvert is kept alongside as the alternate: swap the name, width and height below to bring him back. --}}
+                @include('site::partials.screen', ['name' => 'hero-sonia-garcia', 'alt' => 'A client profile card in Need Navigator: a smiling woman, Sonia Garcia-Johnson, age 27, with her household badge, an Add Insurance button, and the first rows of the profile fields her agency chose to show', 'width' => 588, 'height' => 654, 'class' => 'hero-card', 'eager' => true])
             </div>
         </div>
     </section>

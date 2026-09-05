@@ -162,6 +162,12 @@
 
     <x-accessibility-toolbar />
     <x-scroll-to-top />
+    {{-- Lightbox for product screenshots: opened by site.js from any a[data-lightbox]; without JS the link opens the PNG. --}}
+    <dialog class="lightbox" data-lightbox-dialog aria-label="Enlarged screenshot">
+        <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">&times;</button>
+        <img alt="" data-lightbox-img>
+        <p class="lightbox-caption" data-lightbox-caption></p>
+    </dialog>
     <script defer src="/sites/neednavigator/js/site.js"></script>
 </body>
 </html>

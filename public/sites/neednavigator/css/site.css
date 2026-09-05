@@ -518,6 +518,37 @@ img, svg { max-width: 100%; height: auto; }
   letter-spacing: 0.02em;
 }
 .uiframe-body { padding: clamp(0.9rem, 2vw, 1.4rem); overflow-x: auto; }
+/* ---- Screenshot enlarge link + lightbox ------------------------------------ */
+.shot-zoom { display: block; position: relative; text-decoration: none; }
+.shot-zoom::after {
+  content: 'Enlarge';
+  position: absolute; right: 0.65rem; bottom: 0.65rem;
+  font-family: var(--font-body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.38rem 0.6rem; border-radius: 999px;
+  background: rgba(20, 56, 42, 0.86); color: #fff;
+  pointer-events: none; opacity: 0.85; transition: opacity 140ms ease;
+}
+.shot-zoom:hover::after, .shot-zoom:focus-visible::after { opacity: 1; }
+.shot-zoom:focus-visible { outline: var(--focus-ring); outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) { .shot-zoom::after { transition: none; } }
+
+.lightbox { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; width: auto; overflow: visible; }
+.lightbox::backdrop { background: rgba(14, 40, 30, 0.86); }
+.lightbox img { display: block; max-width: min(96vw, 1800px); max-height: 84vh; width: auto; height: auto; border-radius: 8px; background: #fff; box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.6); }
+.lightbox-caption { margin: 0.7rem auto 0; max-width: 70ch; text-align: center; font-size: var(--step--1); color: var(--paper-on-deep); }
+.lightbox-close {
+  position: absolute; top: -0.4rem; right: -0.4rem; transform: translate(50%, -50%);
+  width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 0; cursor: pointer;
+  font: 400 1.5rem/1 var(--font-body); background: #fff; color: var(--evergreen-800);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+.lightbox-close:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+@media (max-width: 600px) { .lightbox-close { top: 0.4rem; right: 0.4rem; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox[open] { animation: lightbox-in 160ms ease-out; }
+  @keyframes lightbox-in { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: none; } }
+}
+
 /* Real screenshots sit edge to edge under the frame bar (no .uiframe-body padding). */
 .uiframe-shot { display: block; width: 100%; height: auto; }
 /* Portrait screenshot beside its explanation, e.g. the client dossier card. */

@@ -24,6 +24,28 @@
     });
   }
 
+  // Screenshot lightbox: any a[data-lightbox] opens the shared <dialog>;
+  // the link itself points at the PNG, so it still works without JS.
+  var dlg = document.querySelector('[data-lightbox-dialog]');
+  if (dlg && typeof dlg.showModal === 'function') {
+    var dlgImg = dlg.querySelector('[data-lightbox-img]');
+    var dlgCap = dlg.querySelector('[data-lightbox-caption]');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-lightbox]');
+      if (!a) return;
+      e.preventDefault();
+      var img = a.querySelector('img');
+      dlgImg.src = (img && img.currentSrc) || a.href;
+      dlgImg.alt = img ? img.alt : '';
+      dlgCap.textContent = img ? img.alt : '';
+      dlg.showModal();
+    });
+    dlg.addEventListener('click', function (e) {
+      if (e.target === dlg || e.target.closest('[data-lightbox-close]')) dlg.close();
+    });
+    dlg.addEventListener('close', function () { dlgImg.removeAttribute('src'); });
+  }
+
   // Gentle scroll-in reveal; disabled for reduced motion, absent without IO
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!('IntersectionObserver' in window) || reduced) {

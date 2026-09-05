@@ -88,9 +88,9 @@
                     <figure style="margin:0">
                 <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>Resource Center dashboard</span></div>
-                    @include('site::partials.screen', ['name' => 'dashboard', 'alt' => 'The configurable program dashboard: a funding pool widget with amount spent and remaining, a list of needs pending approval, an emergency financial assistance submissions grid, and a referrals list', 'width' => 1665, 'height' => 870])
+                    @include('site::partials.screen', ['name' => 'dashboard', 'alt' => 'The configurable program dashboard: a funding pool widget for the Second Breakfast Fund with amount spent and remaining, a list of needs pending approval for emergency financial assistance, a gas voucher and a food box, an emergency financial assistance submissions grid, and a referrals list covering homelessness risk, food insecurity, employment, benefits, counseling and transportation', 'width' => 1654, 'height' => 873])
                 </div>
-                <figcaption class="ui-caption">The configurable program dashboard on a test instance: a funding-pool widget with spend and remaining balance, the needs waiting for approval, the emergency assistance submissions grid, and pending referrals, all on one board the program shares.</figcaption>
+                <figcaption class="ui-caption">The configurable program dashboard on a test instance: a funding-pool widget with spend and remaining balance, the needs waiting for approval, the emergency assistance submissions grid, and pending referrals, all on one board the program shares. Click any screenshot on the site to enlarge it.</figcaption>
             </figure>
                 </div>
             </div>

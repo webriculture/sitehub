@@ -160,6 +160,7 @@ All imagery generated as inline SVG / CSS compositions: one 1.5px-stroke icon se
 | nginx: gzip_types, http2, static cache headers | Before Lighthouse sign-off | CSS/JS/SVG currently ship uncompressed over HTTP/1.1 with no cache policy — the main Lighthouse-performance risk, and it's server config, not page weight. Needs sudo. |
 | `responsecache:clear` | After any domain/settings change | Cached 200s (incl. robots/sitemap) persist up to 7 days otherwise. |
 | nginx vhost + certbot for nn.webriculture.com | Staging | Standard shared snippet. |
+| **DNS cutover** | ✅ **Done 2026-09-04 17:34 PT** | Dave moved the apex A record (www is a CNAME to it) from the legacy box 50.112.240.166 to 52.25.76.118. Production vhost `sites-available/www.neednavigator.com` (port-80 template staged, enabled pre-flip); a watcher polled Cloudflare's authoritative NS and ran certbot once on the change: cert issued 00:34 UTC for www + apex, expires 2026-12-03, auto-renew registered, http→https redirect added by certbot. Verified live: www 200, apex 301→www, legacy `/pages/*` 302 via the map, `/pages/home` 301. Response cache cleared. **Follow-ups:** confirm www.neednavigator.com is on the Turnstile allowed-hostname list by submitting the live form once (staging form verified 2026-09-04, live not yet); submit the sitemap in Search Console; unset `redirect_status` (302→301) around 2026-09-18; legacy box keeps serving nothing for www but stays up for rollback. |
 
 ---
 

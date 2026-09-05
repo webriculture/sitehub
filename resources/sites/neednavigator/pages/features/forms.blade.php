@@ -71,40 +71,23 @@
         </div>
     </section>
 
-    {{-- ================= Translation editor UI representation ================= --}}
+    {{-- ================= Form builder + translation editor screenshots ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: forms-translation-editor | replace with: real screenshot of the side-by-side English/Spanish translation editor, light theme, landscape - one form section with field label, helper text, and answer options visible in both languages, plus the AI-baseline/hand-edit provenance. No real client data. Placeholder: stylized HTML recreation of the editor. --}}
+            {{-- IMAGE SLOT: forms-translation-editor | filled 2026-09-05 with real screenshots: img/screens/form-builder and img/screens/translation-editor (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Translation editor: Housing intake &middot; Espa&ntilde;ol</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-translate">
-                            <div class="tr-meta">
-                                <span class="tr-chip tr-chip--ai">AI baseline &middot; drafted Friday</span>
-                                <span>Last hand edit: Monday 9:40 a.m. &middot; bilingual staff</span>
-                                <span>2 unsaved changes</span>
-                            </div>
-                            <div class="tr-grid">
-                                <div class="tr-head">English &middot; source</div>
-                                <div class="tr-head">Espa&ntilde;ol &middot; Spanish</div>
-                                <div class="tr-cell tr-cell--section">Section &middot; Household income</div>
-                                <div class="tr-cell tr-cell--section">Secci&oacute;n &middot; Ingresos del hogar</div>
-                                <div class="tr-cell"><span class="tr-kind">Field label</span>Does anyone in your household have income from work?</div>
-                                <div class="tr-cell"><span class="tr-kind">Etiqueta <em class="tr-chip tr-chip--edited">hand-edited</em></span>&iquest;Alguien en su hogar tiene ingresos de trabajo?</div>
-                                <div class="tr-cell"><span class="tr-kind">Helper text</span>Count wages, self-employment, and occasional work.</div>
-                                <div class="tr-cell"><span class="tr-kind">Texto de ayuda</span>Cuente sueldos, trabajo por cuenta propia y trabajos ocasionales.</div>
-                                <div class="tr-cell"><span class="tr-kind">Answer options</span>
-                                    <span class="tr-opts"><span class="tr-opt">Yes</span><span class="tr-opt">No</span><span class="tr-opt">Prefer not to answer</span></span>
-                                </div>
-                                <div class="tr-cell"><span class="tr-kind">Opciones</span>
-                                    <span class="tr-opts"><span class="tr-opt">S&iacute;</span><span class="tr-opt">No</span><span class="tr-opt">Prefiero no contestar</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe shot-medium">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Edit form</span></div>
+                    @include('site::partials.screen', ['name' => 'form-builder', 'alt' => 'The form editor: program checkboxes with Homeless Prevention and HRSN Program ticked, the form title Emergency Financial Assistance Application, toggles for showing form data on the profile and allowing household submissions, and a Contact Information section listing its fields with a required flag on each', 'width' => 1305, 'height' => 877])
                 </div>
-                <figcaption class="ui-caption">An illustration of the side-by-side translation editor: the English source on the left, the Spanish version on the right, with the AI baseline and last hand edit tracked per language.</figcaption>
+                <figcaption class="ui-caption">The form builder on a test instance: which programs the form belongs to, whether its answers show on the client profile, whether a household can submit it together, and the fields of its first section with a required flag on each.</figcaption>
+            </figure>
+            <figure style="margin:1.4rem 0 0">
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Viewing Spanish translation</span></div>
+                    @include('site::partials.screen', ['name' => 'translation-editor', 'alt' => 'The translation editor for the Emergency Financial Assistance Application: generated by an AI model and initiated by a staff member, last modified by a staff member, with English on the left and editable Spanish on the right for the form title, a section title and a section description', 'width' => 1658, 'height' => 875])
+                </div>
+                <figcaption class="ui-caption">The side-by-side translation editor on a test instance: the AI draft on record with who generated it and when, then English on the left and editable Spanish on the right, section by section, saved as one set.</figcaption>
             </figure>
         </div>
     </section>

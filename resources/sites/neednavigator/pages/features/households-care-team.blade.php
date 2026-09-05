@@ -133,6 +133,20 @@
     </section>
 
     {{-- ================= Vignette ================= --}}
+    {{-- ================= Care team panel screenshot ================= --}}
+    <section class="section section--surface">
+        <div class="container">
+            {{-- IMAGE SLOT: care-team-panel | filled 2026-09-05 with a real screenshot: img/screens/care-team-panel (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            <figure class="shot-duo" style="margin:0">
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Client record: care team</span></div>
+                    @include('site::partials.screen', ['name' => 'care-team-panel', 'alt' => 'Three side panels from a client record: Care Team Members listing a counselor, a therapist at a partner organization marked with a globe, and a case worker, each with program and start date; a Relationships panel showing a spouse; and an income panel showing earned income from pizza delivery at 2,500 of 30,000', 'width' => 518, 'height' => 606])
+                </div>
+                <figcaption class="ui-caption">The care team on a client&rsquo;s record on a test instance: three members with their roles, programs and start dates, one of them a contact at a partner organization, marked with the globe. The client&rsquo;s relationships and income sources sit on the same record, a scroll away.</figcaption>
+            </figure>
+        </div>
+    </section>
+
     <section class="section section--wash">
         <div class="container">
             <aside class="vignette">

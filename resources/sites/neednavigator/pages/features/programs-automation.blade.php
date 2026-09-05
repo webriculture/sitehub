@@ -74,60 +74,13 @@
     {{-- ================= Smart Button composer UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: programs-smart-button-composer | replace with: real screenshot of the Smart Button composer admin screen, light theme, landscape - a button with a three-step action sequence (visit, need, referral), pre-set values, a template variable in a note field, and one prompt-at-click blank visible. Placeholder: stylized HTML recreation of the composer. --}}
+            {{-- IMAGE SLOT: programs-smart-button-composer | filled 2026-09-05 with real screenshots: img/screens/smart-button-composer (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Smart Button composer: Pantry visit + food box</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-smartbtn">
-                            <div class="sb-head">
-                                <span class="sb-preview"><i>FB</i> Pantry visit + food box</span>
-                                <span class="sb-head-meta">Text abbreviation &middot; Marked favorite &middot; Shows on client profiles</span>
-                            </div>
-                            <ol class="sb-steps">
-                                <li class="sb-step">
-                                    <span class="sb-num">1</span>
-                                    <div class="sb-body">
-                                        <strong>Create Visit</strong>
-                                        <span class="sb-chips">
-                                            <span class="sb-chip">Reason: Food pantry</span>
-                                            <span class="sb-chip">Duration: 15 min</span>
-                                            <span class="sb-chip">Form: Pantry check-in (embedded)</span>
-                                        </span>
-                                    </div>
-                                </li>
-                                <li class="sb-step">
-                                    <span class="sb-num">2</span>
-                                    <div class="sb-body">
-                                        <strong>Create Need</strong>
-                                        <span class="sb-chips">
-                                            <span class="sb-chip">Resource: Emergency food box</span>
-                                            <span class="sb-chip">Funding pool: Pantry grant</span>
-                                            <span class="sb-chip sb-chip--prompt">Quantity: ask at click</span>
-                                        </span>
-                                        <span class="sb-note">Note template: Food box provided to <em class="sb-var">Client name</em> on <em class="sb-var">Date</em></span>
-                                    </div>
-                                </li>
-                                <li class="sb-step">
-                                    <span class="sb-num">3</span>
-                                    <div class="sb-body">
-                                        <strong>Create Referral</strong>
-                                        <span class="sb-chips">
-                                            <span class="sb-chip">Reason: Food assistance follow-up</span>
-                                            <span class="sb-chip sb-chip--prompt">Organization: ask at click</span>
-                                        </span>
-                                    </div>
-                                </li>
-                            </ol>
-                            <div class="sb-foot">
-                                <span>Actions run in the order added</span>
-                                <span>Billing &amp; pool allocations land as if entered by hand</span>
-                                <span>Redirects to the created record</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe shot-medium">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Edit Smart Button action</span></div>
+                    @include('site::partials.screen', ['name' => 'smart-button-composer', 'alt' => 'Editing a Smart Button action titled Essential Items for the Drop-in items resource: supply options for diapers, baby wipes and a shower hygiene kit with a prompt-at-runtime toggle, transportation options for weekly and monthly bus passes with another, then status, quantity, amount and a description that uses template variables, beside a panel listing the variable fields', 'width' => 1295, 'height' => 878])
                 </div>
-                <figcaption class="ui-caption">An illustration of the Smart Button composer: three actions in sequence, pre-set values, template variables in a note, and two blanks that prompt the worker at click time.</figcaption>
+                <figcaption class="ui-caption">One action in a Smart Button on a test instance: the resource it creates, the options the worker is asked about at click time, and a description written with template variables that fill in the worker, the client, the resource and the program when the button runs.</figcaption>
             </figure>
         </div>
     </section>

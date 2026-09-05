@@ -49,13 +49,27 @@ final class PageController
             }
         }
 
-        // No template — honor the site's 301 map before 404ing, so legacy
+        // No template — honor the site's redirect map before 404ing, so legacy
         // URLs survive a redesign. Existing templates always win over the map.
         $target = $site?->redirectTarget('/'.$path);
 
         abort_if($target === null, 404);
 
-        return redirect($target, 301);
+        return redirect($target, $this->redirectStatus($site));
+    }
+
+    /**
+     * Status for redirect-map hits. 301 by default: a redesign is permanent.
+     * A site may set `redirect_status` to 302 for a soft cutover (browsers do
+     * not cache 302s, so a target can still be corrected) and drop it once the
+     * map has settled. Anything else falls back to 301. The platform-wide
+     * `/pages/home` rule above is deliberately not affected.
+     */
+    private function redirectStatus(?Site $site): int
+    {
+        $status = (int) ($site?->settings['redirect_status'] ?? 301);
+
+        return in_array($status, [301, 302], true) ? $status : 301;
     }
 
     /** @return array{?string, string} */

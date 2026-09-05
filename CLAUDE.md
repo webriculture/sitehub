@@ -25,7 +25,7 @@ Multi-tenant hub serving Webriculture client sites as code. One Laravel app, one
 - `sites:domain {slug} {hostname} --primary|--no-redirect`
 - `sites:feature {slug} {features...} [--disable]`
 - `sites:secret {slug} {key} [--unset]` — set (hidden prompt, never argv) or remove an encrypted site secret
-- `sites:setting {slug} {key} [value] [--json] [--unset]` — set or remove a non-secret setting (`locales`, `form_recipients`, `need_navigator_url` per-org NN host…)
+- `sites:setting {slug} {key} [value] [--json] [--unset]` — set or remove a non-secret setting (`locales`, `form_recipients`, `redirects`, `redirect_status` 301|302, `need_navigator_url` per-org NN host…)
 - `tenants:migrate [--site=] [--fresh]`
 
 ## Testing rules

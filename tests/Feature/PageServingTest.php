@@ -97,3 +97,25 @@ it('301s legacy URLs via the site redirect map, exact keys first then longest pr
     $this->get('http://site-a.test/courses')->assertNotFound(); // "/courses/*" needs something below it
     $this->get('http://site-a.test/about')->assertOk(); // existing templates always win over the map
 });
+
+it('sends 302 from the redirect map when a site opts into a soft cutover', function (): void {
+    $site = registerSite('site-a');
+    $site->update(['settings' => ['redirect_status' => 302, 'redirects' => ['/pages/old' => '/about']]]);
+
+    $this->get('http://site-a.test/pages/old')->assertStatus(302)->assertRedirect('/about');
+    $this->get('http://site-a.test/pages/home')->assertStatus(301); // platform rule, never per-site
+});
+
+it('reads redirect_status as sites:setting stores it, a string', function (): void {
+    $site = registerSite('site-a');
+    $site->update(['settings' => ['redirect_status' => '302', 'redirects' => ['/pages/old' => '/about']]]);
+
+    $this->get('http://site-a.test/pages/old')->assertStatus(302);
+});
+
+it('falls back to 301 for any redirect_status other than 301 or 302', function (): void {
+    $site = registerSite('site-a');
+    $site->update(['settings' => ['redirect_status' => 418, 'redirects' => ['/pages/old' => '/about']]]);
+
+    $this->get('http://site-a.test/pages/old')->assertStatus(301);
+});

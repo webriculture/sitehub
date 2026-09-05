@@ -45,6 +45,15 @@ Legacy URLs from the site being replaced get a 301 map in settings — exact pat
 php artisan sites:setting fransalem redirects '{"/pages/about":"/about","/courses/view/*":"/classes"}' --json
 ```
 
+Map hits send **301** by default. For a soft cutover, where a target might still be corrected (browsers cache 301s indefinitely, 302s not at all), set the map to 302 and remove the setting once it has settled:
+
+```bash
+php artisan sites:setting fransalem redirect_status 302
+php artisan sites:setting fransalem redirect_status --unset   # back to 301
+```
+
+`/pages/home` → `/` is a platform rule and is always 301.
+
 ## 3. Enable the features this client needs
 
 ```bash

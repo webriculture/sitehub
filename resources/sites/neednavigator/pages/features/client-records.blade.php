@@ -78,13 +78,13 @@
                 <h2>The one-page dossier</h2>
                 <p class="muted">Alerts, insurance, income, care team, relationships, and program enrollments up top; tabs for history, needs, visits, referrals, goals, billing, notes, and files below. A radial quick-action menu on every profile creates a visit, referral, need, goal, task, billing record, note, or field location log in one tap.</p>
             </div>
-            {{-- IMAGE SLOT: client-records-dossier | filled 2026-09-04 with a real screenshot: img/screens/client-dossier (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            {{-- IMAGE SLOT: client-records-dossier | filled 2026-09-05 with a real screenshot: img/screens/hero-jimmy-calvert, the Jimmy Calvert test record cropped above the address (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure class="shot-duo" style="margin:0">
                 <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>Client profile</span></div>
-                    @include('site::partials.screen', ['name' => 'client-dossier', 'alt' => 'The top of a client profile: a red alert banner reading This is an alert message about Roy, a profile photo, the name Roy Pike with date of birth and age, an Add Insurance button, and the first rows of profile fields', 'width' => 533, 'height' => 765])
+                    @include('site::partials.screen', ['name' => 'hero-jimmy-calvert', 'alt' => 'The top of a client profile: an Add Alert Message button, a black and white photo of a scowling baby, the name Jimmy Calvert with date of birth and age 2, a Renew OHP reminder with its expiry date beside an Add Insurance button, and the first rows of profile fields', 'width' => 529, 'height' => 698])
                 </div>
-                <figcaption class="ui-caption">The top of a client&rsquo;s one-page dossier on a test instance: an alert banner that shows the moment the record opens, the photo and identity, insurance at a glance, and the fields your agency chose to display. Below it on the real screen, tabs carry history, needs, visits, referrals, goals, billing, notes and files, and every change lands in the history timeline with who, when and what.</figcaption>
+                <figcaption class="ui-caption">The top of a client&rsquo;s one-page dossier on a test instance: the photo and identity, an insurance renewal that is coming due, the alert button for anything staff must see the moment the record opens, and the fields your agency chose to display. Below it on the real screen, tabs carry history, needs, visits, referrals, goals, billing, notes and files, and every change lands in the history timeline with who, when and what.</figcaption>
             </figure>
         </div>
     </section>

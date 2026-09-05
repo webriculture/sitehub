@@ -70,48 +70,13 @@
     {{-- ================= Cohort completion UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: parent-ed-solutions-cohort | replace with: real screenshot of a course offering's completion view, light theme, landscape - fidelity threshold visible, per-participant attendance, at least one credit override and one certificate-ready participant. Placeholder: stylized HTML recreation of a cohort completion list. --}}
+            {{-- IMAGE SLOT: parent-ed-solutions-cohort | filled 2026-09-04 with a real screenshot: img/screens/class-offering (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe ui-cohort" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Course completion: Tuesday evening cohort</span></div>
-                    <div class="uiframe-body">
-                        <div class="co-list">
-                            <div class="co-head">
-                                <span><strong>8 sessions</strong> · fidelity threshold: attend 6</span>
-                                <span>Session 8 of 8 complete</span>
-                            </div>
-                            <div class="co-row">
-                                <span class="co-name">Alex R.</span>
-                                <span class="co-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="d-off"></i></span>
-                                <span class="co-count">7 of 8</span>
-                                <span class="co-chip is-ready">Certificate ready</span>
-                            </div>
-                            <div class="co-row">
-                                <span class="co-name">Sam K.<small>Checked in with household</small></span>
-                                <span class="co-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                                <span class="co-count">8 of 8</span>
-                                <span class="co-chip is-ready">Certificate ready</span>
-                            </div>
-                            <div class="co-row">
-                                <span class="co-name">Jordan M.<small>Credit override, session 5</small></span>
-                                <span class="co-dots"><i></i><i></i><i></i><i></i><i class="d-ov"></i><i></i><i class="d-off"></i><i></i></span>
-                                <span class="co-count">6 of 8</span>
-                                <span class="co-chip is-ready">Certificate ready</span>
-                            </div>
-                            <div class="co-row">
-                                <span class="co-name">Morgan L.</span>
-                                <span class="co-dots"><i></i><i></i><i class="d-off"></i><i class="d-off"></i><i></i><i class="d-off"></i><i class="d-off"></i><i></i></span>
-                                <span class="co-count">4 of 8</span>
-                                <span class="co-chip is-below">Below threshold</span>
-                            </div>
-                            <div class="co-foot">
-                                <span class="co-generate">Generate certificates (PDF)</span>
-                                <span class="co-legend">Attendance marked from the facilitator's phone</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Class offering</span></div>
+                    @include('site::partials.screen', ['name' => 'class-offering', 'alt' => 'A published class offering: course name, format, location, dates and usual time, enrollment against capacity, the sessions generated on a weekly pattern each with a QR check-in, and metrics for enrollment, sessions held, and completion to fidelity', 'width' => 1665, 'height' => 877])
                 </div>
-                <figcaption class="ui-caption">An illustration of cohort completion: attendance counted against the course's fidelity threshold, a credit override where life intervened, and certificates ready for everyone who met the bar.</figcaption>
+                <figcaption class="ui-caption">A published class offering on a test instance: the course and its schedule, sessions generated from a weekly pattern with a QR check-in on each, and the counters a program director watches, enrollment against capacity, sessions held, and participants complete to fidelity.</figcaption>
             </figure>
         </div>
     </section>

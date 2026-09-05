@@ -67,37 +67,16 @@
         </div>
     </section>
 
-    {{-- ================= Group check-out UI representation ================= --}}
+    {{-- ================= Reservation screenshot ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: shelters-housing-checkout | replace with: real screenshot of a group reservation check-out - family checked out together, categorized exit reason selected, bed nights visible - light theme, landscape. Placeholder: stylized HTML recreation of a group check-out card. --}}
+            {{-- IMAGE SLOT: shelters-housing-checkout | filled 2026-09-04 with a real screenshot: img/screens/reservation-floor-plan (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Check out: Room 12 · household of 3</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-shexit">
-                            <div class="stay">
-                                <div>
-                                    <strong>Household of 3, Room 12</strong>
-                                    <span class="dates">Checked in Jan 14 · checking out Feb 24</span>
-                                </div>
-                                <span class="nights"><b>123</b> bed nights · 126 planned</span>
-                            </div>
-                            <div class="members">
-                                <div class="member"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>Adult<span>Bed 12-A</span></div>
-                                <div class="member"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>Adult<span>Bed 12-B</span></div>
-                                <div class="member"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>Child<span>Bed 12-C</span></div>
-                            </div>
-                            <div class="field">
-                                <label>Exit reason</label>
-                                <div class="select"><span class="chip">Housing</span>Moved to transitional housing<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
-                            </div>
-                            <div class="automation"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11L9.5 22 19 10h-6.5z"/></svg><span>Automation: closes the Emergency Shelter enrollment when the group checks out</span></div>
-                            <span class="doit">Check out whole group</span>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>New reservation</span></div>
+                    @include('site::partials.screen', ['name' => 'reservation-floor-plan', 'alt' => 'A new reservation form: program, permission level, status and shelter selects, an individual search, a strip of check-in dates, first and second floor tabs, and a floor plan with rooms 101 to 105 each showing four of four beds free', 'width' => 1665, 'height' => 740])
                 </div>
-                <figcaption class="ui-caption">An illustration of group check-out: a family of three leaving together in one action, a categorized exit reason, the stay's bed nights, and the automation that closes their enrollment.</figcaption>
+                <figcaption class="ui-caption">Booking a stay on a test instance: choose the program and shelter, find the person, pick the check-in date from the strip, then pick the bed from the floor plan, where each room shows how many beds are free. The same record carries the stay through check-out.</figcaption>
             </figure>
         </div>
     </section>

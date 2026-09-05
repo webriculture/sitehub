@@ -72,41 +72,13 @@
     {{-- ================= Report-builder UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: reporting-report-builder | replace with: real screenshot of a saved report definition in the report builder - record type, chosen columns, condition filters, PII redaction level, visibility, and a monthly "3rd Tuesday" scheduled delivery all visible; light theme, landscape. Placeholder: stylized HTML recreation of the definition card. --}}
+            {{-- IMAGE SLOT: reporting-report-builder | filled 2026-09-04 with a real screenshot: img/screens/report-builder (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Report builder – Board packet: Emergency assistance</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-repdef">
-                            <div class="rd-row">
-                                <span class="rd-label">Record type</span>
-                                <span class="rd-chips"><span class="rd-chip rd-chip--on">Needs</span><span class="rd-chip">Clients</span><span class="rd-chip">Visits</span><span class="rd-chip">Referrals</span><span class="rd-chip">+7 more</span></span>
-                            </div>
-                            <div class="rd-row">
-                                <span class="rd-label">Columns</span>
-                                <span class="rd-chips"><span class="rd-chip">Program</span><span class="rd-chip">Amount</span><span class="rd-chip">Funding pool</span><span class="rd-chip">Status</span><span class="rd-chip">Created</span></span>
-                            </div>
-                            <div class="rd-row">
-                                <span class="rd-label">Filters</span>
-                                <span class="rd-chips"><span class="rd-chip">Program is Emergency Rent Assistance</span><span class="rd-chip">Status is Finalized</span><span class="rd-chip">Created Jan 1 &ndash; Mar 31</span></span>
-                            </div>
-                            <div class="rd-row">
-                                <span class="rd-label">PII redaction</span>
-                                <span class="rd-val"><span class="rd-chip rd-chip--on">On</span> identifiers removed from the export</span>
-                            </div>
-                            <div class="rd-row">
-                                <span class="rd-label">Visibility</span>
-                                <span class="rd-val">Same program</span>
-                            </div>
-                            <div class="rd-row">
-                                <span class="rd-label">Schedule</span>
-                                <span class="rd-val">Monthly &middot; 3rd Tuesday &middot; 7:00 a.m. &middot; Email + in-app message</span>
-                            </div>
-                            <div class="rd-actions"><span class="rd-btn">Save definition</span><span class="rd-btn rd-btn--ghost">Export to Excel</span></div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Report builder</span></div>
+                    @include('site::partials.screen', ['name' => 'report-builder', 'alt' => 'The report builder: report type Forms, program Resource Center, permission level, a title, individual data set to Omit PII, the form, one row per submission, date and enrollment options, and two conditions, entered by user is me and date entered is last month, with download and save buttons', 'width' => 1333, 'height' => 720])
                 </div>
-                <figcaption class="ui-caption">An illustration of a saved report definition: record type, columns, condition filters, a PII (personally identifiable information) redaction level, visibility, and a monthly "3rd Tuesday" delivery schedule.</figcaption>
+                <figcaption class="ui-caption">The report builder on a test instance: a saved definition for last month&rsquo;s emergency assistance requests, one row per submission, with identifiers omitted, scoped to the current program enrollment, and two stacked conditions. Download the data, or save the definition and schedule it.</figcaption>
             </figure>
         </div>
     </section>

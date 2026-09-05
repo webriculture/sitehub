@@ -71,70 +71,16 @@
         </div>
     </section>
 
-    {{-- ================= Billing batch UI representation ================= --}}
+    {{-- ================= Billing batch screenshot ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: billing-batch | replace with: real screenshot of a generated billing batch, light theme, landscape - minutes-to-units conversion visible on several lines, at least one record excluded for insurance coverage dates, and per client/code/date totals with the carrier stamped. Placeholder: stylized HTML recreation of the batch table. --}}
+            {{-- IMAGE SLOT: billing-batch | filled 2026-09-05 with a real screenshot: img/screens/billing-batch, from billing2 (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Billing: batch preview &middot; March</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-batch">
-                            <table>
-                                <thead>
-                                    <tr><th scope="col">Client</th><th scope="col">Code</th><th scope="col">Service date</th><th scope="col" class="num">Minutes</th><th scope="col" class="num">Units</th><th scope="col">Carrier</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Client 1042</th>
-                                        <td>CM-15 &middot; Case management</td>
-                                        <td>Mar 3</td>
-                                        <td class="num">23</td>
-                                        <td class="num b-units">2</td>
-                                        <td>Riverbend Health Plan</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Client 1042</th>
-                                        <td>CM-15 &middot; Case management</td>
-                                        <td>Mar 17</td>
-                                        <td class="num">15</td>
-                                        <td class="num b-units">1</td>
-                                        <td>Riverbend Health Plan</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Client 0877</th>
-                                        <td>SB-15 &middot; Skills building</td>
-                                        <td>Mar 5</td>
-                                        <td class="num">40</td>
-                                        <td class="num b-units">3</td>
-                                        <td>Harvest Mutual</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Client 0533</th>
-                                        <td>CM-15 &middot; Case management</td>
-                                        <td>Mar 21</td>
-                                        <td class="num">52</td>
-                                        <td class="num b-units">3</td>
-                                        <td>Riverbend Health Plan</td>
-                                    </tr>
-                                    <tr class="b-excluded">
-                                        <th scope="row">Client 0219</th>
-                                        <td class="b-strike">SB-15 &middot; Skills building</td>
-                                        <td class="b-strike">Mar 28</td>
-                                        <td class="num b-strike">30</td>
-                                        <td class="num">&ndash;</td>
-                                        <td class="b-flag"><i>&#9888;</i>Outside coverage dates (excluded)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="b-foot">
-                                <span class="b-sums"><strong>4 records batched</strong> &middot; 9 units &middot; 1 excluded (coverage dates)</span>
-                                <span class="b-export"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>Export to Excel</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Viewing billing batch #2</span></div>
+                    @include('site::partials.screen', ['name' => 'billing-batch', 'alt' => 'A submitted billing batch: created and submitted dates, a note that it was auto-generated from four billing records, two summary lines rolling the records into one unit and three units of code H2015 at 20 dollars each, and a table of the four records with date, minutes, code, client, staff member, note and outcome, each row locked', 'width' => 1667, 'height' => 810])
                 </div>
-                <figcaption class="ui-caption">An illustration of a billing batch: actual minutes convert to billable units under the 8-minute rule, one record is excluded because its service date falls outside the client's insurance coverage, and the carrier is stamped on every line.</figcaption>
+                <figcaption class="ui-caption">A submitted batch on a test instance: four billing records for one client roll up into units under the 8-minute rule, 8 minutes becomes one unit and 39 minutes across three records becomes three, each priced at the rate in effect on its date of service. Once submitted the batch is frozen, which is the lock on every row.</figcaption>
             </figure>
         </div>
     </section>

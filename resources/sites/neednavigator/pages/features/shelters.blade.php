@@ -74,60 +74,13 @@
     {{-- ================= Bed matrix UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: shelters-bed-matrix | replace with: real screenshot of the bed-availability week matrix, light theme, landscape: one week of beds with occupant spans and at least one maintenance bed visible. Placeholder: stylized HTML recreation of the matrix. --}}
+            {{-- IMAGE SLOT: shelters-bed-matrix | filled 2026-09-04 with a real screenshot: img/screens/reservation-floor-plan (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Bed availability: week of Mar 2</span></div>
-                    <div class="uiframe-body">
-                        <div class="bedmatrix">
-                            <table>
-                                <thead>
-                                    <tr><th scope="col">Bed</th><th scope="col">Mon</th><th scope="col">Tue</th><th scope="col">Wed</th><th scope="col">Thu</th><th scope="col">Fri</th><th scope="col">Sat</th><th scope="col">Sun</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Rm 1 · Bed A</th>
-                                        <td colspan="4"><span class="span-occupied">Household of 2 · checked in</span></td>
-                                        <td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Rm 1 · Bed B</th>
-                                        <td colspan="4"><span class="span-occupied">&nbsp;</span></td>
-                                        <td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Rm 2 · Bed A</th>
-                                        <td></td>
-                                        <td colspan="6"><span class="span-occupied">Open-ended stay</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Rm 2 · Bed B</th>
-                                        <td class="cell-maintenance" title="Maintenance">&#9888;</td>
-                                        <td class="cell-maintenance">&#9888;</td>
-                                        <td></td><td></td><td></td><td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Rm 3 · Bed A</th>
-                                        <td></td><td></td>
-                                        <td colspan="3"><span class="span-occupied">Confirmed · arriving Wed</span></td>
-                                        <td></td><td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Rm 3 · Bed B</th>
-                                        <td class="cell-offline" colspan="7">Offline (winter overflow only)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="matrix-legend">
-                            <span><i class="k-available"></i> Available</span>
-                            <span><i class="k-occupied"></i> Occupied / reserved</span>
-                            <span><i class="k-maintenance"></i> &#9888; Maintenance</span>
-                            <span><i class="k-offline"></i> Offline</span>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>New reservation</span></div>
+                    @include('site::partials.screen', ['name' => 'reservation-floor-plan', 'alt' => 'A new reservation form: program, permission level, status and shelter selects, an individual search, a strip of check-in dates, first and second floor tabs, and a floor plan with rooms 101 to 105 each showing four of four beds free', 'width' => 1665, 'height' => 740])
                 </div>
-                <figcaption class="ui-caption">An illustration of the bed-availability matrix: one week of beds, occupant spans, a bed down for maintenance, and one offline.</figcaption>
+                <figcaption class="ui-caption">A new reservation on a test instance: choose the program, shelter and permission level, find the person, pick the check-in date from the strip, then pick the bed from the floor plan, where each room shows how many beds are free.</figcaption>
             </figure>
         </div>
     </section>

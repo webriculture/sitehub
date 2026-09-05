@@ -70,76 +70,13 @@
     {{-- ================= Supervisor map UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: geotracker-supervisor-map | replace with: real screenshot of the GeoTracker supervisor map, light theme, landscape - clustered markers with counts, at least one staff-named place label visible, and the filter controls (worker / task list / place / date range) in frame. Placeholder: stylized SVG map with clustered logs, two named places, and one unnamed cluster. --}}
+            {{-- IMAGE SLOT: geotracker-supervisor-map | filled 2026-09-04 with a real screenshot: img/screens/geotracker-map (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
+                <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>GeoTracker: supervisor map</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-geomap">
-                            <div class="geo-chips">
-                                <span class="geo-chip"><strong>Worker:</strong> All outreach staff</span>
-                                <span class="geo-chip"><strong>Client:</strong> All</span>
-                                <span class="geo-chip"><strong>Task list:</strong> Street outreach</span>
-                                <span class="geo-chip"><strong>Place:</strong> All</span>
-                                <span class="geo-chip"><strong>Dates:</strong> Mar 2&ndash;8</span>
-                            </div>
-                            <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                                <rect width="720" height="400" fill="#f1ede2"/>
-                                {{-- park / greenway --}}
-                                <path d="M0 0 H210 C180 60 150 90 90 110 C50 122 20 120 0 112 Z" fill="#e9efe8"/>
-                                <path d="M720 260 C650 250 600 280 570 340 C555 370 560 390 570 400 H720 Z" fill="#e9efe8"/>
-                                {{-- streets --}}
-                                <g stroke="#fffdf9" stroke-linecap="round" fill="none">
-                                    <path d="M0 60 H720" stroke-width="5"/>
-                                    <path d="M0 150 H720" stroke-width="12"/>
-                                    <path d="M0 268 C120 260 240 276 360 268 S600 254 720 262" stroke-width="7"/>
-                                    <path d="M170 0 V400" stroke-width="9"/>
-                                    <path d="M300 150 V400" stroke-width="5"/>
-                                    <path d="M430 0 V400" stroke-width="7"/>
-                                    <path d="M598 0 C590 90 606 180 588 268" stroke-width="5"/>
-                                </g>
-                                {{-- highway --}}
-                                <path d="M-10 396 C200 330 420 240 730 96" stroke="#fffdf9" stroke-width="16" fill="none"/>
-                                <path d="M-10 396 C200 330 420 240 730 96" stroke="#f1ede2" stroke-width="1.5" stroke-dasharray="8 10" fill="none"/>
-                                {{-- single location logs --}}
-                                <g fill="#14382a">
-                                    <circle cx="80" cy="212" r="5"/>
-                                    <circle cx="500" cy="330" r="5"/>
-                                    <circle cx="660" cy="150" r="5"/>
-                                </g>
-                                <g fill="#f5f2ea">
-                                    <circle cx="80" cy="212" r="1.6"/>
-                                    <circle cx="500" cy="330" r="1.6"/>
-                                    <circle cx="660" cy="150" r="1.6"/>
-                                </g>
-                                {{-- cluster: named place on the highway --}}
-                                <circle cx="222" cy="316" r="27" fill="none" stroke="#1e4d3a" stroke-opacity="0.3" stroke-width="1.5"/>
-                                <circle cx="222" cy="316" r="18" fill="#1e4d3a"/>
-                                <text x="222" y="316" text-anchor="middle" dy="0.35em" font-size="13" font-weight="700" fill="#f5f2ea">14</text>
-                                <g>
-                                    <rect x="256" y="288" width="140" height="24" rx="6" fill="#fffdf9" stroke="rgba(32,36,31,0.16)"/>
-                                    <text x="266" y="304" font-size="11" font-weight="600" fill="#20241f">Riverbend underpass</text>
-                                </g>
-                                {{-- cluster: named place near the intersection --}}
-                                <circle cx="466" cy="128" r="21" fill="none" stroke="#1e4d3a" stroke-opacity="0.3" stroke-width="1.5"/>
-                                <circle cx="466" cy="128" r="14" fill="#1e4d3a"/>
-                                <text x="466" y="128" text-anchor="middle" dy="0.35em" font-size="12" font-weight="700" fill="#f5f2ea">6</text>
-                                <g>
-                                    <rect x="490" y="98" width="112" height="24" rx="6" fill="#fffdf9" stroke="rgba(32,36,31,0.16)"/>
-                                    <text x="500" y="114" font-size="11" font-weight="600" fill="#20241f">Oak &amp; 5th camp</text>
-                                </g>
-                                {{-- cluster: not yet named --}}
-                                <circle cx="120" cy="104" r="11" fill="#1e4d3a"/>
-                                <text x="120" y="104" text-anchor="middle" dy="0.35em" font-size="11" font-weight="700" fill="#f5f2ea">3</text>
-                                <g>
-                                    <rect x="140" y="80" width="104" height="22" rx="6" fill="#fffdf9" stroke="rgba(32,36,31,0.16)" stroke-dasharray="3 3"/>
-                                    <text x="150" y="95" font-size="11" font-style="italic" fill="#565c55">unnamed place</text>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
+                    @include('site::partials.screen', ['name' => 'geotracker-map', 'alt' => 'A map of Salem, Oregon with location logs clustered into numbered markers and place pins, beside a filter panel for task list, place, user, individual, and date range, with apply and export buttons', 'width' => 1680, 'height' => 709])
                 </div>
-                <figcaption class="ui-caption">An illustration of the GeoTracker supervisor map: one team's week of location logs, clustered into places: two named by staff, one still waiting for a name.</figcaption>
+                <figcaption class="ui-caption">The GeoTracker supervisor map on a test instance: location logs across Salem clustered into counted markers and named places, with filters for task list, place, worker, client, and date range, and an export of the underlying logs.</figcaption>
             </figure>
         </div>
     </section>

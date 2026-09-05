@@ -74,40 +74,13 @@
     {{-- ================= Voucher UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: emergency-assistance-voucher | replace with: real screenshot of the printable assistance request/voucher, light theme - request details, eligibility math (household size, recent income vs. program maximum, under-limit verdict), and a split allocation across two funding pools all visible. Placeholder: stylized HTML recreation of the voucher. --}}
+            {{-- IMAGE SLOT: emergency-assistance-voucher | filled 2026-09-04 with a real screenshot: img/screens/need-status-timeline (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Assistance request: print preview</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-voucher">
-                            <div class="v-head">
-                                <span class="v-title">Assistance voucher &middot; Request #2481</span>
-                                <span class="v-status">Approved</span>
-                            </div>
-                            <div class="v-block">
-                                <span class="v-label">Request</span>
-                                <div class="v-row"><span>Resource</span><strong>Utility assistance (electric)</strong></div>
-                                <div class="v-row"><span>Amount requested</span><strong>$240.00</strong></div>
-                                <div class="v-row"><span>Payee</span><strong>Riverbend Electric Co-op</strong></div>
-                            </div>
-                            <div class="v-block">
-                                <span class="v-label">Eligibility</span>
-                                <div class="v-row"><span>Household size</span><strong>3</strong></div>
-                                <div class="v-row"><span>Recent household income, annualized</span><strong>$26,180</strong></div>
-                                <div class="v-row"><span>Program maximum allowed</span><strong>$32,150</strong></div>
-                                <div class="v-verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Under the program limit: eligible</div>
-                            </div>
-                            <div class="v-block">
-                                <span class="v-label">Funding allocation</span>
-                                <div class="v-row"><span>County energy assistance pool</span><strong>$150.00</strong></div>
-                                <div class="v-row"><span>General emergency fund</span><strong>$90.00</strong></div>
-                                <div class="v-row v-total"><span>Allocated</span><strong>$240.00 of $240.00</strong></div>
-                                <div class="v-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Allocations match the request amount</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Viewing a need</span></div>
+                    @include('site::partials.screen', ['name' => 'need-status-timeline', 'alt' => 'An assistance request: program, need type, the person, who entered it, amount, recipient organization, a status timeline with Ready for Review reached, and the rental assistance form and funding allocation below', 'width' => 1665, 'height' => 880])
                 </div>
-                <figcaption class="ui-caption">An illustration of the printable voucher: the request, the eligibility math (household size, recent income, the program limit, and the verdict), and a split across two funding pools, reconciled to the penny.</figcaption>
+                <figcaption class="ui-caption">A live assistance request on a test instance: the program and resource, the amount, the recipient organization, the status timeline with the date each step was reached, and the request&rsquo;s own form and funding-pool allocation directly below it.</figcaption>
             </figure>
         </div>
     </section>

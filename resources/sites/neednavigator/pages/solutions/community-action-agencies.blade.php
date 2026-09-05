@@ -70,30 +70,13 @@
     {{-- ================= Funding pools UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: caa-funding-pools | replace with: real screenshot of funding pools with balances by funder and a need's split allocation across pools, light theme, landscape. Placeholder: stylized HTML recreation of two pool balances and a reconciled split. --}}
+            {{-- IMAGE SLOT: caa-funding-pools | filled 2026-09-04 with a real screenshot: img/screens/funding-pools (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Funding pools: Energy &amp; Housing Assistance</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-caapools">
-                            <div class="pool-meter">
-                                <div class="pool-row"><strong>County energy assistance · Jan 1 – Dec 31</strong><span>$46,212.50 of $75,000.00 remaining</span></div>
-                                <div class="pool-track"><div class="pool-fill" style="width:62%"></div></div>
-                            </div>
-                            <div class="pool-meter">
-                                <div class="pool-row"><strong>Utility partner fund · Jan 1 – Dec 31</strong><span>$9,847.25 of $12,000.00 remaining</span></div>
-                                <div class="pool-track"><div class="pool-fill" style="width:82%"></div></div>
-                            </div>
-                            <div class="split">
-                                <div class="split-head"><strong>Request: rent assistance</strong><span>$925.00</span></div>
-                                <div class="split-row"><span>County energy assistance</span><span>$700.00</span></div>
-                                <div class="split-row"><span>Utility partner fund</span><span>$225.00</span></div>
-                                <span class="split-ok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg>Allocations equal the request amount</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Funding pools</span></div>
+                    @include('site::partials.screen', ['name' => 'funding-pools', 'alt' => 'Three funding pools with amount spent against total, percentage bars, number of requests drawn from each, and start and end dates', 'width' => 1360, 'height' => 296])
                 </div>
-                <figcaption class="ui-caption">An illustration of funding pools: balances and date ranges by funder, and one request split across two pools with the reconciliation check.</figcaption>
+                <figcaption class="ui-caption">Funding pools on a test instance: each pool&rsquo;s spend against its total, how many requests have drawn on it, and the date range it covers.</figcaption>
             </figure>
         </div>
     </section>

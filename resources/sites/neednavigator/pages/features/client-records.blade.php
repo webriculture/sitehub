@@ -78,54 +78,13 @@
                 <h2>The one-page dossier</h2>
                 <p class="muted">Alerts, insurance, income, care team, relationships, and program enrollments up top; tabs for history, needs, visits, referrals, goals, billing, notes, and files below. A radial quick-action menu on every profile creates a visit, referral, need, goal, task, billing record, note, or field location log in one tap.</p>
             </div>
-            {{-- IMAGE SLOT: client-records-dossier | replace with: real screenshot of a client profile (one-page dossier), light theme, landscape - a test record with an active alert banner visible and the radial quick-action menu open. Placeholder: stylized HTML recreation of the dossier. --}}
-            <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Client profile: one-page dossier</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-dossier">
-                            <div class="dossier-alert">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.5 20h19Z"/><path d="M12 10v4M12 17h.01"/></svg>
-                                <span><strong>Alert:</strong> Check case notes before scheduling a home visit.</span>
-                                <em>expires Sep 12</em>
-                            </div>
-                            <div class="dossier-head">
-                                <span class="dossier-photo">
-                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.2 3.6-5 7-5s6.2 1.8 7 5"/></svg>
-                                </span>
-                                <div class="dossier-id">
-                                    <span class="dossier-name"><strong>Jordan Avery</strong><span class="chip">Test record</span></span>
-                                    <span class="dossier-meta">DOB 04/17/1988 &middot; (503) 555-0164 &middot; Prefers Spanish</span>
-                                </div>
-                                <span class="dossier-fresh">2 fields due for review</span>
-                            </div>
-                            <div class="dossier-cards">
-                                <div class="dcard"><span>Insurance</span><strong>Primary policy on file</strong><em>Card front &amp; back &middot; through 12/31</em></div>
-                                <div class="dcard"><span>Income</span><strong>$1,860/mo &middot; verified</strong><em>2 sources</em></div>
-                                <div class="dcard"><span>Care team</span><strong>2 active members</strong><em>1 partner contact</em></div>
-                            </div>
-                            <div class="dossier-tabs"><span class="on">History</span><span>Needs</span><span>Visits</span><span>Referrals</span><span>Goals</span><span>Billing</span><span>Notes</span><span>Files</span></div>
-                            <div class="dossier-rows">
-                                <div class="drow"><strong>Visit</strong><span>Energy assistance intake</span><em>Mar 4</em></div>
-                                <div class="drow"><strong>Referral</strong><span>Housing counseling &middot; loop closed</span><em>Feb 26</em></div>
-                                <div class="drow"><strong>Note</strong><span>Left voicemail about paperwork</span><em>Feb 20</em></div>
-                                <div class="drow"><strong>Need</strong><span>Rent assistance &middot; approved</span><em>Feb 12</em></div>
-                            </div>
-                            <div class="dossier-radial">
-                                <span class="r-item r1"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
-                                <span class="r-item r2"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-                                <span class="r-item r3"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z"/></svg></span>
-                                <span class="r-item r4"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4h11l-2.5 4L17 12H6"/></svg></span>
-                                <span class="r-item r5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                                <span class="r-item r6"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M16.5 7c0-1.7-2-3-4.5-3S7.5 5.3 7.5 7c0 4.5 9 2.5 9 7 0 1.7-2 3-4.5 3S7.5 15.7 7.5 14"/></svg></span>
-                                <span class="r-item r7"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5l4 4L8 20H4v-4Z"/></svg></span>
-                                <span class="r-item r8"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-4.8-6-9.5a6 6 0 0 1 12 0C18 16.2 12 21 12 21Z"/><circle cx="12" cy="11" r="2"/></svg></span>
-                                <span class="r-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
-                            </div>
-                        </div>
-                    </div>
+            {{-- IMAGE SLOT: client-records-dossier | filled 2026-09-04 with a real screenshot: img/screens/client-dossier (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            <figure class="shot-duo" style="margin:0">
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Client profile</span></div>
+                    @include('site::partials.screen', ['name' => 'client-dossier', 'alt' => 'The top of a client profile: a red alert banner reading This is an alert message about Roy, a profile photo, the name Roy Pike with date of birth and age, an Add Insurance button, and the first rows of profile fields', 'width' => 533, 'height' => 765])
                 </div>
-                <figcaption class="ui-caption">An illustration of the one-page dossier, shown as a test record: an alert banner up top, insurance and income at a glance, tabbed history below, and the radial quick-action menu. One tap starts a visit, referral, need, goal, task, billing record, note, or field location log.</figcaption>
+                <figcaption class="ui-caption">The top of a client&rsquo;s one-page dossier on a test instance: an alert banner that shows the moment the record opens, the photo and identity, insurance at a glance, and the fields your agency chose to display. Below it on the real screen, tabs carry history, needs, visits, referrals, goals, billing, notes and files, and every change lands in the history timeline with who, when and what.</figcaption>
             </figure>
         </div>
     </section>

@@ -19,38 +19,8 @@
                 <p class="hero-note">$25 per user per month, published right on the <a href="/pricing">pricing page</a>. Every agency runs on its own private database.</p>
             </div>
             <div class="hero-art">
-                {{-- IMAGE SLOT: home-hero | replace with: warm photograph or commissioned illustration of a caseworker meeting a family across a desk - natural light, unposed, landscape orientation. Placeholder: abstract line illustration of households connecting into one client record. --}}
-                <svg viewBox="0 0 420 340" role="img" aria-label="Illustration: several households connect into a single organized client record" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="210" cy="170" r="160" fill="var(--art-wash)"/>
-                    <g stroke="var(--art-line)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        {{-- three household nodes --}}
-                        <g>
-                            <path d="M52 96 L74 78 L96 96 V128 H52 Z"/>
-                            <circle cx="66" cy="112" r="5"/>
-                            <circle cx="82" cy="112" r="5"/>
-                        </g>
-                        <g>
-                            <path d="M40 208 L62 190 L84 208 V240 H40 Z"/>
-                            <circle cx="55" cy="224" r="5"/>
-                            <circle cx="69" cy="224" r="5"/>
-                        </g>
-                        <g>
-                            <path d="M96 300 L118 282 L140 300 V332 H96 Z" transform="translate(0,-24)"/>
-                            <circle cx="111" cy="292" r="5"/>
-                        </g>
-                        {{-- connecting paths --}}
-                        <path d="M100 108 C 160 116, 190 140, 232 152" stroke-dasharray="1 7"/>
-                        <path d="M88 218 C 150 214, 190 190, 230 176" stroke-dasharray="1 7"/>
-                        <path d="M142 288 C 190 268, 210 224, 234 196" stroke-dasharray="1 7"/>
-                        {{-- the record card --}}
-                        <rect x="236" y="112" width="132" height="140" rx="8" fill="var(--art-card)"/>
-                        <circle cx="262" cy="140" r="11"/>
-                        <path d="M282 134 H344 M282 146 H328"/>
-                        <path d="M252 170 H352 M252 188 H352 M252 206 H332"/>
-                        <rect x="252" y="222" width="44" height="14" rx="7"/>
-                        <rect x="304" y="222" width="44" height="14" rx="7"/>
-                    </g>
-                </svg>
+                {{-- IMAGE SLOT: home-hero | filled 2026-09-04 with a real screenshot: img/screens/hero-jimmy-calvert (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+                @include('site::partials.screen', ['name' => 'hero-jimmy-calvert', 'alt' => 'A client profile card in Need Navigator: a black and white photo of a scowling baby, Jimmy Calvert, age 2, with an insurance renewal reminder and the demographic fields his agency chose to show', 'width' => 529, 'height' => 698, 'class' => 'hero-card', 'eager' => true])
             </div>
         </div>
     </section>
@@ -114,24 +84,14 @@
                     <p><a href="/reporting">Reporting &amp; dashboards</a></p>
                 </div>
                 <div>
-                    {{-- IMAGE SLOT: home-dashboard | replace with: real screenshot of the configurable program dashboard (v2), light theme, landscape - widget board showing a query table and funding-pool balance widget. Placeholder: stylized stat tiles + funding-pool meter. --}}
+                    {{-- IMAGE SLOT: home-dashboard | filled 2026-09-04 with a real screenshot: img/screens/dashboard (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
                     <figure style="margin:0">
-                        <div class="uiframe" aria-hidden="true">
-                            <div class="uiframe-bar"><i></i><i></i><i></i><span>Program dashboard: Housing Stability</span></div>
-                            <div class="uiframe-body">
-                                <div class="minidash">
-                                    <div class="stat-tile"><span class="stat-label">Active enrollments</span><span class="stat-value">214</span></div>
-                                    <div class="stat-tile"><span class="stat-label">Visits this week</span><span class="stat-value">87</span></div>
-                                    <div class="stat-tile"><span class="stat-label">Needs awaiting review</span><span class="stat-value">12</span></div>
-                                    <div class="pool-meter">
-                                        <div class="pool-row"><strong>Emergency rent assistance</strong><span>$18,400 of $25,000 remaining</span></div>
-                                        <div class="pool-track"><div class="pool-fill" style="width:74%"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <figcaption class="ui-caption">An illustration of the configurable program dashboard.</figcaption>
-                    </figure>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Resource Center dashboard</span></div>
+                    @include('site::partials.screen', ['name' => 'dashboard', 'alt' => 'The configurable program dashboard: a funding pool widget with amount spent and remaining, a list of needs pending approval, an emergency financial assistance submissions grid, and a referrals list', 'width' => 1665, 'height' => 870])
+                </div>
+                <figcaption class="ui-caption">The configurable program dashboard on a test instance: a funding-pool widget with spend and remaining balance, the needs waiting for approval, the emergency assistance submissions grid, and pending referrals, all on one board the program shares.</figcaption>
+            </figure>
                 </div>
             </div>
         </div>

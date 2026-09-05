@@ -71,40 +71,16 @@
         </div>
     </section>
 
-    {{-- ================= Case-note thread UI representation ================= --}}
+    {{-- ================= Visit record screenshot ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: casework-note-thread | replace with: real screenshot of a case note with a reply, light theme - visibility setting, read tracking, an @mention, and the undo-window countdown visible on an undelivered note. Placeholder: stylized HTML recreation of a note thread. --}}
+            {{-- IMAGE SLOT: casework-note-thread | filled 2026-09-04 with a real screenshot: img/screens/visit-record (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Case note: home visit follow-up</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-casenote">
-                            <div class="cn-meta">
-                                <span class="cn-chip">Visibility: Team &middot; Family Support</span>
-                                <span class="cn-chip">Read by 2 of 3 recipients</span>
-                            </div>
-                            <div class="cn-msg">
-                                <span class="cn-author">Family advocate</span>
-                                <p>Home visit complete. Utility shutoff notice resolved with the energy-assistance grant. <span class="cn-mention">&#64;Program Supervisor</span> this one is flagged for review when you have a minute.</p>
-                                <span class="cn-time">Today, 2:14 p.m.</span>
-                            </div>
-                            <div class="cn-msg cn-msg--reply">
-                                <span class="cn-author">Program supervisor</span>
-                                <p>Reviewed and marked complete. Go ahead and close out the goal step.</p>
-                                <span class="cn-time">Today, 3:02 p.m.</span>
-                            </div>
-                            <div class="cn-pending">
-                                <p>Goal step marked complete: household utilities stable through winter. Next check-in scheduled.</p>
-                                <span class="cn-undo">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                                    Delivers in 4:32 &middot; <em>Undo</em>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Viewing a visit</span></div>
+                    @include('site::partials.screen', ['name' => 'visit-record', 'alt' => 'A visit record: program, type, location, who completed it, status, scheduled time, three reasons for visit, and a narrative, with a side panel for the per-visit form, referrals, current goals, files, and billing records', 'width' => 1665, 'height' => 565])
                 </div>
-                <figcaption class="ui-caption">An illustration of a case note thread: per-note visibility, read tracking, an &#64;mention that notifies a colleague, and the undo window counting down before a note delivers.</figcaption>
+                <figcaption class="ui-caption">A visit record on a test instance: program, type and location, who completed it and when, the reasons and topics, the narrative, and on the right the per-visit form to complete plus the referrals, goals, files and billing records that hang off the same visit.</figcaption>
             </figure>
         </div>
     </section>

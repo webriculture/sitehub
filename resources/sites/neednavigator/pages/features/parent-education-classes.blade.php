@@ -71,55 +71,16 @@
         </div>
     </section>
 
-    {{-- ================= Attendance grid UI representation ================= --}}
+    {{-- ================= Class offering screenshot ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: parent-ed-attendance-grid | replace with: real screenshot of the facilitator mobile attendance grid, light theme, portrait phone crop - present/absent/late/excused marks, a credit override, a walk-in row, and the walk-in button visible. Placeholder: stylized HTML recreation of the grid. --}}
+            {{-- IMAGE SLOT: parent-ed-attendance-grid | filled 2026-09-04 with a real screenshot: img/screens/class-offering (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe ui-attendgrid" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Attendance: Tuesday parenting class</span></div>
-                    <div class="uiframe-body">
-                        <div class="ag-head">
-                            <span><strong>Session 4 of 8</strong> · Tue 6:00 p.m.</span>
-                            <span>8 of 12 checked in</span>
-                        </div>
-                        <div class="ag-row">
-                            <span class="ag-name">Alex P.</span>
-                            <span class="ag-pills">
-                                <span class="ag-pill is-present">P</span><span class="ag-pill">A</span><span class="ag-pill">L</span><span class="ag-pill">E</span>
-                            </span>
-                        </div>
-                        <div class="ag-row">
-                            <span class="ag-name">Jordan M.<small>Credit override: counts toward completion</small></span>
-                            <span class="ag-pills">
-                                <span class="ag-pill">P</span><span class="ag-pill">A</span><span class="ag-pill is-late">L</span><span class="ag-pill">E</span>
-                            </span>
-                        </div>
-                        <div class="ag-row">
-                            <span class="ag-name">Sam R.</span>
-                            <span class="ag-pills">
-                                <span class="ag-pill">P</span><span class="ag-pill is-absent">A</span><span class="ag-pill">L</span><span class="ag-pill">E</span>
-                            </span>
-                        </div>
-                        <div class="ag-row">
-                            <span class="ag-name">Casey L.<small>Walk-in: enrolled at the door</small></span>
-                            <span class="ag-pills">
-                                <span class="ag-pill is-present">P</span><span class="ag-pill">A</span><span class="ag-pill">L</span><span class="ag-pill">E</span>
-                            </span>
-                        </div>
-                        <div class="ag-row">
-                            <span class="ag-name">Riley T.</span>
-                            <span class="ag-pills">
-                                <span class="ag-pill">P</span><span class="ag-pill">A</span><span class="ag-pill">L</span><span class="ag-pill is-excused">E</span>
-                            </span>
-                        </div>
-                        <div class="ag-foot">
-                            <span class="ag-walkin">+ Enroll walk-in</span>
-                        </div>
-                        <div class="ag-note">Session note: reviewed week-3 skills, strong discussion.</div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Class offering</span></div>
+                    @include('site::partials.screen', ['name' => 'class-offering', 'alt' => 'A published class offering: course name, format, location, dates and usual time, enrollment against capacity, the sessions generated on a weekly pattern each with a QR check-in, and metrics for enrollment, sessions held, and completion to fidelity', 'width' => 1665, 'height' => 877])
                 </div>
-                <figcaption class="ui-caption">An illustration of the facilitator's mobile attendance grid: each participant marked present, absent, late, or excused in a tap, with a credit override, a walk-in enrolled at the door, and a session note.</figcaption>
+                <figcaption class="ui-caption">A published class offering on a test instance: the course, format, location and dates; the sessions generated from a weekly pattern, each with its own QR check-in; and the counters that run the class, enrollment against capacity, sessions held, and participants complete to fidelity.</figcaption>
             </figure>
         </div>
     </section>

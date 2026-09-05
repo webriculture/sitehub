@@ -207,56 +207,13 @@
             </div>
             <p>Need Navigator automatically logs every create, update, and delete across the system and renders them as a readable, permission-gated history timeline on each client. And every client-record view by agency staff is logged too: who, when, from which IP address, on what device.</p>
 
-            {{-- IMAGE SLOT: security-flag-queue | replace with: real screenshot of the suspicious-access flag resolution queue, light theme, landscape - rule names visible, at least one open and one resolved flag, no real client or staff names. Placeholder: stylized HTML recreation of the queue. --}}
-            <figure style="margin: 2rem 0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Access monitoring: flag queue</span></div>
-                    <div class="uiframe-body">
-                        <div class="fq">
-                            <div class="fq-head">
-                                <strong>Suspicious-access flags &middot; 2 open</strong>
-                                <span class="fq-export">Export access log (CSV)</span>
-                            </div>
-                            <div class="fq-row">
-                                <span class="fq-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 21 19H3Z"/><path d="M12 10v4M12 16.6h.01"/></svg></span>
-                                <div class="fq-main">
-                                    <strong>Night-hours access</strong>
-                                    <span>A front-desk account viewed 6 client records between 2:04 and 2:19 a.m.</span>
-                                    <em>Flagged today &middot; 2:19 a.m. &middot; 203.0.113.44 &middot; Windows &middot; Chrome</em>
-                                </div>
-                                <span class="fq-badge">Open</span>
-                            </div>
-                            <div class="fq-row">
-                                <span class="fq-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 21 19H3Z"/><path d="M12 10v4M12 16.6h.01"/></svg></span>
-                                <div class="fq-main">
-                                    <strong>Sequential record walking</strong>
-                                    <span>Client records opened in ID order, 14 in a row over 9 minutes.</span>
-                                    <em>Flagged today &middot; 11:02 a.m. &middot; 203.0.113.17 &middot; macOS &middot; Safari</em>
-                                </div>
-                                <span class="fq-badge">Open</span>
-                            </div>
-                            <div class="fq-row is-resolved">
-                                <span class="fq-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5.5"/></svg></span>
-                                <div class="fq-main">
-                                    <strong>Unusually many clients in a day</strong>
-                                    <span>58 client records viewed against a 30-day baseline of 11. Resolved: annual file review, noted by the administrator.</span>
-                                    <em>Tuesday &middot; 4:41 p.m. &middot; 203.0.113.29 &middot; Windows &middot; Chrome</em>
-                                </div>
-                                <span class="fq-badge">Resolved</span>
-                            </div>
-                            <div class="fq-row is-resolved">
-                                <span class="fq-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5.5"/></svg></span>
-                                <div class="fq-main">
-                                    <strong>Access outside assigned programs</strong>
-                                    <span>Viewed two records enrolled only in the housing program. Resolved: covering a colleague's caseload.</span>
-                                    <em>Monday &middot; 9:15 a.m. &middot; 203.0.113.51 &middot; Windows &middot; Edge</em>
-                                </div>
-                                <span class="fq-badge">Resolved</span>
-                            </div>
-                        </div>
-                    </div>
+            {{-- IMAGE SLOT: security-flag-queue | filled 2026-09-04 with a real screenshot: img/screens/client-history (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            <figure style="margin:0">
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Client history</span></div>
+                    @include('site::partials.screen', ['name' => 'client-history', 'alt' => 'A client history timeline: enrollments, an exit form closing a program with five field changes listed as before and after values, and profile updates, each with the time and the staff member who made it', 'width' => 1094, 'height' => 705])
                 </div>
-                <figcaption class="ui-caption">An illustration of the suspicious-access queue: flagged patterns wait for an administrator to review and resolve, and the access log exports to CSV, a plain spreadsheet file.</figcaption>
+                <figcaption class="ui-caption">A client&rsquo;s history tab on a test instance: every change in order, who made it and when, with field-level before-and-after values, including an exit form closing a program enrollment.</figcaption>
             </figure>
 
             <h3>Eight toggleable monitoring rules</h3>

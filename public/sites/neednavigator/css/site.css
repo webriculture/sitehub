@@ -337,6 +337,13 @@ img, svg { max-width: 100%; height: auto; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
 .hero-note { margin-top: 1.1rem; font-size: var(--step--1); color: var(--muted); }
 .hero-art { min-width: 0; }
+/* The Jimmy Calvert card: a real client profile card standing on the masthead green. */
+.hero-card {
+  display: block; width: 100%; max-width: 26rem; height: auto; margin-inline: auto;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(14, 40, 30, 0.35), 0 24px 48px -20px rgba(14, 40, 30, 0.75);
+}
+@media (min-width: 861px) { .hero-card { margin-inline: auto 0; } }
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-art { max-width: 26rem; }
@@ -511,6 +518,14 @@ img, svg { max-width: 100%; height: auto; }
   letter-spacing: 0.02em;
 }
 .uiframe-body { padding: clamp(0.9rem, 2vw, 1.4rem); overflow-x: auto; }
+/* Real screenshots sit edge to edge under the frame bar (no .uiframe-body padding). */
+.uiframe-shot { display: block; width: 100%; height: auto; }
+/* Portrait screenshot beside its explanation, e.g. the client dossier card. */
+.shot-duo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.2rem, 3vw, 2.4rem); align-items: start; }
+.shot-duo .uiframe { max-width: 30rem; }
+.shot-duo .ui-caption { margin-top: 0; align-self: center; font-size: var(--step-0); color: var(--ink); max-width: 44ch; }
+.uiframe.shot-narrow { max-width: 40rem; margin-top: 1.4rem; }
+@media (max-width: 800px) { .shot-duo { grid-template-columns: 1fr; } }
 .ui-caption { font-size: var(--step--1); color: var(--muted); margin-top: 0.7rem; }
 
 /* Bed-availability matrix (shelters). Status is never color alone:

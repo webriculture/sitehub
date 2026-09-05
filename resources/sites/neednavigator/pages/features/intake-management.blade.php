@@ -74,67 +74,20 @@
     {{-- ================= Live submissions grid UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: intake-submissions-grid | replace with: real screenshot of the Quick Forms submissions grid, light theme, landscape: cell presence visible on at least one cell, match classifications per row, the status column showing the linked assistance-request statuses, and a saved shared view selected. Placeholder: stylized HTML recreation of the grid. --}}
+            {{-- IMAGE SLOT: intake-submissions-grid | filled 2026-09-04 with a real screenshot: img/screens/submissions-grid (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
-                <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Quick Forms: Energy assistance application</span></div>
-                    <div class="uiframe-body">
-                        <div class="ui-intake">
-                            <div class="grid-toolbar">
-                                <span class="view-chip">Saved view: Morning review &middot; shared</span>
-                                <span class="searchbox"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></svg>Search all submissions</span>
-                                <span class="presence"><i class="p-a">DM</i><i class="p-b">JR</i>2 teammates in this view</span>
-                            </div>
-                            <table>
-                                <thead>
-                                    <tr><th scope="col">Submission</th><th scope="col">Received</th><th scope="col">Match</th><th scope="col">Household</th><th scope="col">Status</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Applicant 1185</th>
-                                        <td>Fri 4:51 p.m.</td>
-                                        <td><span class="badge badge-exact">Exact match</span></td>
-                                        <td>1 person</td>
-                                        <td><span class="st st-approved"><i></i>Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Applicant 1186</th>
-                                        <td>8:12 a.m.</td>
-                                        <td><span class="badge badge-exact">Exact match</span></td>
-                                        <td>1 person</td>
-                                        <td><span class="st st-ready"><i></i>Ready for review</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Applicant 1187</th>
-                                        <td>8:26 a.m.</td>
-                                        <td class="cell-editing"><span class="badge badge-probable">Probable &middot; 3 candidates</span><span class="editor-tag">JR</span></td>
-                                        <td>2 people</td>
-                                        <td><span class="st"><i></i>Pending</span></td>
-                                    </tr>
-                                    <tr class="row-tint">
-                                        <th scope="row">Applicant 1188</th>
-                                        <td>8:31 a.m.</td>
-                                        <td><span class="badge badge-new">New individual</span></td>
-                                        <td>1 person</td>
-                                        <td><span class="st"><i></i>Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Applicant 1189</th>
-                                        <td>8:44 a.m.</td>
-                                        <td><span class="badge badge-new">New individual</span></td>
-                                        <td>4 people</td>
-                                        <td><span class="st"><i></i>Pending</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="grid-foot">
-                                <span>Showing 50 of 312 (more load as you scroll)</span>
-                                <span>Colors, columns, and statuses sync live to every viewer</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="uiframe">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Quick Forms: Rental Assistance</span></div>
+                    @include('site::partials.screen', ['name' => 'submissions-grid', 'alt' => 'The Quick Forms submissions grid: seven rental assistance submissions, each linked to a person, with a need status dropdown in the row, program, and the form columns alongside, and a presence pill showing one viewer', 'width' => 1678, 'height' => 510])
                 </div>
-                <figcaption class="ui-caption">An illustration of the live submissions grid: cell presence shows a teammate working a row, every submission carries a match classification, and the status column is the linked assistance request's status; the grid doubles as the review queue.</figcaption>
+                <figcaption class="ui-caption">The Quick Forms grid on a test instance: rental-assistance submissions, each linked to a person, with the request status editable in the row, the program, and the form&rsquo;s own columns alongside. The presence pill shows who else is in the grid.</figcaption>
+            </figure>
+            <figure style="margin:0">
+                <div class="uiframe shot-narrow">
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Columns &amp; views</span></div>
+                    @include('site::partials.screen', ['name' => 'submissions-views', 'alt' => 'The columns and views panel: a saved default view, a filter for individuals in program, toggles for system columns, checkboxes for which need statuses to show, and checkboxes for the form columns', 'width' => 1209, 'height' => 824])
+                </div>
+                <figcaption class="ui-caption">Saved views: choose which system and form columns show, filter by status, and save the combination for the whole team.</figcaption>
             </figure>
         </div>
     </section>

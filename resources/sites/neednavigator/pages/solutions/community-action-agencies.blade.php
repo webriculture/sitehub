@@ -70,13 +70,13 @@
     {{-- ================= Funding pools UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: caa-funding-pools | filled 2026-09-04 with a real screenshot: img/screens/funding-pools-fy, composited from funding-pools3 without its "Community Action Agency DAP" row (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
+            {{-- IMAGE SLOT: caa-funding-pools | filled 2026-09-05 with a real screenshot: img/screens/funding-pools-fy, Dave's neednav-funding-pools export used whole (source in /home/ubuntu/sitehub-image-sources/neednavigator) --}}
             <figure style="margin:0">
                 <div class="uiframe">
                     <div class="uiframe-bar"><i></i><i></i><i></i><span>Funding pools</span></div>
-                    @include('site::partials.screen', ['name' => 'funding-pools-fy', 'alt' => 'Three fiscal-year funding pools: a utilities fund at 87 percent spent with 12 requests, a state family-preservation fund at 62 percent with 35 requests, and a reimbursements pool at zero, each with start and end dates', 'width' => 1373, 'height' => 284])
+                    @include('site::partials.screen', ['name' => 'funding-pools-fy', 'alt' => 'Four fiscal-year funding pools: a utilities fund at 87 percent spent with 12 requests, CSBG Emergency Assistance at 57 percent with 51, a state family fund at 62 percent with 35, and a reimbursements pool at zero with no ceiling, each with start and end dates', 'width' => 1372, 'height' => 418])
                 </div>
-                <figcaption class="ui-caption">Fiscal-year funding pools on a test instance: each pool&rsquo;s spend against its total, how many requests have drawn on it, and the year it covers, with a reimbursement pool that has no ceiling.</figcaption>
+                <figcaption class="ui-caption">Fiscal-year funding pools on a test instance: a utilities fund, the CSBG emergency assistance line, a state family-preservation grant, and a reimbursements pool with no ceiling, each showing spend against total, the requests drawn on it, and the year it covers.</figcaption>
             </figure>
         </div>
     </section>

@@ -1,7 +1,7 @@
 @extends('site::partials.layout')
 
 @section('title', 'Emergency Assistance Tracking Software | Need Navigator')
-@section('description', 'Track assistance requests from intake to voucher — a clear approval ladder, funding pools with balances, and eligibility math printed on the voucher.')
+@section('description', 'Track assistance requests from intake to voucher: a clear approval ladder, funding pools with balances, and eligibility math printed on the voucher.')
 
 @php
     $faqs = [
@@ -15,11 +15,11 @@
         ],
         [
             'q' => 'How do supervisors review and approve requests?',
-            'a' => 'Every request moves up a fixed status ladder — Pending, Ready for Review, Approved, Finalized, Voucher Printed, with Denied and Closed as off-ramps — so the review queue is always explicit. Supervisors can also update status inline from the Quick Forms submissions grid, where changes appear for the whole team in real time. Every status change is recorded in the audit trail.',
+            'a' => 'Every request climbs a status ladder (Pending, Ready for Review, Approved, Finalized, Voucher Printed, with Denied and Closed as off-ramps), so the review queue is always explicit. The ladder ships that way and your agency can rename it: an administrator sets each status\'s label, color, and order, switches off the ones you never use, and limits a status to particular resources, while automations and saved reports keep working. Supervisors can also update status inline from the Quick Forms submissions grid, where changes appear for the whole team in real time. Every status change is recorded, on the request as a timeline and in the audit trail.',
         ],
         [
             'q' => 'How are payments actually made?',
-            'a' => 'Need Navigator prepares and tracks the payment; it does not move the money. There is no check printing, bank-transfer integration, or online payment — staff attach the invoice PDF to the disbursement, email it to the payee directly from the system, and track its sent and finalized status while your finance office issues payment the way it already does.',
+            'a' => 'Need Navigator prepares and tracks the payment; it does not move the money. There is no check printing, bank-transfer integration, or online payment. Staff attach the invoice PDF to the disbursement, email it to the payee directly from the system, and track its sent and finalized status while your finance office issues payment the way it already does.',
         ],
         [
             'q' => 'Can we track help that isn\'t money?',
@@ -74,10 +74,10 @@
     {{-- ================= Voucher UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: emergency-assistance-voucher | replace with: real screenshot of the printable assistance request/voucher, light theme — request details, eligibility math (household size, recent income vs. program maximum, under-limit verdict), and a split allocation across two funding pools all visible. Placeholder: stylized HTML recreation of the voucher. --}}
+            {{-- IMAGE SLOT: emergency-assistance-voucher | replace with: real screenshot of the printable assistance request/voucher, light theme - request details, eligibility math (household size, recent income vs. program maximum, under-limit verdict), and a split allocation across two funding pools all visible. Placeholder: stylized HTML recreation of the voucher. --}}
             <figure style="margin:0">
                 <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Assistance request — print preview</span></div>
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Assistance request: print preview</span></div>
                     <div class="uiframe-body">
                         <div class="ui-voucher">
                             <div class="v-head">
@@ -86,7 +86,7 @@
                             </div>
                             <div class="v-block">
                                 <span class="v-label">Request</span>
-                                <div class="v-row"><span>Resource</span><strong>Utility assistance &mdash; electric</strong></div>
+                                <div class="v-row"><span>Resource</span><strong>Utility assistance (electric)</strong></div>
                                 <div class="v-row"><span>Amount requested</span><strong>$240.00</strong></div>
                                 <div class="v-row"><span>Payee</span><strong>Riverbend Electric Co-op</strong></div>
                             </div>
@@ -95,19 +95,19 @@
                                 <div class="v-row"><span>Household size</span><strong>3</strong></div>
                                 <div class="v-row"><span>Recent household income, annualized</span><strong>$26,180</strong></div>
                                 <div class="v-row"><span>Program maximum allowed</span><strong>$32,150</strong></div>
-                                <div class="v-verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Under the program limit &mdash; eligible</div>
+                                <div class="v-verdict"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Under the program limit: eligible</div>
                             </div>
                             <div class="v-block">
                                 <span class="v-label">Funding allocation</span>
-                                <div class="v-row"><span>Energy assistance pool &mdash; County</span><strong>$150.00</strong></div>
-                                <div class="v-row"><span>Emergency fund &mdash; General</span><strong>$90.00</strong></div>
+                                <div class="v-row"><span>County energy assistance pool</span><strong>$150.00</strong></div>
+                                <div class="v-row"><span>General emergency fund</span><strong>$90.00</strong></div>
                                 <div class="v-row v-total"><span>Allocated</span><strong>$240.00 of $240.00</strong></div>
                                 <div class="v-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Allocations match the request amount</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <figcaption class="ui-caption">An illustration of the printable voucher: the request, the eligibility math &mdash; household size, recent income, the program limit, and the verdict &mdash; and a split across two funding pools, reconciled to the penny.</figcaption>
+                <figcaption class="ui-caption">An illustration of the printable voucher: the request, the eligibility math (household size, recent income, the program limit, and the verdict), and a split across two funding pools, reconciled to the penny.</figcaption>
             </figure>
         </div>
     </section>
@@ -122,7 +122,7 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span>
                     <h3>A catalog of what you give</h3>
-                    <p>Log a need against your agency's own catalog of resources &mdash; financial or non-financial &mdash; with need types, quantity, amount, and the organization that gets paid. The catalog is yours to define, in your agency's vocabulary.</p>
+                    <p>Log a need against your agency's own catalog of resources, financial or non-financial, with need types, quantity, amount, and the organization that gets paid. The catalog is yours to define, in your agency's vocabulary.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h5v-5h5v-5h5V5h3"/></svg></span>
@@ -132,32 +132,32 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/><path d="M5 11.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/></svg></span>
                     <h3>Funding pools with real balances</h3>
-                    <p>Budgets tied to funder organizations or programs carry balances, date ranges, and per-need allocations &mdash; so knowing what is left in the county grant takes a glance, not an afternoon of spreadsheet work.</p>
+                    <p>Budgets tied to funder organizations or programs carry balances, date ranges, and per-need allocations, so knowing what is left in the county grant takes a glance, not an afternoon of spreadsheet work.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v5"/><path d="M12 9c0 4-6 3.2-6 7v4"/><path d="M12 9c0 4 6 3.2 6 7v4"/></svg></span>
                     <h3>Split one request across funders</h3>
-                    <p>A single request can draw from several pools at once, and the system warns when the allocations do not add up to the request amount &mdash; mismatches surface now, not at reporting time.</p>
+                    <p>A single request can draw from several pools at once, and the system warns when the allocations do not add up to the request amount. Mismatches surface now, not at reporting time.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/><path d="M9 12h.01M12 12h.01M15 12h.01M9 15.5h.01M12 15.5h.01M15 15.5h.01"/></svg></span>
                     <h3>Eligibility math, printed where it counts</h3>
-                    <p>The printable voucher shows household size, recent household income &mdash; pulled automatically from a tracking window your agency configures &mdash; the program's maximum allowed income, and an under-or-over-limit verdict.</p>
+                    <p>The printable voucher shows household size, recent household income, the program's maximum allowed income, and an under-or-over-limit verdict. The income is pulled automatically from a tracking window your agency configures.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 8 9 6 9-6"/></svg></span>
                     <h3>Disbursements, tracked honestly</h3>
-                    <p>Each financial need carries a payment record: attach the invoice PDF, email it to the payee straight from the system, and track sent and finalized status. There is no check printing or bank-transfer integration &mdash; your finance process stays yours, and the record stays complete.</p>
+                    <p>Each financial need carries a payment record: attach the invoice PDF, email it to the payee straight from the system, and track sent and finalized status. There is no check printing or bank-transfer integration; your finance process stays yours, and the record stays complete.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M15 9v11"/></svg></span>
                     <h3>A review queue that moves</h3>
-                    <p>Supervisors can work approvals right from the Quick Forms submissions grid &mdash; each row shows its linked request's status, updates inline, and changes appear for the whole team in real time.</p>
+                    <p>Supervisors can work approvals right from the Quick Forms submissions grid. Each row shows its linked request's status, updates inline, and changes appear for the whole team in real time.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h6l-1 8 8-10h-6l1-8Z"/></svg></span>
                     <h3>The follow-through is automatic</h3>
-                    <p>Automations can send an email, create a task, or post to the request's message thread when a status changes &mdash; an approval, a denial &mdash; and billing records can be generated from the need's types without separate data entry.</p>
+                    <p>Automations can send an email, create a task, or post to the request's message thread when a status changes (an approval, a denial), and billing records can be generated from the need's types without separate data entry.</p>
                 </div>
             </div>
         </div>
@@ -168,8 +168,8 @@
         <div class="container">
             <aside class="vignette">
                 <h3>A shut-off notice, gone by end of day</h3>
-                <p>A client comes in at 9:40 on a Tuesday holding a disconnection notice dated for Friday. The intake worker logs a need against the electric-utility resource and enters the amount from the notice; the request pulls the household's recent income on its own &mdash; under the program limit, and the verdict says so. They set the status to Ready for Review and turn to the next person in the lobby.</p>
-                <p>The program supervisor clears their review queue before lunch: they split the request between the county energy pool and the general emergency fund — no mismatch warning, the allocations add up — and they approve it. By early afternoon the voucher is printed with the eligibility math on it, the invoice is attached and emailed to the utility, and the disbursement shows as sent. The client left hours ago with a copy in hand.</p>
+                <p>A client comes in at 9:40 on a Tuesday holding a disconnection notice dated for Friday. The intake worker logs a need against the electric-utility resource and enters the amount from the notice; the request pulls the household's recent income on its own: under the program limit, and the verdict says so. They set the status to Ready for Review and turn to the next person in the lobby.</p>
+                <p>The program supervisor clears their review queue before lunch: they split the request between the county energy pool and the general emergency fund, the allocations add up with no mismatch warning, and they approve it. By early afternoon the voucher is printed with the eligibility math on it, the invoice is attached and emailed to the utility, and the disbursement shows as sent. The client left hours ago with a copy in hand.</p>
             </aside>
         </div>
     </section>
@@ -192,7 +192,7 @@
     </section>
 
     {{-- ================= Cross-links ================= --}}
-    <section class="section" style="padding-top: 0">
+    <section class="section section--crosslinks">
         <div class="container">
             <p class="eyebrow" style="margin-bottom: 1rem">Works with</p>
             <div class="crosslinks">
@@ -205,6 +205,6 @@
         </div>
     </section>
 
-    @include('site::partials.cta', ['heading' => 'Walk a request end to end', 'blurb' => 'Bring a real scenario — a rent shortfall, a shut-off notice — and we will take it from intake through review, the funding split, and the printed voucher.'])
+    @include('site::partials.cta', ['heading' => 'Walk a request end to end', 'blurb' => 'Bring a real scenario (a rent shortfall, a shut-off notice), and we will take it from intake through review, the funding split, and the printed voucher.'])
 
 @endsection

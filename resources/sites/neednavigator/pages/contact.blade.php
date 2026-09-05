@@ -1,21 +1,21 @@
 @extends('site::partials.layout')
 
 @section('title', 'Request a Demo | Need Navigator')
-@section('description', 'Request a demo of Need Navigator — a low-pressure conversation with the people who build it. No marketing lists; a human replies.')
+@section('description', 'Request a demo of Need Navigator, a low-pressure conversation with the people who build it. No marketing lists; a human replies.')
 
 @php
     $faqs = [
         [
             'q' => 'What happens after I write?',
-            'a' => 'A person on the team that builds Need Navigator reads your message and replies — there is no sales queue to clear first. Expect a short reply with a few questions about your agency and some times to talk. Your email address is used to answer you, not to add you to a marketing list.',
+            'a' => 'A person on the team that builds Need Navigator reads your message and replies; there is no sales queue to clear first. Expect a short reply with a few questions about your agency and some times to talk. Your email address is used to answer you, not to add you to a marketing list.',
         ],
         [
             'q' => 'How long is a demo?',
-            'a' => 'As long as it is useful, and no longer. A demo is a conversation, not a fixed presentation — tell us what your agency runs and where the friction is, and we spend the time there. If half an hour between client appointments is all you have, we will make it count.',
+            'a' => 'As long as it is useful, and no longer. A demo is a conversation, not a fixed presentation. Tell us what your agency runs and where the friction is, and we spend the time there. If half an hour between client appointments is all you have, we will make it count.',
         ],
         [
             'q' => 'Can we bring our own forms and data questions?',
-            'a' => 'Please do — a demo lands better when it is about your work. Bring your paper intake packet and we will walk through how staff rebuild it in the form builder, or bring a funder report and hold it up against the report builder. If you are coming from another system, bring your data questions too: there is no self-serve importer, so migrations are handled as a service by our team, and we will tell you plainly what that involves.',
+            'a' => 'Please do. A demo lands better when it is about your work. Bring your paper intake packet and we will walk through how staff rebuild it in the form builder, or bring a funder report and hold it up against the report builder. If you are coming from another system, bring your data questions too: there is no self-serve importer, so migrations are handled as a service by our team, and we will tell you plainly what that involves.',
         ],
     ];
 
@@ -57,7 +57,7 @@
             </nav>
             <p class="eyebrow">Contact</p>
             <h1>Request a demo</h1>
-            <p class="lede">A case management software demo works best as a conversation, and ours is with the people who build the product. Bring your programs, your forms, and your reporting headaches — we would rather talk about your work than run a script.</p>
+            <p class="lede">A case management software demo works best as a conversation, and ours is with the people who build the product. Bring your programs, your forms, and your reporting headaches. We would rather talk about your work than run a script.</p>
         </div>
     </section>
 
@@ -67,8 +67,8 @@
             <div class="hero-grid">
                 <div>
                     <h2>Send a message</h2>
-                    <p>Tell us a little about your agency — what you run, what is not working, and what you would want to see. That is enough to get started.</p>
-                    {{-- [FORM NOTE: recipients + mail transport pending — SITE-PLAN §6] --}}
+                    <p>Tell us a little about your agency: what you run, what is not working, and what you would want to see. That is enough to get started.</p>
+                    {{-- [FORM NOTE: recipients + mail transport pending - SITE-PLAN §6] --}}
                     <x-site-form key="demo" />
                     <p class="muted"><small>No marketing lists and no automated follow-up sequence. A person on the team that builds Need Navigator reads your message and replies.</small></p>
                 </div>
@@ -77,7 +77,7 @@
                     <p>Call Need Navigator at <a href="tel:+19717192251">971-719-2251</a>. You will reach the people who build and support the product, in Salem, Oregon.</p>
                     <h3 class="mt-2">Worth having on hand</h3>
                     <ul>
-                        <li>The intake packet you use today — paper is fine</li>
+                        <li>The intake packet you use today (paper is fine)</li>
                         <li>The funder report that takes the longest</li>
                         <li>Your list of programs and who works in them</li>
                         <li>Any question you have been saving for a vendor</li>
@@ -106,7 +106,7 @@
     </section>
 
     {{-- ================= Cross-links ================= --}}
-    <section class="section" style="padding-top: 0">
+    <section class="section section--crosslinks">
         <div class="container">
             <p class="eyebrow" style="margin-bottom: 1rem">While you decide</p>
             <div class="crosslinks">

@@ -37,15 +37,28 @@
         'operatingSystem' => 'Web',
         'url' => 'https://'.$primaryHost.'/',
         'description' => 'Case management software for human-services organizations: client records, households, assistance requests, referrals, visits, goals, shelters, classes, and reporting. Each agency runs on its own isolated instance with its own private database.',
+        // Two commercial line items, both published on /pricing: the recurring
+        // per-seat subscription (five-user minimum) and the one-time setup fee.
         'offers' => [
-            '@type' => 'Offer',
-            'price' => '25.00',
-            'priceCurrency' => 'USD',
-            'priceSpecification' => [
-                '@type' => 'UnitPriceSpecification',
+            [
+                '@type' => 'Offer',
+                'name' => 'Subscription',
                 'price' => '25.00',
                 'priceCurrency' => 'USD',
-                'unitText' => 'per user per month',
+                'priceSpecification' => [
+                    '@type' => 'UnitPriceSpecification',
+                    'price' => '25.00',
+                    'priceCurrency' => 'USD',
+                    'unitText' => 'per user per month',
+                    'eligibleQuantity' => ['@type' => 'QuantitativeValue', 'minValue' => 5, 'unitText' => 'users'],
+                ],
+            ],
+            [
+                '@type' => 'Offer',
+                'name' => 'One-time setup: implementation and up to 12 hours of virtual training',
+                'price' => '2000.00',
+                'priceCurrency' => 'USD',
+                'description' => 'Baseline. May be higher for substantially more training or work outside the standard setup; any difference is quoted before work starts.',
             ],
         ],
         'provider' => ['@type' => 'Organization', 'name' => 'Webriculture', 'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Salem', 'addressRegion' => 'OR']],
@@ -56,17 +69,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Need Navigator — Case Management for Human Services')</title>
+    <title>@yield('title', 'Need Navigator | Case Management for Human Services')</title>
     <meta name="description" content="@yield('description', 'Case management software built with human-services agencies: client records, assistance, reporting, and transparent per-seat pricing.')">
     <link rel="canonical" href="{{ $canonical }}">
     <meta property="og:site_name" content="Need Navigator">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="@yield('title', 'Need Navigator — Case Management for Human Services')">
+    <meta property="og:title" content="@yield('title', 'Need Navigator | Case Management for Human Services')">
     <meta property="og:description" content="@yield('description', 'Case management software built with human-services agencies: client records, assistance, reporting, and transparent per-seat pricing.')">
     <meta property="og:url" content="{{ $canonical }}">
     <meta property="og:image" content="{{ $ogImage }}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('title', 'Need Navigator — Case Management for Human Services')">
+    <meta name="twitter:title" content="@yield('title', 'Need Navigator | Case Management for Human Services')">
     <meta name="twitter:description" content="@yield('description', 'Case management software built with human-services agencies: client records, assistance, reporting, and transparent per-seat pricing.')">
     <meta name="twitter:image" content="{{ $ogImage }}">
     <meta name="theme-color" content="#14382a">
@@ -80,14 +93,14 @@
     <script type="application/ld+json">{!! json_encode($appJsonLd, JSON_HEX_TAG | JSON_UNESCAPED_UNICODE) !!}</script>
     @yield('structured')
 </head>
-<body>
+<body @class(['is-home' => $path === '/'])>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
         <div class="container nav">
             <a class="brand" href="/" aria-label="Need Navigator homepage">
-                {{-- IMAGE SLOT: logo-header | replace with: vector (SVG) Need Navigator wordmark in dark ink for light backgrounds; current file is a recolored raster of the legacy white logo --}}
-                <img src="/sites/neednavigator/img/nn-logo-dark.png" alt="Need Navigator" width="207" height="24">
+                {{-- IMAGE SLOT: logo-header | replace with: vector (SVG) of the white wordmark. The raster below is the original artwork and is clipped: the final R touches the right canvas edge at 250x29 with no margin. The masthead is dark (see .site-header) so no recolored variant is needed. --}}
+                <img src="/sites/neednavigator/img/nn-logo.png" alt="Need Navigator" width="207" height="24">
             </a>
             <button class="nav-toggle" type="button" data-nav-toggle aria-controls="primary-navigation" aria-expanded="false">Menu</button>
             <nav class="nav-links" id="primary-navigation" data-nav-links aria-label="Primary navigation">

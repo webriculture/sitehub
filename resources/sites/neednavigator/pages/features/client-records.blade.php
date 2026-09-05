@@ -1,13 +1,13 @@
 @extends('site::partials.layout')
 
 @section('title', 'Client Records Software for Human Services | Need Navigator')
-@section('description', 'One configurable page per client — alerts, insurance, releases of information, duplicate prevention and merge, and data freshness tracking.')
+@section('description', 'One configurable page per client: alerts, insurance, releases of information, duplicate prevention and merge, and data freshness tracking.')
 
 @php
     $faqs = [
         [
             'q' => 'How does duplicate prevention work?',
-            'a' => 'Exact duplicates — the same name and date of birth, or the same HMIS (Homeless Management Information System) number — are blocked when a record is saved. A fuzzy matcher also warns staff about likely duplicates before a new record is created. If one slips through anyway, two records can be merged, with case history, submissions, program history, and documents consolidated onto the surviving record.',
+            'a' => 'Exact duplicates are blocked when a record is saved: the same name and date of birth, or the same HMIS (Homeless Management Information System) number. A fuzzy matcher also warns staff about likely duplicates before a new record is created. If one slips through anyway, two records can be merged, with case history, submissions, program history, and documents consolidated onto the surviving record.',
         ],
         [
             'q' => 'What does data freshness tracking do?',
@@ -15,7 +15,7 @@
         ],
         [
             'q' => 'Can we control which fields appear on the client record?',
-            'a' => 'Yes. Each agency chooses which profile fields appear on the create, edit, view, and list screens, and which are required — without custom development. The record adapts to your intake practice rather than the other way around.',
+            'a' => 'Yes. Each agency chooses which profile fields appear on the create, edit, view, and list screens, and which are required, without custom development. The record adapts to your intake practice rather than the other way around.',
         ],
         [
             'q' => 'Can staff train in the system without touching real client data?',
@@ -23,7 +23,7 @@
         ],
         [
             'q' => 'Do releases of information cover the whole household?',
-            'a' => 'A release of information (ROI) is recorded per client with its expiration date and the signed document attached. A client is covered if they or their head of household holds a current release, and coverage automatically follows the current head of household — so household members are covered without re-entering the release. It is deliberately simple: one active release per client.',
+            'a' => 'A release of information (ROI) is recorded per client with its expiration date and the signed document attached. A client is covered if they or their head of household holds a current release, and coverage automatically follows the current head of household, so household members are covered without re-entering the release. It is deliberately simple: one active release per client.',
         ],
     ];
 
@@ -67,7 +67,7 @@
             </nav>
             <p class="eyebrow">Client records</p>
             <h1>The whole person, on one page</h1>
-            <p class="lede">Client records software for human services has one job: when someone sits down at your desk, show the whole picture. Need Navigator keeps each person your agency serves on one configurable page — alerts, insurance, income, care team, and program history — with duplicate prevention at the front door and every next step one tap away.</p>
+            <p class="lede">Client records software for human services has one job: when someone sits down at your desk, show the whole picture. Need Navigator keeps each person your agency serves on one configurable page (alerts, insurance, income, care team, and program history), with duplicate prevention at the front door and every next step one tap away.</p>
         </div>
     </section>
 
@@ -76,12 +76,12 @@
         <div class="container">
             <div class="section-head">
                 <h2>The one-page dossier</h2>
-                <p class="muted">Alerts, insurance, income, care team, relationships, and program enrollments up top — with tabs for history, needs, visits, referrals, goals, billing, notes, and files below. A radial quick-action menu on every profile creates a visit, referral, need, goal, task, billing record, note, or field location log in one tap.</p>
+                <p class="muted">Alerts, insurance, income, care team, relationships, and program enrollments up top; tabs for history, needs, visits, referrals, goals, billing, notes, and files below. A radial quick-action menu on every profile creates a visit, referral, need, goal, task, billing record, note, or field location log in one tap.</p>
             </div>
-            {{-- IMAGE SLOT: client-records-dossier | replace with: real screenshot of a client profile (one-page dossier), light theme, landscape — a test record with an active alert banner visible and the radial quick-action menu open. Placeholder: stylized HTML recreation of the dossier. --}}
+            {{-- IMAGE SLOT: client-records-dossier | replace with: real screenshot of a client profile (one-page dossier), light theme, landscape - a test record with an active alert banner visible and the radial quick-action menu open. Placeholder: stylized HTML recreation of the dossier. --}}
             <figure style="margin:0">
                 <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Client profile — one-page dossier</span></div>
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Client profile: one-page dossier</span></div>
                     <div class="uiframe-body">
                         <div class="ui-dossier">
                             <div class="dossier-alert">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <figcaption class="ui-caption">An illustration of the one-page dossier, shown as a test record: an alert banner up top, insurance and income at a glance, tabbed history below, and the radial quick-action menu — one tap to start a visit, referral, need, goal, task, billing record, note, or field location log.</figcaption>
+                <figcaption class="ui-caption">An illustration of the one-page dossier, shown as a test record: an alert banner up top, insurance and income at a glance, tabbed history below, and the radial quick-action menu. One tap starts a visit, referral, need, goal, task, billing record, note, or field location log.</figcaption>
             </figure>
         </div>
     </section>
@@ -140,7 +140,7 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h8M16 7h4M4 12h3M11 12h9M4 17h10M18 17h2"/><circle cx="14" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="16" cy="17" r="2"/></svg></span>
                     <h3>Fields your agency chooses</h3>
-                    <p>Choose which profile fields appear on the create, edit, view, and list screens — and which are required. The record adapts to your intake practice rather than the other way around, with no custom development.</p>
+                    <p>Choose which profile fields appear on the create, edit, view, and list screens, and which are required. The record adapts to your intake practice rather than the other way around, with no custom development.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16c.5-1.5 1.7-2.3 3-2.3s2.5.8 3 2.3"/><path d="M14 9h5M14 12.5h5M14 16h3"/></svg></span>
@@ -150,17 +150,17 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7H7l2-2.5h6L17 7h2.5A1.5 1.5 0 0 1 21 8.5v10a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5Z"/><circle cx="12" cy="13.5" r="3.5"/></svg></span>
                     <h3>A photo that lines itself up</h3>
-                    <p>Add a client photo by file upload or webcam — live face detection helps line up the shot. A photo on the record helps front-desk staff confirm they are talking with the right person.</p>
+                    <p>Add a client photo by file upload or webcam. Live face detection helps line up the shot. A photo on the record helps front-desk staff confirm they are talking with the right person.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg></span>
                     <h3>Search that finds the right person</h3>
-                    <p>Search by name, date of birth, phone, Social Security number, or HMIS (Homeless Management Information System) number — with the matched text highlighted in the results, so staff can see why each record came back.</p>
+                    <p>Search by name, date of birth, phone, Social Security number, or HMIS (Homeless Management Information System) number. The matched text is highlighted in the results, so staff can see why each record came back.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="13" rx="2"/><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M14.5 12.5v3M14.5 18.5h.01"/></svg></span>
                     <h3>Duplicates stopped at the door</h3>
-                    <p>Exact duplicates — the same name and date of birth, or the same HMIS number — are blocked at save. A fuzzy matcher also warns about likely duplicates before a new record is created, so the question gets asked while the person is still at the desk.</p>
+                    <p>Exact duplicates (the same name and date of birth, or the same HMIS number) are blocked at save. A fuzzy matcher also warns about likely duplicates before a new record is created, so the question gets asked while the person is still at the desk.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16"/><path d="M17 4v4a4 4 0 0 1-4 4H7"/><path d="M10 9l-3 3 3 3"/></svg></span>
@@ -170,7 +170,7 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M8.5 3h7M7.5 15h9"/></svg></span>
                     <h3>Test records for safe training</h3>
-                    <p>Flag any record as a test individual and it disappears from lists, searches, and reports by default — each user can opt in to see them. Train new staff and run demos without polluting real data.</p>
+                    <p>Flag any record as a test individual and it disappears from lists, searches, and reports by default. Each user can opt in to see them. Train new staff and run demos without polluting real data.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/><path d="M9 12.5l2 2 4-4"/></svg></span>
@@ -186,28 +186,28 @@
         <div class="container">
             <div class="section-head">
                 <h2>On the same record</h2>
-                <p class="muted">Three companions to the individual record — and the logging behind all of it.</p>
+                <p class="muted">Three companions to the individual record, and the logging behind all of it.</p>
             </div>
             <div class="caps">
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16H6c1.2-1.4 1.8-3.4 1.8-5.5C7.8 7 9.6 5 12 5s4.2 2 4.2 5.5c0 2.1.6 4.1 1.8 5.5Z"/><path d="M10.3 19a2 2 0 0 0 3.4 0"/><path d="M12 3v2"/></svg></span>
                     <h3>Alerts staff can't miss</h3>
-                    <p>Colored banner alerts pinned to the top of the record — safety notes, reminders, expiring notices — visible the moment it opens. Each carries a custom color and icon, an expiration date, and an order, and entry is fast because the most recently used style pre-fills.</p>
+                    <p>Colored banner alerts pinned to the top of the record, visible the moment it opens: safety notes, reminders, expiring notices. Each carries a custom color and icon, an expiration date, and an order, and entry is fast because the most recently used style pre-fills.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/><path d="M16.5 13.5v3M15 15h3"/></svg></span>
                     <h3>Insurance with the card attached</h3>
-                    <p>Store each policy with provider, member ID, group number, plan type, and coverage dates, plus front and back card images by photo or PDF — merged into a single PDF for viewing or printing. The primary policy is managed automatically, renewals pre-fill from the prior policy, and coverage dates feed <a href="/features/billing">billing validation</a>.</p>
+                    <p>Store each policy with provider, member ID, group number, plan type, and coverage dates, plus front and back card images by photo or PDF, merged into a single PDF for viewing or printing. The primary policy is managed automatically, renewals pre-fill from the prior policy, and coverage dates feed <a href="/features/billing">billing validation</a>.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M9.5 16c.8-1 2-1 2.8 0s2 1 2.7 0"/></svg></span>
                     <h3>Releases of information, household-wide</h3>
-                    <p>Record a release of information (ROI) with its expiration date and the signed document attached. A client is covered if they or their head of household holds a current release — and coverage follows the current head of household automatically, so members are covered without re-entering the release.</p>
+                    <p>Record a release of information (ROI) with its expiration date and the signed document attached. A client is covered if they or their head of household holds a current release. Coverage follows the current head of household automatically, so members are covered without re-entering the release.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
                     <h3>Every view of the record, logged</h3>
-                    <p>Every profile view by agency staff is logged — who, when, from where — and screened by configurable suspicious-access rules that flag unusual patterns for administrators to review. Read how it works in the <a href="/security">security overview</a>.</p>
+                    <p>Every profile view by agency staff is logged (who, when, from where) and screened by configurable suspicious-access rules that flag unusual patterns for administrators to review. Read how it works in the <a href="/security">security overview</a>.</p>
                 </div>
             </div>
         </div>
@@ -218,9 +218,9 @@
         <div class="container">
             <aside class="vignette">
                 <h3>A morning at the front desk</h3>
-                <p>A walk-in sits down at the front desk and gives their name and date of birth. The intake worker starts a new record — and before it saves, a warning appears: a likely duplicate, an existing client with the same name and a birth date one keystroke apart. One click opens the existing record instead. The photo confirms it is the same person, and their insurance card, program history, and release of information are already there.</p>
-                <p>Months earlier, a duplicate had slipped through from a paper backlog. The office manager merged the two records — case history, submissions, program history, and documents consolidated onto the surviving one. Nothing retyped, nothing lost, and the agency's counts stayed honest.</p>
-                {{-- [TESTIMONIAL: intake coordinator or front-desk supervisor at a community action agency — on duplicate prevention or how the one-page dossier changed intake] --}}
+                <p>A walk-in sits down at the front desk and gives their name and date of birth. The intake worker starts a new record, and before it saves, a warning appears: a likely duplicate, an existing client with the same name and a birth date one keystroke apart. One click opens the existing record instead. The photo confirms it is the same person, and their insurance card, program history, and release of information are already there.</p>
+                <p>Months earlier, a duplicate had slipped through from a paper backlog. The office manager merged the two records: case history, submissions, program history, and documents consolidated onto the surviving one. Nothing retyped, nothing lost, and the agency's counts stayed honest.</p>
+                {{-- [TESTIMONIAL: intake coordinator or front-desk supervisor at a community action agency - on duplicate prevention or how the one-page dossier changed intake] --}}
             </aside>
         </div>
     </section>
@@ -243,7 +243,7 @@
     </section>
 
     {{-- ================= Cross-links ================= --}}
-    <section class="section" style="padding-top: 0">
+    <section class="section section--crosslinks">
         <div class="container">
             <p class="eyebrow" style="margin-bottom: 1rem">Works with</p>
             <div class="crosslinks">
@@ -255,6 +255,6 @@
         </div>
     </section>
 
-    @include('site::partials.cta', ['heading' => 'See a record shaped like your intake', 'blurb' => 'Bring your current intake packet to the demo — we will map your fields onto the record and show the duplicate catch as it happens.'])
+    @include('site::partials.cta', ['heading' => 'See a record shaped like your intake', 'blurb' => 'Bring your current intake packet to the demo, and we will map your fields onto the record and show the duplicate catch as it happens.'])
 
 @endsection

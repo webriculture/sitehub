@@ -1,7 +1,7 @@
 @extends('site::partials.layout')
 
 @section('title', 'Nonprofit Form Builder Software | Need Navigator')
-@section('description', 'Staff build their own intake forms — conditional logic, live client-record fields — and offer them in Spanish with AI-drafted, staff-reviewed translation.')
+@section('description', 'Staff build their own intake forms (conditional logic, live client-record fields) and offer them in Spanish with AI-drafted, staff-reviewed translation.')
 
 @php
     $faqs = [
@@ -11,19 +11,19 @@
         ],
         [
             'q' => 'Can questions appear or disappear based on earlier answers?',
-            'a' => 'Yes. Conditional show-and-hide works on individual fields and on whole sections, so a follow-up section can appear only when an earlier answer calls for it. Repeatable sections handle the "add another" cases — household members, multiple income sources — without padding the form with blank copies.',
+            'a' => 'Yes. Conditional show-and-hide works on individual fields and on whole sections, so a follow-up section can appear only when an earlier answer calls for it. Repeatable sections handle the "add another" cases (household members, multiple income sources) without padding the form with blank copies.',
         ],
         [
-            'q' => 'What does the AI translation do — and what does it not do?',
-            'a' => 'One click drafts a complete Spanish baseline for a form — title, sections, field labels, helper text, and answer options — written at an approachable reading level, with program and organization names preserved. It does not replace review: bilingual staff polish the draft in a side-by-side editor, and each language version records when its baseline was generated and when a person last edited it. Form translation is one of exactly two AI features in Need Navigator; there is no AI chat or summarization.',
+            'q' => 'What does the AI translation do, and what does it not do?',
+            'a' => 'One click drafts a complete Spanish baseline for a form: title, sections, field labels, helper text, and answer options. The draft is written at an approachable reading level, with program and organization names preserved. It does not replace review: bilingual staff polish the draft in a side-by-side editor, and each language version records when its baseline was generated and when a person last edited it. Form translation is one of exactly two AI features in Need Navigator; there is no AI chat or summarization.',
         ],
         [
             'q' => 'If a client fills out the Spanish version, what happens to our reporting?',
-            'a' => 'Nothing changes. Stored answer values stay in English behind the scenes, so conditional logic, reports, and exports behave identically whichever language the form was completed in. The public intake portal renders the form in the visitor\'s language — English or Spanish today.',
+            'a' => 'Nothing changes. Stored answer values stay in English behind the scenes, so conditional logic, reports, and exports behave identically whichever language the form was completed in. The public intake portal renders the form in the visitor\'s language, English or Spanish today.',
         ],
         [
-            'q' => 'Can we reuse a form — or move it to another Need Navigator system?',
-            'a' => 'Within your own system, staff can deep-copy any form and adapt the copy. A form design — sections, fields, options, and translations — can also be exported and imported into another Need Navigator system, with internal references remapped automatically. Today that import is an administrator operation handled with our team rather than a self-service screen.',
+            'q' => 'Can we reuse a form, or move it to another Need Navigator system?',
+            'a' => 'Within your own system, staff can deep-copy any form and adapt the copy. A form design (sections, fields, options, and translations) can also be exported and imported into another Need Navigator system, with internal references remapped automatically. Today that import is an administrator operation handled with our team rather than a self-service screen.',
         ],
     ];
 
@@ -67,17 +67,17 @@
             </nav>
             <p class="eyebrow">Form builder &amp; multilingual forms</p>
             <h1>Ask exactly what your program needs to know</h1>
-            <p class="lede">Nonprofit form builder software should put program staff in charge of the questions. In Need Navigator, your team builds its own intake and case-management forms — conditional logic, repeatable sections, fields wired to the live client record — and offers them in Spanish, drafted by AI and polished by your bilingual staff.</p>
+            <p class="lede">Nonprofit form builder software should put program staff in charge of the questions. In Need Navigator, your team builds its own intake and case-management forms, with conditional logic, repeatable sections, and fields wired to the live client record, and offers them in Spanish, drafted by AI and polished by your bilingual staff.</p>
         </div>
     </section>
 
     {{-- ================= Translation editor UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: forms-translation-editor | replace with: real screenshot of the side-by-side English/Spanish translation editor, light theme, landscape — one form section with field label, helper text, and answer options visible in both languages, plus the AI-baseline/hand-edit provenance. No real client data. Placeholder: stylized HTML recreation of the editor. --}}
+            {{-- IMAGE SLOT: forms-translation-editor | replace with: real screenshot of the side-by-side English/Spanish translation editor, light theme, landscape - one form section with field label, helper text, and answer options visible in both languages, plus the AI-baseline/hand-edit provenance. No real client data. Placeholder: stylized HTML recreation of the editor. --}}
             <figure style="margin:0">
                 <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Translation editor — Housing intake &middot; Espa&ntilde;ol</span></div>
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Translation editor: Housing intake &middot; Espa&ntilde;ol</span></div>
                     <div class="uiframe-body">
                         <div class="ui-translate">
                             <div class="tr-meta">
@@ -124,12 +124,12 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="12" height="14" rx="2"/><path d="M6 9h6M6 12.5h4.5M6 16h6"/><path d="M15 10h6m0 0-2.2-2.2M21 10l-2.2 2.2"/><path d="M21 15h-6m0 0 2.2-2.2M15 15l2.2 2.2"/></svg></span>
                     <h3>Fields wired to the real record</h3>
-                    <p>Live client-record fields — name, address, phone, date of birth, Social Security number, HMIS (Homeless Management Information System) number, demographics, income — read and write the actual client record. Lookup fields pull from funding pools, schools, class offerings, and staff.</p>
+                    <p>Live client-record fields read and write the actual client record: name, address, phone, date of birth, Social Security number, HMIS (Homeless Management Information System) number, demographics, income. Lookup fields pull from funding pools, schools, class offerings, and staff.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16"/><path d="M7 8c6 0 4 8 10 8"/><path d="M14.5 13 17.5 16 14.5 19"/></svg></span>
                     <h3>Logic on fields and whole sections</h3>
-                    <p>Show or hide a single question — or an entire section — based on earlier answers. The form stays short for the person with a simple situation and complete for the one whose situation is complicated.</p>
+                    <p>Show or hide a single question, or an entire section, based on earlier answers. The form stays short for the person with a simple situation and complete for the one whose situation is complicated.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1.5"/><rect x="4" y="11" width="16" height="5" rx="1.5"/><path d="M12 18.5v4M10 20.5h4"/></svg></span>
@@ -139,7 +139,7 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><circle cx="8.5" cy="9" r="1.8"/><path d="M3 15.5l5-4.5 4 3.5 3.5-3 5.5 4.5"/></svg></span>
                     <h3>A picture on any question</h3>
-                    <p>Attach a helper image to any field — where to find the account number on a utility bill, what a completed example looks like — so the form explains itself to the person filling it out.</p>
+                    <p>Attach a helper image to any field (where to find the account number on a utility bill, what a completed example looks like) so the form explains itself to the person filling it out.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 12.5 15 6a3.2 3.2 0 0 1 4.5 4.5l-7.8 7.8a5 5 0 0 1-7-7L11 5"/></svg></span>
@@ -148,13 +148,13 @@
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9v7H8.5L5.5 15v-3H4z"/><path d="M16 9h4v6h-1.5v2.5L15.5 15H14v-3"/></svg></span>
-                    <h3>Spanish in one click — then a human pass</h3>
+                    <h3>Spanish in one click, then a human pass</h3>
                     <p>An AI drafts the full translation in seconds; bilingual staff refine it form by section by field by option. Each language version tracks when its baseline was generated and when a person last hand-edited it. One of exactly two AI features in the product.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="11" height="11" rx="2"/><path d="M13 4h7v7"/><path d="M20 4l-8 8"/></svg></span>
                     <h3>Forms that travel</h3>
-                    <p>Deep-copy a form in place to adapt it for a new program. Export a whole form design — translations included — and import it into another Need Navigator system with internal references remapped automatically (an administrator operation today).</p>
+                    <p>Deep-copy a form in place to adapt it for a new program. Export a whole form design, translations included, and import it into another Need Navigator system with internal references remapped automatically (an administrator operation today).</p>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@
             <aside class="vignette">
                 <h3>Built Friday, polished Monday</h3>
                 <p>On Friday afternoon, a program manager builds the intake form for a new rent-assistance program. They add live client-record fields so answers land on the real record, a repeatable "Add Another" section for household members, and a condition that shows the income section only when someone in the home is working. Before leaving, one more click drafts the Spanish baseline.</p>
-                <p>On Monday, a bilingual staffer opens the side-by-side editor and works through the draft — section by section, field by field, option by option — tuning the wording to how their community actually speaks. They save, and the form records when the baseline was generated and when they last edited it. The form attaches to the program's intake, and on the public portal it renders in the visitor's language — portal submissions land in the review queue, where staff match each one to a client record before anything is written.</p>
+                <p>On Monday, a bilingual staffer opens the side-by-side editor and works through the draft section by section, field by field, option by option, tuning the wording to how their community actually speaks. They save, and the form records when the baseline was generated and when they last edited it. The form attaches to the program's intake, and on the public portal it renders in the visitor's language. Portal submissions land in the review queue, where staff match each one to a client record before anything is written.</p>
             </aside>
         </div>
     </section>
@@ -189,7 +189,7 @@
     </section>
 
     {{-- ================= Cross-links ================= --}}
-    <section class="section" style="padding-top: 0">
+    <section class="section section--crosslinks">
         <div class="container">
             <p class="eyebrow" style="margin-bottom: 1rem">Works with</p>
             <div class="crosslinks">
@@ -201,6 +201,6 @@
         </div>
     </section>
 
-    @include('site::partials.cta', ['heading' => 'Bring your longest paper form', 'blurb' => 'We will rebuild a piece of it live in the demo — conditional sections, household fields, and a Spanish draft before the call ends.'])
+    @include('site::partials.cta', ['heading' => 'Bring your longest paper form', 'blurb' => 'We will rebuild a piece of it live in the demo: conditional sections, household fields, and a Spanish draft before the call ends.'])
 
 @endsection

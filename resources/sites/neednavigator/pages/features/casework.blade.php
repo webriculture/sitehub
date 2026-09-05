@@ -1,17 +1,17 @@
 @extends('site::partials.layout')
 
 @section('title', 'Case Notes Software for Social Services | Need Navigator')
-@section('description', 'Case notes with visibility controls and an undo window, visits with manager review, goal plans, tasks, and a shared calendar — all connected to the client record.')
+@section('description', 'Case notes with visibility controls and an undo window, visits with manager review, goal plans, tasks, and a shared calendar, all connected to the client record.')
 
 @php
     $faqs = [
         [
             'q' => 'Who can see a case note?',
-            'a' => 'Whoever you say. Every note carries its own visibility — everyone, a program, or selected teams — and you can address it to specific recipients, with read tracking that shows who has actually seen it. Sensitive notes stay inside the circle that needs them.',
+            'a' => 'Whoever you say. Every note carries its own visibility (everyone, a program, or selected teams), and you can address it to specific recipients, with read tracking that shows who has actually seen it. Sensitive notes stay inside the circle that needs them.',
         ],
         [
             'q' => 'What if I send a note to the wrong place?',
-            'a' => 'Notes deliver after a personal grace period you choose — typically 60 seconds to 10 minutes. Until the timer runs out, the note has not been delivered, and you can undo it before anyone sees it. A mis-click gets a second chance instead of an apology.',
+            'a' => 'Notes deliver after a personal grace period you choose, typically 60 seconds to 10 minutes. Until the timer runs out, the note has not been delivered, and you can undo it before anyone sees it. A mis-click gets a second chance instead of an apology.',
         ],
         [
             'q' => 'Can supervisors sign off on visits?',
@@ -19,11 +19,11 @@
         ],
         [
             'q' => 'How do group visits work?',
-            'a' => 'One visit can include multiple clients, and a single entry can be recorded across multiple dates at once — a month of weekly group sessions does not mean re-typing the same visit four times. If the visit reason has an attached form, it is filled out per client, per visit, so each person\'s record stays individually complete.',
+            'a' => 'One visit can include multiple clients, and a single entry can be recorded across multiple dates at once. A month of weekly group sessions does not mean re-typing the same visit four times. If the visit reason has an attached form, it is filled out per client, per visit, so each person\'s record stays individually complete.',
         ],
         [
             'q' => 'Does the calendar sync with Teams, Google Calendar, or Zoom?',
-            'a' => 'No — it generates meeting links as a convenience, and we say so plainly. You get a "Meet now" link plus pre-filled scheduling links for Microsoft Teams or Google Calendar; Zoom opens its scheduling page without prefill, and each agency picks one provider. This is link generation, not calendar sync: Need Navigator does not read from or write to your external calendars.',
+            'a' => 'No. It generates meeting links as a convenience, and we say so plainly. You get a "Meet now" link plus pre-filled scheduling links for Microsoft Teams or Google Calendar; Zoom opens its scheduling page without prefill, and each agency picks one provider. This is link generation, not calendar sync: Need Navigator does not read from or write to your external calendars.',
         ],
     ];
 
@@ -65,19 +65,19 @@
                     <li aria-current="page">Casework</li>
                 </ol>
             </nav>
-            <p class="eyebrow">Casework — visits, notes, goals, tasks &amp; calendar</p>
+            <p class="eyebrow">Casework: visits, notes, goals, tasks &amp; calendar</p>
             <h1>The whole day's casework, in one record</h1>
-            <p class="lede">Case notes software for social services works best when the note isn't an island. In Need Navigator, visits, notes, goal plans, and tasks all hang off the same client record — with live threads on its needs and referrals, and one shared calendar over all of it — so what happened, who saw it, and what comes next live in one place.</p>
+            <p class="lede">Case notes software for social services works best when the note isn't an island. In Need Navigator, visits, notes, goal plans, and tasks all hang off the same client record, with live threads on its needs and referrals and one shared calendar over all of it, so what happened, who saw it, and what comes next live in one place.</p>
         </div>
     </section>
 
     {{-- ================= Case-note thread UI representation ================= --}}
     <section class="section section--surface">
         <div class="container">
-            {{-- IMAGE SLOT: casework-note-thread | replace with: real screenshot of a case note with a reply, light theme — visibility setting, read tracking, an @mention, and the undo-window countdown visible on an undelivered note. Placeholder: stylized HTML recreation of a note thread. --}}
+            {{-- IMAGE SLOT: casework-note-thread | replace with: real screenshot of a case note with a reply, light theme - visibility setting, read tracking, an @mention, and the undo-window countdown visible on an undelivered note. Placeholder: stylized HTML recreation of a note thread. --}}
             <figure style="margin:0">
                 <div class="uiframe" aria-hidden="true">
-                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Case note — home visit follow-up</span></div>
+                    <div class="uiframe-bar"><i></i><i></i><i></i><span>Case note: home visit follow-up</span></div>
                     <div class="uiframe-body">
                         <div class="ui-casenote">
                             <div class="cn-meta">
@@ -86,7 +86,7 @@
                             </div>
                             <div class="cn-msg">
                                 <span class="cn-author">Family advocate</span>
-                                <p>Home visit complete — utility shutoff notice resolved with the energy-assistance grant. <span class="cn-mention">&#64;Program Supervisor</span> this one is flagged for review when you have a minute.</p>
+                                <p>Home visit complete. Utility shutoff notice resolved with the energy-assistance grant. <span class="cn-mention">&#64;Program Supervisor</span> this one is flagged for review when you have a minute.</p>
                                 <span class="cn-time">Today, 2:14 p.m.</span>
                             </div>
                             <div class="cn-msg cn-msg--reply">
@@ -95,7 +95,7 @@
                                 <span class="cn-time">Today, 3:02 p.m.</span>
                             </div>
                             <div class="cn-pending">
-                                <p>Goal step marked complete — household utilities stable through winter. Next check-in scheduled.</p>
+                                <p>Goal step marked complete: household utilities stable through winter. Next check-in scheduled.</p>
                                 <span class="cn-undo">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
                                     Delivers in 4:32 &middot; <em>Undo</em>
@@ -113,18 +113,18 @@
     <section class="section">
         <div class="container">
             <div class="section-head">
-                <h2>Notes that reach the right people — and only them</h2>
+                <h2>Notes that reach the right people, and only them</h2>
             </div>
             <div class="caps">
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
                     <h3>Visibility, set per note</h3>
-                    <p>Each note is visible to everyone, one program, or selected teams — your call, note by note. Address it to specific recipients, and read tracking shows who has actually seen it.</p>
+                    <p>Each note is visible to everyone, one program, or selected teams. Your call, note by note. Address it to specific recipients, and read tracking shows who has actually seen it.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4v6h6"/><path d="M3.5 15a9 9 0 1 0 2.1-9.4L3 10"/><path d="M12 9v4l3 2"/></svg></span>
                     <h3>A grace period for second thoughts</h3>
-                    <p>Notes deliver after a personal undo window — typically 60 seconds to 10 minutes, each person picks their own — so a note sent to the wrong place can be pulled back before anyone sees it.</p>
+                    <p>Notes deliver after a personal undo window (typically 60 seconds to 10 minutes, and each person picks their own), so a note sent to the wrong place can be pulled back before anyone sees it.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3.5 7"/></svg></span>
@@ -134,7 +134,7 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h.01M12 12h.01M16 12h.01"/><path d="M21 12c0 4-4 7-9 7-1 0-2-.1-2.9-.4L4 20l1.5-3.6C4 15.2 3 13.7 3 12c0-4 4-7 9-7s9 3 9 7Z"/></svg></span>
                     <h3>Live threads where decisions happen</h3>
-                    <p>A live chat thread attaches to any need, referral, or program. Messages appear for other participants in real time, typing indicators included — the conversation about the request lives on the request.</p>
+                    <p>A live chat thread attaches to any need, referral, or program. Messages appear for other participants in real time, typing indicators included. The conversation about the request lives on the request.</p>
                 </div>
             </div>
         </div>
@@ -150,7 +150,7 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.2"/><path d="M3.5 19c0-2.8 2.3-4.6 5.5-4.6s5.5 1.8 5.5 4.6"/><path d="M15 16.7c.6-1.6 2-2.4 3.7-2.4 1 0 1.8.3 2.4.8"/></svg></span>
                     <h3>Group visits, multiple dates, one entry</h3>
-                    <p>One visit can include several clients, and a single entry can be recorded across multiple dates at once — a recurring group session gets logged once, not session by session.</p>
+                    <p>One visit can include several clients, and a single entry can be recorded across multiple dates at once: a recurring group session gets logged once, not session by session.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M9 4V2.5h6V4"/><path d="M8 9h8M8 12.5h8M8 16h5"/></svg></span>
@@ -160,12 +160,12 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6Z"/><path d="M9 12l2 2 4-4"/></svg></span>
                     <h3>Manager review, built in</h3>
-                    <p>Flag any visit reason as requiring review. The caseworker's manager gets a review panel — Unreviewed, Reviewed, Completed, Staff Action Needed — with review notes only the manager can edit.</p>
+                    <p>Flag any visit reason as requiring review. The caseworker's manager gets a review panel (Unreviewed, Reviewed, Completed, Staff Action Needed) with review notes only the manager can edit.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></span>
                     <h3>Less re-typing, fewer dropped steps</h3>
-                    <p>Copy a visit for the next appointment, or edit inline from the list. With an Automation on the reason, recording a visit can enroll an un-enrolled client in the program — and logging a visit from a task marks the task complete.</p>
+                    <p>Copy a visit for the next appointment, or edit inline from the list. With an Automation on the reason, recording a visit can enroll an un-enrolled client in the program, and logging a visit from a task marks the task complete.</p>
                 </div>
             </div>
         </div>
@@ -181,22 +181,22 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg></span>
                     <h3>Start from a template</h3>
-                    <p>Build goal templates once — ordered steps with default durations — and every new goal pre-populates its steps from the template. The plan starts complete instead of blank.</p>
+                    <p>Build goal templates once (ordered steps with default durations), and every new goal pre-populates its steps from the template. The plan starts complete instead of blank.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="6" height="4" rx="1"/><rect x="15" y="4" width="6" height="4" rx="1"/><rect x="15" y="16" width="6" height="4" rx="1"/><path d="M9 12h2c3 0 1.5-6 4-6M11 12c3 0 1.5 6 4 6"/></svg></span>
                     <h3>Steps that schedule themselves</h3>
-                    <p>Steps run sequentially — each starts when the prior one ends — or in parallel where the work allows. Every step carries start and due dates and records who completed it, and when.</p>
+                    <p>Steps run sequentially, each starting when the prior one ends, or in parallel where the work allows. Every step carries start and due dates and records who completed it, and when.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
                     <h3>Progress that rolls up</h3>
-                    <p>When the last step is done, the goal completes on its own. Lists and client profiles show progress at a glance — "3 of 5 steps" — so nobody has to open the plan to know where it stands.</p>
+                    <p>When the last step is done, the goal completes on its own. Lists and client profiles show progress at a glance ("3 of 5 steps"), so nobody has to open the plan to know where it stands.</p>
                 </div>
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4v16"/><path d="M6 7h6M9 12h8M13 17h6"/></svg></span>
                     <h3>See the plan on a timeline</h3>
-                    <p>A Gantt-style timeline lays the steps out across their dates, so a caseworker and a client can look at the same picture of what happens next — and what has to finish first.</p>
+                    <p>A Gantt-style timeline lays the steps out across their dates, so a caseworker and a client can look at the same picture of what happens next, and what has to finish first.</p>
                 </div>
             </div>
         </div>
@@ -217,7 +217,7 @@
                 <div class="cap reveal">
                     <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M7 14h3M12 14h3M7 17.5h3"/></svg></span>
                     <h3>One shared calendar</h3>
-                    <p>Overlay visits, tasks, needs, referrals, goals, reservations, and events on one calendar; filter by shelter, room, resource, user, or client, and save your default view. As a convenience, it generates "Meet now" and pre-filled scheduling links for Microsoft Teams or Google Calendar (Zoom opens its scheduling page) — link generation, not calendar sync.</p>
+                    <p>Overlay visits, tasks, needs, referrals, goals, reservations, and events on one calendar; filter by shelter, room, resource, user, or client, and save your default view. As a convenience, it generates "Meet now" and pre-filled scheduling links for Microsoft Teams or Google Calendar (Zoom opens its scheduling page). This is link generation, not calendar sync.</p>
                 </div>
             </div>
         </div>
@@ -228,8 +228,8 @@
         <div class="container">
             <aside class="vignette">
                 <h3>A Tuesday, filed properly</h3>
-                <p>A family advocate finishes a morning home visit that was already sitting on their task list. They log the visit straight from the task — which marks itself complete — fill in the reason's form on their phone, and the start and end times land on the record.</p>
-                <p>That visit reason is flagged for review, so it queues in their supervisor's review panel by early afternoon. The supervisor reads it, marks it Reviewed, and adds a review note only they can edit. Back at the office, the advocate opens the client's housing-stability goal and marks the step complete — the profile now shows 3 of 5 steps done, and the timeline shows what comes next.</p>
+                <p>A family advocate finishes a morning home visit that was already sitting on their task list. They log the visit straight from the task (which marks itself complete), fill in the reason's form on their phone, and the start and end times land on the record.</p>
+                <p>That visit reason is flagged for review, so it queues in their supervisor's review panel by early afternoon. The supervisor reads it, marks it Reviewed, and adds a review note only they can edit. Back at the office, the advocate opens the client's housing-stability goal and marks the step complete. The profile now shows 3 of 5 steps done, and the timeline shows what comes next.</p>
                 {{-- [TESTIMONIAL: caseworker or program supervisor at a family-services agency, on manager review and notes cutting down end-of-day paperwork] --}}
             </aside>
         </div>
@@ -253,7 +253,7 @@
     </section>
 
     {{-- ================= Cross-links ================= --}}
-    <section class="section" style="padding-top: 0">
+    <section class="section section--crosslinks">
         <div class="container">
             <p class="eyebrow" style="margin-bottom: 1rem">Works with</p>
             <div class="crosslinks">
@@ -266,6 +266,6 @@
         </div>
     </section>
 
-    @include('site::partials.cta', ['heading' => 'Walk a real day through it', 'blurb' => 'Bring one workflow to the demo — a home visit, the note that follows, the goal step it advances — and we will log it end to end, manager sign-off included.'])
+    @include('site::partials.cta', ['heading' => 'Walk a real day through it', 'blurb' => 'Bring one workflow to the demo: a home visit, the note that follows, the goal step it advances. We will log it end to end, manager sign-off included.'])
 
 @endsection

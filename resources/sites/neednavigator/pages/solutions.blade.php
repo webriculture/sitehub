@@ -10,12 +10,12 @@
             'a' => 'Yes. The solutions pages are different doors into the same product, not separate editions. Client records, assistance requests, referrals, visits, goals, and reporting all live in one system at your agency, and each program carries its own forms, folders, and eligibility rules. Start with the page closest to your largest program.',
         ],
         [
-            'q' => 'What if our agency spans categories — say, community action plus a shelter?',
-            'a' => 'That combination runs in one place. Programs are defined per agency, so an energy-assistance program and a shelter can live side by side — funding pools, bed reservations, and reporting included. Read both pages; everything they describe belongs to the same system.',
+            'q' => 'What if our agency spans categories (say, community action plus a shelter)?',
+            'a' => 'That combination runs in one place. Programs are defined per agency, so an energy-assistance program and a shelter can live side by side, with funding pools, bed reservations, and reporting included. Read both pages; everything they describe belongs to the same system.',
         ],
         [
             'q' => 'Our agency is not on this list. Is Need Navigator still a fit?',
-            'a' => 'Possibly — community action agencies, shelters, food banks, and parent education providers are the kinds of agencies Need Navigator was built alongside, but it serves human-services organizations broadly, including other community aid organizations. Each agency chooses its own profile fields, forms, programs, and vocabularies, so the record adapts to your intake practice rather than the other way around. The fastest way to find out is a conversation with us.',
+            'a' => 'Possibly. Community action agencies, shelters, food banks, and parent education providers are the kinds of agencies Need Navigator was built alongside, but it serves human-services organizations broadly, including other community aid organizations. Each agency chooses its own profile fields, forms, programs, and vocabularies, so the record adapts to your intake practice rather than the other way around. The fastest way to find out is a conversation with us.',
         ],
     ];
 
@@ -57,7 +57,7 @@
             </nav>
             <p class="eyebrow">Who it's for</p>
             <h1>Which describes your agency?</h1>
-            <p class="lede">Need Navigator is case-management software for human-services organizations, configured to each agency's programs, forms, roles, and vocabulary. These four pages map the product to your kind of work — the funding you answer to, the line at your front desk, the outcomes you report. Pick the closest fit; they all lead back to the same product.</p>
+            <p class="lede">Need Navigator is case-management software for human-services organizations, configured to each agency's programs, forms, roles, and vocabulary. These four pages map the product to your kind of work: the funding you answer to, the line at your front desk, the outcomes you report. Pick the closest fit; they all lead back to the same product.</p>
         </div>
     </section>
 
@@ -81,7 +81,7 @@
             <div class="sol-row reveal">
                 <div>
                     <h2>Shelters &amp; housing</h2>
-                    <p>Run the building the way you see it: floors, rooms, and beds on a visual floor plan with live status colors, and the week ahead in a bed-by-date matrix you can read in a second. Families book together and check in — or out — in one action, and check-out captures a categorized exit reason your agency defined. Outside the building, GeoTracker logs a GPS-stamped location for a client encounter in one tap, which also makes it a strong tool for Point-in-Time (PIT) count fieldwork. And every client-record view is logged and screened for unusual access patterns.</p>
+                    <p>Run the building the way you see it: floors, rooms, and beds on a visual floor plan with live status colors, and the week ahead in a bed-by-date matrix you can read in a second. Families book together and check in or out in one action, and check-out captures a categorized exit reason your agency defined. Outside the building, GeoTracker logs a GPS-stamped location for a client encounter in one tap, which also makes it a strong tool for Point-in-Time (PIT) count fieldwork. And every client-record view is logged and screened for unusual access patterns.</p>
                 </div>
                 <a class="audience" href="/solutions/shelters-housing">
                     <span class="icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18M5 10V7M7 10c0-1.1.9-2 2-2h2v2"/></svg></span>
@@ -94,7 +94,7 @@
             <div class="sol-row reveal">
                 <div>
                     <h2>Food banks &amp; community aid</h2>
-                    <p>When the line is out the door, intake speed matters most. Requests land in a live grid the whole team works in at once — everyone sees edits and status changes as they happen — and a matching engine ranks likely matches so staff can tie each submission to an existing client — or create the person, or the whole household — in one pass. Needs are logged against your agency's own catalog of resources, referrals close the loop when the receiving provider scans a QR code, and community events run from online registration through day-of check-in.</p>
+                    <p>When the line is out the door, intake speed matters most. Requests land in a live grid the whole team works in at once, and everyone sees edits and status changes as they happen. A matching engine ranks likely matches so staff can tie each submission to an existing client (or create the person, or the whole household) in one pass. Needs are logged against your agency's own catalog of resources, referrals close the loop when the receiving provider scans a QR code, and community events run from online registration through day-of check-in.</p>
                 </div>
                 <a class="audience" href="/solutions/food-banks-community-aid">
                     <span class="icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11h14l-1.4 9a2 2 0 0 1-2 1.7H8.4a2 2 0 0 1-2-1.7Z"/><path d="M8 11c0-4 1.8-7 4-7s4 3 4 7"/></svg></span>
@@ -107,7 +107,7 @@
             <div class="sol-row reveal">
                 <div>
                     <h2>Parent education providers</h2>
-                    <p>Run parent education end to end. Build a course catalog, open offerings for public registration, and let reminders go out by text and email before every session. Participants check in with a QR code designed to protect privacy — scanning the poster never reveals who is enrolled, and confidential household members are never disclosed. Attendance drives completion against each course's fidelity threshold, with completion certificates for qualifying participants. Intake forms can be presented in Spanish, too: an AI drafts the translation and your bilingual staff polish it in a side-by-side editor.</p>
+                    <p>Run parent education end to end. Build a course catalog, open offerings for public registration, and let reminders go out by text and email before every session. Participants check in with a QR code designed to protect privacy: scanning the poster never reveals who is enrolled, and confidential household members are never disclosed. Attendance drives completion against each course's fidelity threshold, with completion certificates for qualifying participants. Intake forms can be presented in Spanish, too: an AI drafts the translation and your bilingual staff polish it in a side-by-side editor.</p>
                 </div>
                 <a class="audience" href="/solutions/parent-education">
                     <span class="icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.8-5-2.2-8-2v14c3-.2 6 .2 8 2 2-1.8 5-2.2 8-2V4c-3-.2-6 .2-8 2Z"/><path d="M12 6v14"/></svg></span>
@@ -117,7 +117,7 @@
                 </a>
             </div>
 
-            <p class="mt-2 muted">Not one of these four? Need Navigator also serves other community aid organizations — each agency runs its own copy of the product, configured to its programs, forms, roles, and vocabulary. If your work is people, programs, and the paperwork between them, <a href="/features">explore the features</a> or <a href="/contact">ask us directly</a>.</p>
+            <p class="mt-2 muted">Not one of these four? Need Navigator also serves other community aid organizations. Each agency runs its own copy of the product, configured to its programs, forms, roles, and vocabulary. If your work is people, programs, and the paperwork between them, <a href="/features">explore the features</a> or <a href="/contact">ask us directly</a>.</p>
         </div>
     </section>
 
@@ -139,7 +139,7 @@
     </section>
 
     {{-- ================= Cross-links ================= --}}
-    <section class="section" style="padding-top: 0">
+    <section class="section section--crosslinks">
         <div class="container">
             <p class="eyebrow" style="margin-bottom: 1rem">Keep exploring</p>
             <div class="crosslinks">
@@ -151,6 +151,6 @@
         </div>
     </section>
 
-    @include('site::partials.cta', ['heading' => 'Not sure which door fits?', 'blurb' => 'Tell us what your agency does and we will walk through the modules that matter to you — your programs, your forms, your funders.'])
+    @include('site::partials.cta', ['heading' => 'Not sure which door fits?', 'blurb' => 'Tell us what your agency does and we will walk through the modules that matter to you: your programs, your forms, your funders.'])
 
 @endsection

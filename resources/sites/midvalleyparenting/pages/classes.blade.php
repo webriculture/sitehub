@@ -13,6 +13,8 @@
     <div class="page-wrap wide prose">
         <x-site-events kind="class" />
 
+        <p class="note-muted" style="margin-top: 18px;">{!! __('Class registrations are managed by :product.', ['product' => '<a href="https://www.neednavigator.com" rel="noopener">Need Navigator</a>']) !!}</p>
+
         <p class="note-muted" style="margin-top: 28px;">Classes are added throughout the year — check back, or <a href="https://www.facebook.com/MidValleyParenting" rel="noopener">follow us on Facebook</a> for announcements.</p>
     </div>
 
